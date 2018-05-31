@@ -56,7 +56,7 @@ class Ticket extends CI_Controller {
 		else
 		{
 			$msg="订购完成";
-			$this->load->view('AC',$msg);
+			$this->load->view('book/success',$msg);
 		}
 	}
 	public function 
