@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="test.html">火车票订票系统</a>
+        <a class="navbar-brand" href="test.php">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
@@ -24,11 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="查询.php">查询</a></li>
         </ul>
     </div>
-   <form class="navbar-form navbar-right" role="search">
-    <div class="form-group" style="color: white;">
-      <script type="text/javascript">
-        document.write(Date());
-      </script>
    </div>
 </nav>
 
@@ -47,5 +42,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 </div>
+<footer class="footer navbar-fixed-bottom ">
+    <div class="container">
+    <div style = "text-align: center">
+    <p>当前时间
+    <script type="text/javascript">
+        document.write(Date());
+      </script>
+      </p>
+    </div>
+</footer>
 </body>
 </html>
