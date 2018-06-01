@@ -2,7 +2,7 @@
 /**
  * 用户管理模型，用于与用户有关的所有操作
  */
-class Calculate_model extends CI_Model {
+class User_model extends CI_Model {
 	
 	function __construct() {
 		parent::__construct();
