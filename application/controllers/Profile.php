@@ -4,11 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Profile extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('User_model');
 	}
 	public function index()
 	{
 	    session_start();
+	    session_write_close();
         if (!isset(_SESSION['id']))
 		{
 			$msg="请先登录";
