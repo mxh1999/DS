@@ -20,10 +20,6 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-	    session_start();
-	    session_write_close();
-        //$info = array('SessionId' => session_id());
-        setcookie('session', $session_id());
 		$this->load->view('welcome');
 	}
 }
