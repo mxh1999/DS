@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x = '<%=session("id")%>';
     x = document.cookie;
-    if (x != "")
+    if (x != '')
     {
       document.getElementById("id").innerHTML = "当前登陆用户" + x;
       document.getElementById("qqq").style.display = "visible";
@@ -54,6 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="form-group" style="color: white;">
       <div id = "qqq">
         <ul class="nav navbar-nav">
+            <li><a href="admin.php">管理</a></li>
             <li id = "id"></li>
         </ul>
       </div>
