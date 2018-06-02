@@ -23,13 +23,13 @@ class Login extends CI_Controller {
 		else
 		{
 			$ok=$this->user_model->login($id,$psword);
-			if ($ok < 0)
+			if ($ok === -1)
 			{
 				$this->load->view('RE');
 			}
 			else
 			{
-				if ($ok < 1)
+				if ($ok === 0)
 				{
 					$msg="用户名或密码错误";
 					$this->load->view('WA',$msg);
