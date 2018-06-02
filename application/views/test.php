@@ -68,12 +68,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          火车票订票系统了解一下
         </h1>
         <div id = "un_login">
-          <button type = "button" class="btn btn-default">
-                <a href="login.php" style="color: black;">登陆</a>
-          </button>
-          <button type = "button" class="btn btn-default">
-                <a href="register.php" style="color: black;">注册</a>
-          </button>
+              <a href="login.php" style="color: black;" role = "button" class="btn btn-default">登陆</a>
+              <a href="register.php" style="color: black;" role = "button" class="btn btn-default">注册</a>
           <br>
           <br>
         </div>

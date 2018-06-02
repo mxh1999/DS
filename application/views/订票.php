@@ -9,6 +9,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script type="text/javascript">
+     function check_cookie()
+     {
+      var x = '<seession%=>';
+      if (x == '')
+      {
+        alert("未登录");
+        return false;
+      }
+      alert("..");
+      return false;
+     }
+   </script>
 </head>
 <body>
    
@@ -29,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="col-sm-8">
         <div class="col-md-offset-2">
-<form action="book.php" method="post" row = "form">
+<form action="book.php" method="post" row = "form" onsubmit="return check_cookie()">
   <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
           <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
