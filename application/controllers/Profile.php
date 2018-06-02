@@ -27,4 +27,32 @@ class Profile extends CI_Controller {
 			}
 		}
 	}
+	public function change()
+	{
+		session_start();
+	    session_write_close();
+        if (!isset(_SESSION['id']))
+		{
+			$msg="请先登录";
+			this->load->view('WA',$msg);
+		}
+		else
+		{
+			$id=_SESSION['id'];
+			$name=$this->input->post('name');
+			$psword=$this->input->post('psword');
+			$email=$this->input->post('email');
+			$phone=$this->input->post('phone');
+			$ok=$this->user_model->modify_profile($id, $name, $psword, $email, $phone);
+			if ($ok === -1)
+			{
+				$this->load->view('RE');
+			}
+			else if ($ok === 0)
+			{
+				$msg="密码错误";
+				%this->load->view('WA',$msg);
+			}
+		}
+	}
 }
