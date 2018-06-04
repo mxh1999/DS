@@ -20,9 +20,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x = '<%=session("id")%>';
     x = document.cookie;
+    var A = document.createElement('a');
     if (x != '')
     {
-      document.getElementById("id").innerHTML = "当前登陆用户" + x;
+      A.href = "users.php";
+      A.innerHTML = x;
+      document.getElementById("id").appendChild(A);
       document.getElementById("qqq").style.display = "visible";
       document.getElementById("un_login").style.display = "none";
       alert("已登陆");
@@ -50,16 +53,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="查询.php">查询</a></li>
         </ul>
     </div>
-   <form class="navbar-form navbar-right" role="search" action="Login.php" method="post">
-    <div class="form-group" style="color: white;">
-      <div id = "qqq">
+      <div id = "qqq" class="navbar-right">
         <ul class="nav navbar-nav">
-            <li><a href="admin.php">管理</a></li>
+            <li class="active"><a href="admin.php">管理</a></li>
             <li id = "id"></li>
         </ul>
       </div>
-    </div>
-    </form>
   </div>
 </nav>
 <div class="contener">

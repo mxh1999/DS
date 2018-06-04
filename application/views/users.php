@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="查询.php">查询</a></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
-          <li><a href="users.php" style="color: white;" id = "userid">
+          <li class="active"><a href="users.php" id = "userid">
             
           </a>
           </li>
@@ -65,11 +65,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   get_id();
 </script>
-<div class="col-sm-8">
+
 <div class="col-md-offset-2">
-<p>
-  修改个人信息
-</p>
+<div class="radio">
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_users_train()">查询个人订票情况
+  </label>
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="change_users()">修改个人信息
+  </label>
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="delete_users_train()">退票
+  </label>
+</div>
+</div>
+<div >
+<div class="col-md-offset-2">
 <form action="change_user.php" method="post" row = "form" onsubmit="return check()" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
