@@ -57,7 +57,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
    </div>
 </nav>
-
+<div class="col-sm-8">
+<div class="col-md-offset-2">
+<div class="radio">
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">有中转站
+  </label>
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">无中转站
+  </label>
+</div>
+</div>
+</div>
 <div class="col-sm-8">
         <div class="col-md-offset-2">
 <form action="check.php" method="post" row = "form" onsubmit="return check_cookie()">

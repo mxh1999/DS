@@ -14,6 +14,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      {
       var x = '<%=session("id")>';
       document.getElementById("userid").innerHTML = x;
+      document.getElementById("add_admin").style.display = "none";
+      document.getElementById("open_train").style.display = "none";
+      document.getElementById("add_train").style.display = "none";
      }
      function check_id()
      {
@@ -32,6 +35,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         alert("username error");
         return false;
       }
+     }
+     function show_add_train()
+     {
+      document.getElementById("add_admin").style.display = "none";
+      document.getElementById("open_train").style.display = "none";
+      document.getElementById("add_train").style.display = "inline";
+     }
+     function show_open_train()
+     {
+      document.getElementById("add_admin").style.display = "none";
+      document.getElementById("add_train").style.display = "none";
+      document.getElementById("open_train").style.display = "inline";
+     }
+     function show_add_admin()
+     {
+      document.getElementById("open_train").style.display = "none";
+      document.getElementById("add_train").style.display = "none";
+      document.getElementById("add_admin").style.display = "inline";
      }
    </script>
 </head>
@@ -57,10 +78,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
    </div>
 </nav>
-<script type="text/javascript">
-  get_id();
-</script>
 <div class="col-sm-8">
+<div class="col-md-offset-2">
+<div class="radio">
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_add_train()">添加车次
+  </label>
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="show_open_train()">公开车次
+  </label>
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="show_add_admin()">增加管理员
+  </label>
+</div>
+</div>
+</div>
+<div class="col-sm-8" id = "add_admin">
 <div class="col-md-offset-2">
 <p>
   增加管理员
@@ -75,7 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 </div>
-<div class="col-sm-8">
+<div class="col-sm-8" id = "add_train">
 <div class="col-md-offset-2">
 <p>
   增加车次
@@ -90,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 </div>
-<div class="col-sm-8">
+<div class="col-sm-8" id = "open_train">
 <div class="col-md-offset-2">
 <p>
   公开车次
@@ -99,12 +132,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
-            提交
+            公开
           </button>
 </div>
 </form>
 </div>
 </div>
+<script type="text/javascript">
+  get_id();
+</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">
