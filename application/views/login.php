@@ -47,13 +47,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="查询.php">查询</a></li>
         </ul>
     </div>
-   <form class="navbar-form navbar-right" role="search" action="Login.php" method="post">
-    <div class="form-group" style="color: white;">
-      <script type="text/javascript">
-        document.write(Date());
-      </script>
-    </div>
-    </form>
 </nav>
 <div class="col-sm-8">
         <div class="col-md-offset-2">
@@ -73,5 +66,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 test();
 </script>
+<footer class="footer navbar-fixed-bottom ">
+    <div class="container">
+    <div style = "text-align: center">
+    <p>当前时间
+    <script type="text/javascript">
+        document.write(Date());
+      </script>
+      </p>
+    </div>
+</footer>
 </body>
 </html>

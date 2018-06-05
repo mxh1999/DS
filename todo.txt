@@ -1,0 +1,21 @@
+TODOS：
+与C++数据库通信 socket （C++实现）
+model\ user_model.php √
+修改view代码里的表单 name = "X" id = "X"
+book
+train
+
+
+\application\config\constants.php 定义整个项目的常量
+define('XX',XX);
+	DATABASE_IP
+	DATABASE_PORT
+
+TODO view
+WA.php
+RE.php
+register/register_page.php
+register/success.php
+book/success.php
+user/profile.php
+user/admin.php]
