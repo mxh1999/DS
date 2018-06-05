@@ -18,11 +18,11 @@ class Login extends CI_Controller {
 		if (!isset($psword) || !isset($id))
 		{
 			$msg="用户名或密码错误";
-			$this->load->view('WA',$msg);
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
-			$ok=$this->user_model->login($id,$psword);
+			$ok=$this->User_model->login($id,$psword);
 			if ($ok === -1)
 			{
 				$this->load->view('RE');
@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 				if ($ok === 0)
 				{
 					$msg="用户名或密码错误";
-					$this->load->view('WA',$msg);
+					$this->load->view('WA',array('msg'=>$msg));
 				}
 				else
 				{

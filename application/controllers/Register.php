@@ -13,7 +13,7 @@ class Register extends CI_Controller {
 		if (isset($_SESSION['id']))
 		{
 			$msg="请先登出当前账号";
-			$this->load->view('WA',$msg);
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
@@ -28,17 +28,17 @@ class Register extends CI_Controller {
 		$psword = $this->input->post('psword');
 		$email = $this->input->post('email');
 		$phone = $this->input->post('phone');
-		$id = $this->user_model->register($name,$psword,intval($email),intval($phone));
+		$id = $this->User_model->register($name,$psword,$email,$phone);
 		if ($id < 0)
 		{
 			$msg="服务器繁忙，请稍后再试";
-			$this->load->view('WA',$msg);
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
 			$_SESSION['id']=$id;
 			setcookie('user',$name);
-			this->load->view('register/success',$id);
+			this->load->view('register/success',array('id'=>$id));
 		}
 	}
 }

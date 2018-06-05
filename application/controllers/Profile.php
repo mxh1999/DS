@@ -13,11 +13,11 @@ class Profile extends CI_Controller {
         if (!isset(_SESSION['id']))
 		{
 			$msg="请先登录";
-			this->load->view('WA',$msg);
+			this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
-			$userdata=$this->user_model->query($id);
+			$userdata=$this->User_model->query($id);
 			if ($userdata === -1)
 			{
 				$this->load->view('RE');
@@ -34,7 +34,7 @@ class Profile extends CI_Controller {
         if (!isset(_SESSION['id']))
 		{
 			$msg="请先登录";
-			this->load->view('WA',$msg);
+			this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
@@ -43,7 +43,7 @@ class Profile extends CI_Controller {
 			$psword=$this->input->post('psword');
 			$email=$this->input->post('email');
 			$phone=$this->input->post('phone');
-			$ok=$this->user_model->modify_profile($id, $name, $psword, $email, $phone);
+			$ok=$this->User_model->modify_profile($id, $name, $psword, $email, $phone);
 			if ($ok === -1)
 			{
 				$this->load->view('RE');
@@ -51,7 +51,7 @@ class Profile extends CI_Controller {
 			else if ($ok === 0)
 			{
 				$msg="密码错误";
-				%this->load->view('WA',$msg);
+				%this->load->view('WA',array('msg'=>$msg));
 			}
 		}
 	}

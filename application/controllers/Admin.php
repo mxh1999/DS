@@ -12,11 +12,11 @@ class Admin extends CI_Controller {
         if (!isset(_SESSION['id']))
 		{
 			$msg="请先登录";
-			this->load->view('WA',$msg);
+			this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
-			$userdata=$this->user_model->query($id);
+			$userdata=$this->User_model->query($id);
 			if ($userdata === -1)
 			{
 				$this->load->view('RE');
@@ -25,7 +25,7 @@ class Admin extends CI_Controller {
 				if ($userdata['privilege'] < 2)
 				{
 					$msg = "您不是管理员";
-					this->load->view('WA',$msg);
+					this->load->view('WA',array('msg'=>$msg));
 				}
 				else
 				{
