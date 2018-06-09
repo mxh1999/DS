@@ -23,7 +23,7 @@ class Profile extends CI_Controller {
 				$this->load->view('RE');
 			}	else
 			{
-				this->load->view('user/profile',$userdata);
+				this->load->view('user/profile',array('userdata' => $userdata));
 			}
 		}
 	}

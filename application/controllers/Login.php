@@ -15,37 +15,30 @@ class Login extends CI_Controller {
 	    session_start();
 		$id=$this->input->post('id');
 		$psword=$this->input->post('psword');
-		if (!isset($psword) || !isset($id))
+		
+		$ok=$this->User_model->login($id,$psword);
+		if ($ok === -1)
 		{
-			$msg="用户名或密码错误";
-			$this->load->view('WA',array('msg'=>$msg));
+			$this->load->view('RE');
 		}
 		else
 		{
-			$ok=$this->User_model->login($id,$psword);
-			if ($ok === -1)
+			if ($ok === 0)
 			{
-				$this->load->view('RE');
+				$msg="用户名或密码错误";
+				$this->load->view('WA',array('msg'=>$msg));
 			}
 			else
 			{
-				if ($ok === 0)
+				$userdata=$this->user_model->query($id);
+				if ($userdata === -1)
 				{
-					$msg="用户名或密码错误";
-					$this->load->view('WA',array('msg'=>$msg));
+					$this->load->view('RE');
 				}
 				else
 				{
-					$userdata=$this->user_model->query($id);
-					if ($userdata === -1)
-					{
-						$this->load->view('RE');
-					}
-					else
-					{
-						$_SESSION['id']=$id;
-						setcookie('user',$userdata['name']);
-					}
+					$_SESSION['id']=$id;
+					setcookie('user',$userdata['name']);
 				}
 			}
 		}

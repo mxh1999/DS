@@ -1,10 +1,11 @@
 TODOS：
 与C++数据库通信 socket （C++实现）√
-model\ user_model.php √
+model\ user_model.php √ Train_model X
 修改view代码里的表单 name = "X" id = "X"
 book
-train
-modify profile时检验密码
+fix train
+modify profile时检验密码 增加密码修改功能
+admin controller
 
 
 \application\config\constants.php 定义整个项目的常量
