@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
       <div id = "qqq" class="navbar-right">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="admin.php">管理</a></li>
+            <li><a href="admin.php">管理</a></li>
             <li id = "id"></li>
         </ul>
       </div>

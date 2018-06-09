@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
    <meta charset="utf-8"> 
-   <title>购票</title>
+   <title>WA</title>
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,22 +39,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
    </div>
 </nav>
-
-        <div class="col-md-offset-1">
-<form action="book.php" method="post" row = "form" onsubmit="return check_cookie()">
-  <div class="form-inline">
-          <input type = "text" class = "form-control" placeholder="车次" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
-          <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="类型" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="时间" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="数量" required="required" name = "loc1">
-          <input type = "text" class = "form-control" placeholder="车票种类" required="required" name = "loc1">
-          <button type="submit" class="btn btn-default">
-            提交
-          </button>
-</div>
-</form>
+<div style="text-align: center">
+  <h1>
+  your username or password is wrong
+</h1>
+  <br>
+  <a href="login.php" role ="button" class="btn btn-default">
+  重新登陆
+  </a>
+  <a href="test.php" role ="button" class="btn btn-default">
+  返回首页
+  </a>
 </div>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">

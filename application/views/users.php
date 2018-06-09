@@ -17,13 +17,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      }
      function check()
      {
-      var x = document.forms["users"]["name"].value;
+      var x = document.forms["change_users"]["name"].value;
       if(!(/^[A-Za-z0-9\_\-]+$/gi).test(x))
       {
         alert("username error");
         return false;
       }
-      x = document.forms["users"]["email"].value;
+      x = document.forms["change_users"]["email"].value;
       var atpos=x.indexOf("@");
       var dotpos=x.lastIndexOf(".");
       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
@@ -31,12 +31,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         alert("e-mail adress error");
         return false;
       }
-      x = document.forms["users"]["phone"].value;
+      x = document.forms["change_users"]["phone"].value;
       if(!(/^[\d]+$/gi).test(x))
       {
         alert("phone number error");
         return false;
       }
+     }
+     function show_users_train()
+     {
+      document.getElementById("ticket_check").style.display = "inline";
+      document.getElementById("change_users").style.display = "none";
+      document.getElementById("required_ticket").style.display = "none";
+     }
+     function delete_users_train()
+     {
+      document.getElementById("ticket_check").style.display = "none";
+      document.getElementById("change_users").style.display = "none";
+      document.getElementById("required_ticket").style.display = "inline";
+     }
+     function change_user()
+     {
+      document.getElementById("ticket_check").style.display = "none";
+      document.getElementById("change_users").style.display = "inline";
+      document.getElementById("required_ticket").style.display = "none";
+     }
+     function Init()
+     {
+      document.getElementById("ticket_check").style.display = "none";
+      document.getElementById("change_users").style.display = "none";
+      document.getElementById("required_ticket").style.display = "none";
      }
    </script>
 </head>
@@ -72,28 +96,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_users_train()">查询个人订票情况
   </label>
   <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="change_users()">修改个人信息
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="change_user()">修改个人信息
   </label>
   <label class = "radio-inline">
     <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="delete_users_train()">退票
   </label>
 </div>
 </div>
-<div >
 <div class="col-md-offset-2">
-<form action="change_user.php" method="post" row = "form" onsubmit="return check()" name = "users">
+<form action="change_user.php" method="post" row = "form" onsubmit="return check()" name = "ticket_check" id = "ticket_check">
 <div class="form-inline">
-          <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
-          <input type = "password" class = "form-control" placeholder="密码" required="required" name = "password">
-          <input type = "text" class = "form-control" placeholder="邮箱" required="required" name = "email">
-          <input type = "text" class = "form-control" placeholder="电话" required="required" name = "phone">
-          <button type="submit" class="btn btn-default">
-            提交
-          </button>
+  <input type = "text" class = "form-control" placeholder="类别" required="required" name = "catalog">
+  <input type = "password" class = "form-control" placeholder="日期" required="required" name = "date">
+  <button type="submit" class="btn btn-default">
+    提交
+  </button>
 </div>
 </form>
 </div>
+<div class="col-md-offset-2">
+<form action="change_user.php" method="post" row = "form" onsubmit="return check()" name = "change_users" id = "change_users">
+<div class="form-inline">
+  <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
+  <input type = "password" class = "form-control" placeholder="密码" required="required" name = "password">
+  <input type = "text" class = "form-control" placeholder="邮箱" required="required" name = "email">
+  <input type = "text" class = "form-control" placeholder="电话" required="required" name = "phone">
+  <button type="submit" class="btn btn-default">
+    提交
+  </button>
 </div>
+</form>
+</div>
+<div class="col-md-offset-2">
+<form action="change_user.php" method="post" row = "form" onsubmit="return check()" name = "required_ticket" id = "required_ticket">
+<div class="form-inline">
+  <input type = "text" class = "form-control" placeholder="车次" required="required" name = "train_id">
+  <input type = "text" class = "form-control" placeholder="日期" required="required" name = "train_date">
+  <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
+  <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
+  <input type = "text" class = "form-control" placeholder="数目" required="required" name = "num">
+  <input type = "text" class = "form-control" placeholder="车票种类" required="required" name = "ticket_kind">
+  <button type="submit" class="btn btn-default">
+    提交
+  </button>
+</div>
+</form>
+</div>
+<script type="text/javascript">
+  Init();
+</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">
