@@ -10,11 +10,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
-     function get_id()
-     {
-      var x = '<%=session("id")>';
-      document.getElementById("userid").innerHTML = x;
-     }
+    function check_cookie ()
+    {
+      var x = '<%=session("id")%>';
+      if (x != '')
+      {
+        document.getElementById("user_name").innerHTML = x;
+        var A = document.createElement('b');
+        A.setAttribute("class","caret");
+        document.getElementById("user_name").appendChild(A);
+        document.getElementById("user_name").style.display = "visible";
+      }
+      else
+      {
+        document.getElementById("user_name").style.display = "none";
+      }
+    }
      function check()
      {
       var x = document.forms["change_users"]["name"].value;
@@ -77,6 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
@@ -87,19 +99,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="订票.php">订票</a></li>
             <li><a href="查询.php">查询</a></li>
         </ul>
-        <ul class="nav navbar-nav pull-right">
+    </div>
+      <div id = "qqq" class="navbar-right navbar-nav nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="user.php">用户系统</a></li>
           <li><a href="admin.php">管理</a></li>
-          <li class="active"><a href="users.php" id = "userid">
-            
-          </a>
-          </li>
         </ul>
-    </div>
-    </div>
-   </div>
+        </li>
+      </div>
+  </div>
 </nav>
 <script type="text/javascript">
-  get_id();
+  check_cookie();
 </script>
 
 <div class="col-md-offset-2">
@@ -164,6 +178,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script type="text/javascript">
   Init();
+  check_cookie();
 </script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">

@@ -10,28 +10,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
-    function check_cookie ()
+  function check_cookie ()
+  {
+    var x = '<%=session("id")%>';
+    if (x != '')
     {
-      var x = '<%=session("id")%>';
-      var A = document.createElement('a');
-      if (x != '')
-      {
-        A.href = "users.php";
-        A.innerHTML = x;
-        document.getElementById("id").appendChild(A);
-        document.getElementById("qqq").style.display = "visible";
-        document.getElementById("un_login").style.display = "none";
-      }
-      else
-      {
-        document.getElementById("qqq").style.display = "none";
-        document.getElementById("un_login").style.display = "visible";
-      }
+      document.getElementById("user_name").innerHTML = x;
+      var A = document.createElement('b');
+      A.setAttribute("class","caret");
+      document.getElementById("user_name").appendChild(A);
+      document.getElementById("user_name").style.display = "visible";
     }
+    else
+    {
+      document.getElementById("user_name").style.display = "none";
+    }
+  }
    </script>
 </head>
 <body>
    
+
 
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
@@ -40,17 +39,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="订票.php">订票</a></li>
+            <li><a href="订票.php">订票</a></li>
             <li><a href="查询.php">查询</a></li>
         </ul>
     </div>
-      <div id = "qqq" class="navbar-right">
-        <ul class="nav navbar-nav">
-            <li><a href="admin.php">管理</a></li>
-            <li id = "id"></li>
+      <div id = "qqq" class="navbar-right navbar-nav nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="user.php">用户系统</a></li>
+          <li><a href="admin.php">管理</a></li>
         </ul>
+        </li>
       </div>
-   </div>
+  </div>
 </nav>
 
 <div class="col-md-offset-2">
