@@ -27,7 +27,7 @@ class Train extends CI_Controller {
 		{
 			$ans1= $this->ticket_model->query_transfer($loc1,$loc2,$date,$catalog);
 		}
-		$this->load->view('query/result',$transnum,$ans,$ans1);
+		$this->load->view('query/result',array('transnum' => $transnum ,'ans' => $ans,'ans1' =>$ans1));
 	}
 	public function book()
 	{
@@ -36,7 +36,7 @@ class Train extends CI_Controller {
 		if (!isset($_SESSION['id']))
 		{
 			$msg = "请先登录";
-			$this->load->view('WA',$msg);
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
@@ -52,17 +52,17 @@ class Train extends CI_Controller {
 			if ($ok === -1)
 			{
 				$msg= "服务器繁忙，请稍后再试";
-				$this->load->view('WA',$msg);
+				$this->load->view('WA',array('msg'=>$msg));
 			}
 			else if ($ok === 0)
 			{
 				$msg= "票数不足";
-				$this->load->view('WA',$msg);
+				$this->load->view('WA',array('msg'=>$msg));
 			}
 			else
 			{
 				$msg="订购完成";
-				$this->load->view('book/success',$msg);
+				$this->load->view('book/success',array('msg'=>$msg));
 			}
 		}
 	}
@@ -73,7 +73,7 @@ class Train extends CI_Controller {
 		if (!isset($_SESSION['id']))
 		{
 			$msg = "请先登录";
-			$this->load->view('WA',$msg);
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
@@ -89,17 +89,17 @@ class Train extends CI_Controller {
 			if ($ok === -1)
 			{
 				$msg= "服务器繁忙，请稍后再试";
-				$this->load->view('WA',$msg);
+				$this->load->view('WA',array('msg'=>$msg));
 			}
 			else if ($ok === 0)
 			{
 				$msg= "票数不足";
-				$this->load->view('WA',$msg);
+				$this->load->view('WA',array('msg'=>$msg));
 			}
 			else
 			{
 				$msg="退订完成";
-				$this->load->view('book/success',$msg);
+				$this->load->view('book/success',array('msg'=>$msg));
 			}
 		}
 	}
