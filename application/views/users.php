@@ -43,24 +43,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("ticket_check").style.display = "inline";
       document.getElementById("change_users").style.display = "none";
       document.getElementById("required_ticket").style.display = "none";
+      document.getElementById("log_out").style.display = "none";
      }
      function delete_users_train()
      {
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "none";
       document.getElementById("required_ticket").style.display = "inline";
+      document.getElementById("log_out").style.display = "none";
      }
      function change_user()
      {
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "inline";
       document.getElementById("required_ticket").style.display = "none";
+      document.getElementById("log_out").style.display = "none";
      }
      function Init()
      {
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "none";
       document.getElementById("required_ticket").style.display = "none";
+      document.getElementById("log_out").style.display = "none";
+     }
+     function logout()
+     {
+      document.getElementById("ticket_check").style.display = "none";
+      document.getElementById("change_users").style.display = "none";
+      document.getElementById("required_ticket").style.display = "none";
+      document.getElementById("log_out").style.display = "inline";
      }
    </script>
 </head>
@@ -100,6 +111,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </label>
   <label class = "radio-inline">
     <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="delete_users_train()">退票
+  </label>
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="logout()">退出登录
   </label>
 </div>
 </div>
@@ -141,6 +155,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </button>
 </div>
 </form>
+</div>
+<div name ="log_out" id = "log_out" class="col-md-offset-4">
+  <a href="Logout.php"  class="btn btn-default">
+    确认退出登录
+  </a>
 </div>
 <script type="text/javascript">
   Init();
