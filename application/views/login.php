@@ -12,12 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  function get_time()
-  {
-    document.getElementById ().innerHTML = Date();
-  }
-</script>
-<script type="text/javascript">
   function check_name()
   {
     var x = document.forms["login"]["username"].value;
@@ -26,12 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       alert("username error");
       return false;
     }
-    document.getElementById("test").innerHTML = x;
-    return false;
-  }
-  function test()
-  {
-
+    return true;
   }
 </script>
 </head>
@@ -48,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
     </div>
 </nav>
-        <div class="col-md-offset-4">
+<div class="col-md-offset-4">
 <form action="index.php/login/check" method="post" row = "form" onsubmit="return check_name()" name = "login">
   <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="账号" name = "username" required="required">
@@ -59,9 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    </div>
    </form>	
 </div>
-<script>
-test();
-</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">
