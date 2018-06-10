@@ -237,7 +237,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="查询.php">查询</a></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
-            <li class="active"><a href="admin.php">管理</a></li>
+          <li class="active"><a href="admin.php">管理</a></li>
           <li><a href="users.php" id = "userid">
             
           </a>
@@ -281,14 +281,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <form action="public_train.php" method="post" row = "form"  name = "users">
 <div class="form-inline">
 <div class="col-md-offset-2">
-          <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
-          <input type = "text" class = "form-control" placeholder="车名" required="required" name = "train_name">
-          <input type = "text" class = "form-control" placeholder="类型" required="required" name = "train_style">
-          <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "add_station_num">
-          <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "add_ticket_num">
-          <button class="btn btn-default" type = "button" onclick="add_train_ticket_1(this);">
+  <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
+  <input type = "text" class = "form-control" placeholder="车名" required="required" name = "train_name">
+  <input type = "text" class = "form-control" placeholder="类型" required="required" name = "train_style">
+  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "add_station_num">
+  <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "add_ticket_num">
+  <button class="btn btn-default" type = "button" onclick="add_train_ticket_1(this);">
             输入车次及车票信息
-          </button>
+  </button>
 </div>
 </div>
 <div class="table table-hover" name="add_train_ticket" id = "add_train_ticket">
@@ -310,15 +310,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div name = "change_train" id = "change_train">
 <form action="public_train.php" method="post" row = "form"  name = "change" class="row">
 <div class="col-md-offset-2">
-  <div class="form-inline">
-          <input type = "text" class = "form-control col-lg-2" placeholder="车号" required="required" name = "train_id" id = "train_id">
-          <input type = "text" class = "form-control" placeholder="车名" required="required" name = "train_name" id = "train_name">
-          <input type = "text" class = "form-control" placeholder="类型" required="required" name = "train_style" id = "train_style">
-          <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "change_station_num" id = "change_station_num">
-          <input type = "text" class = "form-control" placeholder="车票种数" required="required"  name = "change_ticket_num" id = "change_ticket_num">
-          <button class="btn btn-default" type = "button" onclick="change_train_ticket_1(this);">
+<div class="form-inline">
+  <input type = "text" class = "form-control col-lg-2" placeholder="车号" required="required" name = "train_id" id = "train_id">
+  <input type = "text" class = "form-control" placeholder="车名" required="required" name = "train_name" id = "train_name">
+  <input type = "text" class = "form-control" placeholder="类型" required="required" name = "train_style" id = "train_style">
+  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "change_station_num" id = "change_station_num">
+  <input type = "text" class = "form-control" placeholder="车票种数" required="required"  name = "change_ticket_num" id = "change_ticket_num">
+  <button class="btn btn-default" type = "button" onclick="change_train_ticket_1(this);">
             输入车次及车票信息
-          </button>
+  </button>
 </div>
 </div>
 <div class="table table-hover" name="change_train_ticket" id = "change_train_ticket">

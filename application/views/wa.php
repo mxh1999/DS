@@ -9,19 +9,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script type="text/javascript">
-     function check_cookie()
-     {
-      var x = '<seession%=>';
-      if (x == '')
-      {
-        alert("未登录");
-        return false;
-      }
-      alert("..");
-      return false;
-     }
-   </script>
 </head>
 <body>
    
@@ -29,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="test.php">火车票订票系统</a>
+        <a class="navbar-brand" href="welcome.php">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">

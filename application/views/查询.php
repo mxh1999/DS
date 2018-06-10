@@ -21,11 +21,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.getElementById("id").appendChild(A);
         document.getElementById("qqq").style.display = "visible";
         document.getElementById("un_login").style.display = "none";
-        alert("已登录");
       }
       else
       {
-        alert("未登录");
         document.getElementById("qqq").style.display = "none";
         document.getElementById("un_login").style.display = "visible";
       }
@@ -88,12 +86,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="col-sm-8" id = "with_tansfer">
 <div class="col-md-offset-2">
-<form action="check.php" method="post" row = "form" onsubmit="return check_cookie()">
+<form action="index.php/train" method="post" row = "form">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
   <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
-  <input type = "text" class = "form-control" placeholder="类型" required="required" name = "loc2">
-  <input type = "text" class = "form-control" placeholder="时间" required="required" name = "loc2">
+  <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
+  <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
   <button type="submit" class="btn btn-default">
             提交
   </button>
@@ -103,12 +101,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="col-sm-8" id = "without_tansfer">
 <div class="col-md-offset-2">
-<form action="check.php" method="post" row = "form" onsubmit="return check_cookie()">
+<form action="index.php/train" method="post" row = "form">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
   <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
-  <input type = "text" class = "form-control" placeholder="类型" required="required" name = "loc2">
-  <input type = "text" class = "form-control" placeholder="时间" required="required" name = "loc2">
+  <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
+  <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
   <button type="submit" class="btn btn-default">
     提交
   </button>
@@ -118,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div class="col-sm-8" id = "user_id">
 <div class="col-md-offset-2">
-<form action="check.php" method="post" row = "form" onsubmit="return check_cookie()">
+<form action="check.php" method="post" row = "form">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="用户ID" required="required" name = "loc1">
   <button type="submit" class="btn btn-default">提交</button>

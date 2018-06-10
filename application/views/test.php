@@ -12,14 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-  function get_time()
-  {
-    document.getElementById ().innerHTML = Date();
-  }
   function check_cookie ()
   {
     var x = '<%=session("id")%>';
-    x = document.cookie;
     var A = document.createElement('a');
     if (x != '')
     {
@@ -28,15 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("id").appendChild(A);
       document.getElementById("qqq").style.display = "visible";
       document.getElementById("un_login").style.display = "none";
-      alert("已登陆");
-      document.cookie = "";
     }
     else
     {
-      alert("未登录");
       document.getElementById("qqq").style.display = "none";
       document.getElementById("un_login").style.display = "visible";
-      document.cookie = "1111";
     }
   }
 </script>

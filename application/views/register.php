@@ -42,10 +42,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     return false;
   }
-  function test()
-  {
-
-  }
 </script>
 </head>
 <body>
@@ -61,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
     </div>
 </nav>
-        <div class="col-md-offset-3">
+<div class="col-md-offset-3">
 <form action="index.php/register" method="post" row = "form" onsubmit="return check_name()" name = "register">
   <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="账号" name = "username" required="required">
@@ -74,9 +70,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    </div>	
         </form> 
 </div>
-<script>
-test();
-</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">

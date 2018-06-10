@@ -10,17 +10,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
-     function check_cookie()
-     {
-      var x = '<seession%=>';
-      if (x == '')
+    function check_cookie ()
+    {
+      var x = '<%=session("id")%>';
+      var A = document.createElement('a');
+      if (x != '')
       {
-        alert("未登录");
-        return false;
+        A.href = "users.php";
+        A.innerHTML = x;
+        document.getElementById("id").appendChild(A);
+        document.getElementById("qqq").style.display = "visible";
+        document.getElementById("un_login").style.display = "none";
       }
-      alert("..");
-      return false;
-     }
+      else
+      {
+        document.getElementById("qqq").style.display = "none";
+        document.getElementById("un_login").style.display = "visible";
+      }
+    }
    </script>
 </head>
 <body>
@@ -37,25 +44,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="查询.php">查询</a></li>
         </ul>
     </div>
+      <div id = "qqq" class="navbar-right">
+        <ul class="nav navbar-nav">
+            <li><a href="admin.php">管理</a></li>
+            <li id = "id"></li>
+        </ul>
+      </div>
    </div>
 </nav>
 
-        <div class="col-md-offset-1">
-<form action="book.php" method="post" row = "form" onsubmit="return check_cookie()">
+<div class="col-md-offset-2">
+<form action="index.php/book" method="post" row = "form">
   <div class="form-inline">
-          <input type = "text" class = "form-control" placeholder="车次" required="required" name = "loc2">
+          <input type = "text" class = "form-control" placeholder="车次" required="required" name = "id">
           <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
           <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="类型" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="时间" required="required" name = "loc2">
-          <input type = "text" class = "form-control" placeholder="数量" required="required" name = "loc1">
-          <input type = "text" class = "form-control" placeholder="车票种类" required="required" name = "loc1">
+          <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
+          <input type = "text" class = "form-control" placeholder="数量" required="required" name = "num">
+          <input type = "text" class = "form-control" placeholder="车票种类" required="required" name = "ticket_kind">
           <button type="submit" class="btn btn-default">
             提交
           </button>
 </div>
 </form>
 </div>
+<script type="text/javascript">
+  check_cookie();
+</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">
