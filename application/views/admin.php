@@ -10,78 +10,132 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
-     function get_id()
-     {
-      var x = '<%=session("id")>';
-      document.getElementById("userid").innerHTML = x;
+    function check_cookie ()
+    {
+      var x = '<%=session("id")%>';
+      if (x != '')
+      {
+        document.getElementById("user_name").innerHTML = x;
+        var A = document.createElement('b');
+        A.setAttribute("class","caret");
+        document.getElementById("user_name").appendChild(A);
+        document.getElementById("user_name").style.display = "visible";
+      }
+      else
+      {
+        document.getElementById("user_name").style.display = "none";
+      }
+    }
+    function get_id()
+    {
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("open_train").style.display = "none";
       document.getElementById("add_train").style.display = "none";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
-     }
-     function check_id()
-     {
+    }
+    function check_id()
+    {
       var x = document.forms["users"]["name"].value;
       if(!(/^[A-Za-z0-9\_\-]+$/gi).test(x))
       {
         alert("username error");
         return false;
       }
-     }
-     function check_train()
-     {
+    }
+    function check_train()
+    {
       var x = document.forms["users"]["name"].value;
       if(!(/^[\d]+$/gi).test(x))
       {
         alert("username error");
         return false;
       }
-     }
-     function show_add_train()
-     {
+    }
+    function show_add_train()
+    {
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("open_train").style.display = "none";
       document.getElementById("add_train").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
       document.getElementById("add_train_ticket").style.display = "none";
-     }
-     function show_open_train()
-     {
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function show_open_train()
+    {
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("add_train").style.display = "none";
       document.getElementById("open_train").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
-     }
-     function show_add_admin()
-     {
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function show_add_admin()
+    {
       document.getElementById("open_train").style.display = "none";
       document.getElementById("add_train").style.display = "none";
       document.getElementById("add_admin").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
-     }
-     function show_delete_train()
-     {
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function show_delete_train()
+    {
       document.getElementById("open_train").style.display = "none";
       document.getElementById("add_train").style.display = "none";
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("delete_train").style.display = "inline";
       document.getElementById("change_train").style.display = "none";
-     }
-     function show_change_train()
-     {
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function show_change_train()
+    {
       document.getElementById("open_train").style.display = "none";
       document.getElementById("add_train").style.display = "none";
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "inline";
       document.getElementById("change_train_ticket").style.display = "none";
-     }
-     function add_train_ticket_1(elem)
-     {
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function add_train_ticket_1(elem)
+    {
       document.getElementById("add_train_ticket").style.display = "inline";
       var x = $("input[name=add_ticket_num]").val();
       var y = $("input[name=add_station_num]").val();
@@ -143,9 +197,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A = document.createElement("br");
         document.getElementById("add_train_station_form").appendChild(A);
       }
-     }
-     function change_train_ticket_1(elem)
-     {
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function change_train_ticket_1(elem)
+    {
       document.getElementById("change_train_ticket").style.display = "inline";
       var x = $("input[name=change_ticket_num]").val();
       var y = $("input[name=change_station_num]").val();
@@ -207,7 +269,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A = document.createElement("br");
         document.getElementById("change_train_station_form").appendChild(A);
       }
-     }
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
    </script>
    <script type="text/javascript">
      function add_train_ticket_2()
@@ -236,15 +306,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li><a href="订票.php">订票</a></li>
             <li><a href="查询.php">查询</a></li>
         </ul>
-        <ul class="nav navbar-nav pull-right">
-          <li class="active"><a href="admin.php">管理</a></li>
-          <li><a href="users.php" id = "userid">
-            
-          </a>
-          </li>
+    </div>
+      <div id = "qqq" class="navbar-right navbar-nav nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="user.php">用户系统</a></li>
+          <li><a href="admin.php">管理</a></li>
         </ul>
-    </div>
-    </div>
+        </li>
+      </div>
+  </div>
 </nav>
 <div class="col-md-offset-2">
 <div class="radio">
@@ -363,8 +436,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script type="text/javascript">
   get_id();
+  check_cookie();
 </script>
-<footer name = "time_footer" id = "time_footer">
+<footer name = "time_footer" id = "time_footer" class="navbar-fixed-bottom">
   <br>
     <div class="container">
     <div style = "text-align: center">
