@@ -17,11 +17,11 @@ class Ticket extends CI_Controller {
 		$date = $this->input->get('date');
 		$catalog = $this->input->get('catalog');
 		$transnum = $this->input->get('transnum');
-		$ans = $this->ticket_model->query_ticket($loc1,$loc2,$date,$catalog);
+		$ans = $this->Ticket_model->query_ticket($loc1,$loc2,$date,$catalog);
 		$ans1 = array();
 		if ($transnum)
 		{
-			$ans1= $this->ticket_model->query_transfer($loc1,$loc2,$date,$catalog);
+			$ans1= $this->Ticket_model->query_transfer($loc1,$loc2,$date,$catalog);
 		}
 		$this->load->view('query/result',array('transnum' => $transnum,'ans' => $ans,'ans1' => $ans1));
 	}
@@ -44,7 +44,7 @@ class Ticket extends CI_Controller {
 			$date=$this->input->post('date');
 			$ticket_kind=$this->input->post('ticket_kind');
 			
-			$ok=$this->ticket_model->buy($id,$num,$train_id,$loc1,$loc2,$date,$ticket_kind);
+			$ok=$this->Ticket_model->buy($id,$num,$train_id,$loc1,$loc2,$date,$ticket_kind);
 			if ($ok === -1)
 			{
 				$msg= "服务器繁忙，请稍后再试";
@@ -81,7 +81,7 @@ class Ticket extends CI_Controller {
 			$date=$this->input->post('date');
 			$ticket_kind=$this->input->post('ticket_kind');
 			
-			$ok=$this->ticket_model->refund($id,$num,$train_id,$loc1,$loc2,$date,$ticket_kind);
+			$ok=$this->Ticket_model->refund($id,$num,$train_id,$loc1,$loc2,$date,$ticket_kind);
 			if ($ok === -1)
 			{
 				$msg= "服务器繁忙，请稍后再试";

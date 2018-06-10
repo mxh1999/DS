@@ -31,7 +31,7 @@ class Ticket_model extends CI_Model {
 		$out='';
 		while ($out = socket_read($socket,8192));
 		$ans=array('num'=>intval($out),'val'=>array());
-		for ($i = 1;$i <= $ans['num'];i++)
+		for ($i = 1;$i <= $ans['num'];$i++)
 		{
 			while ($out = socket_read($socket,8192));
 			$tmp=explode(" ",$out);
