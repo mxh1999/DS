@@ -4,12 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="utf-8"> 
-   <title>WA</title>
+   <meta charset="utf-8">
+    <title>火车票订票系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script type="text/javascript">
+<script type="text/javascript">
   function check_cookie ()
   {
     var x = '<%=session("id")%>';
@@ -34,18 +36,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 </head>
 <body>
-   
-
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <ul class="nav navbar-nav">
-        <li class="active"><a class="navbar-brand" href="index.php">火车票订票系统</a></li>
-        </ul>
+        <a class="navbar-brand" href="index.php">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="index.php/Ticket">购票</a></li>
+            <li class="active"><a href="index.php/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -64,30 +62,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           登录
         </a>
         <ul class="dropdown-menu">
-          <form action = "index.php/Login">
+          <form action = "index.php/Login" method="post" row = "form">
           <li><input type = "text" class = "form-control" placeholder="账号" name = "username" required="required"></li>
           <li><input type = "password" class = "form-control" placeholder="密码" name = "password" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
-            <a href="index.php/Register" class="btn btn-default">注册</a></li>
+            <a href="index.php/Register" class="btn btn-default">注册</a>
+          </li>
           </form>
         </ul>
         </li>
       </div>
   </div>
 </nav>
-<div style="text-align: center">
-  <h1 id = "message_to_user" name = "message_to_user">
-    <?php echo $msg; ?>
-</h1>
-  <br>
-  <a href="index.php" role ="button" class="btn btn-default">
-  返回首页
-  </a>
-</div>
 <script type="text/javascript">
-  get_message();
+  check_cookie();
 </script>
+<div>
+  <form action="index.php/Ticket/query" method="post" row = "form">
+    <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
+    <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
+    <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
+    <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
+  <button type="submit" class="btn btn-default">
+    提交
+  </button>
+  </form>
+</div>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">
@@ -97,6 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </script>
       </p>
     </div>
+  </div>
 </footer>
 </body>
 </html>

@@ -11,21 +11,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
     function check_cookie ()
+  {
+    var x = '<%=session("id")%>';
+    if (x != '')
     {
-      var x = '<%=session("id")%>';
-      if (x != '')
-      {
-        document.getElementById("user_name").innerHTML = x;
-        var A = document.createElement('b');
-        A.setAttribute("class","caret");
-        document.getElementById("user_name").appendChild(A);
-        document.getElementById("user_name").style.display = "visible";
-      }
-      else
-      {
-        document.getElementById("user_name").style.display = "none";
-      }
+      document.getElementById("user_name").innerHTML = x;
+      var A = document.createElement('b');
+      A.setAttribute("class","caret");
+      document.getElementById("user_name").appendChild(A);
+      document.getElementById("qqq").style.display = "visible";
+      document.getElementById("un_login").style.display = "none";
     }
+    else
+    {
+      var A = document.createElement('b');
+      A.setAttribute("class","caret");
+      document.getElementById("un_login").appendChild(A);
+      document.getElementById("qqq").style.display = "none";
+      document.getElementById("un_login").style.display = "visible";
+    }
+  }
      function check()
      {
       var x = document.forms["change_users"]["name"].value;
@@ -92,12 +97,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="test.php">火车票订票系统</a>
+        <a class="navbar-brand" href="index.php">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="订票.php">订票</a></li>
-            <li><a href="查询.php">查询</a></li>
+            <li><a href="index.php/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -105,8 +109,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="user.php">用户系统</a></li>
-          <li><a href="admin.php">管理</a></li>
+          <li><a href="index.php/Profile">profile</a></li>
+          <li><a href="index.php/Logout">logout</a></li>
+        </ul>
+        </li>
+      </div>
+      <div class="navbar-right navbar-nav nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
+          登录
+        </a>
+        <ul class="dropdown-menu">
+          <form action = "index.php/Login">
+          <li><input type = "text" class = "form-control" placeholder="账号" name = "username" required="required"></li>
+          <li><input type = "password" class = "form-control" placeholder="密码" name = "password" required="required"></li>
+          <li>
+            <button type="submit" class="btn btn-default">登录</button>
+            <a href="index.php/Register" class="btn btn-default">注册</a></li>
+          </form>
         </ul>
         </li>
       </div>
@@ -115,7 +135,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   check_cookie();
 </script>
-
+<div class="col-md-offset-2">
+  <h1>
+    个人信息:
+  </h1>
+  <div name ="go_to_admin" id = "goto_admin">
+  <a href="index.php/admin"  class="btn btn-default">
+    管理员界面
+  </a>
+</div>
+</div>
 <div class="col-md-offset-2">
 <div class="radio">
   <label class = "radio-inline">

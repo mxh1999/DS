@@ -52,8 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="订票.php">订票</a></li>
-            <li><a href="查询.php">查询</a></li>
+            <li><a href="index.php/Ticket">购票</a></li>
         </ul>
     </div>
 </nav>

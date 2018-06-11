@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
    <meta charset="utf-8"> 
-   <title>WA</title>
+   <title>RE</title>
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -78,16 +78,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 <div style="text-align: center">
   <h1 id = "message_to_user" name = "message_to_user">
-    <?php echo $msg; ?>
+    <?php echo $id; ?>
 </h1>
   <br>
   <a href="index.php" role ="button" class="btn btn-default">
   返回首页
   </a>
 </div>
-<script type="text/javascript">
-  get_message();
-</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">

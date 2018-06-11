@@ -21,12 +21,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       var A = document.createElement('b');
       A.setAttribute("class","caret");
       document.getElementById("user_name").appendChild(A);
-      document.getElementById("user_name").style.display = "visible";
+      document.getElementById("qqq").style.display = "visible";
       document.getElementById("un_login").style.display = "none";
     }
     else
     {
-      document.getElementById("user_name").style.display = "none";
+      var A = document.createElement('b');
+      A.setAttribute("class","caret");
+      document.getElementById("un_login").appendChild(A);
+      document.getElementById("qqq").style.display = "none";
       document.getElementById("un_login").style.display = "visible";
     }
   }
@@ -36,12 +39,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="test.php">火车票订票系统</a>
+        <ul class="nav navbar-nav">
+        <li class="active"><a class="navbar-brand" href="index.php">火车票订票系统</a></li>
+        </ul>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="订票.php">订票</a></li>
-            <li><a href="查询.php">查询</a></li>
+            <li><a href="index.php/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -49,8 +53,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="user.php">用户系统</a></li>
-          <li><a href="admin.php">管理</a></li>
+          <li><a href="index.php/Profile">profile</a></li>
+          <li><a href="index.php/Logout">logout</a></li>
+        </ul>
+        </li>
+      </div>
+      <div class="navbar-right navbar-nav nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
+          登录
+        </a>
+        <ul class="dropdown-menu">
+          <form action = "index.php/Login" method="post" row = "form">
+          <li><input type = "text" class = "form-control" placeholder="账号" name = "username" required="required"></li>
+          <li><input type = "password" class = "form-control" placeholder="密码" name = "password" required="required"></li>
+          <li>
+            <button type="submit" class="btn btn-default">登录</button>
+            <a href="index.php/Register" class="btn btn-default">注册</a></li>
+          </form>
         </ul>
         </li>
       </div>
@@ -62,12 +82,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h1>
          火车票订票系统了解一下
         </h1>
-        <div id = "un_login">
-              <a href="login.php" style="color: black;" role = "button" class="btn btn-default">登陆</a>
-              <a href="register.php" style="color: black;" role = "button" class="btn btn-default">注册</a>
-          <br>
-          <br>
-        </div>
       </div>
   </div>
 </div>
