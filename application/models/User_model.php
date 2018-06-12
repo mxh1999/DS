@@ -23,7 +23,7 @@ class User_model extends CI_Model {
 			return -1;
 		}
 		$psword_md5 = md5($psword);
-		$in = "register " . $name . " " . $psword_md5 . " " . $email . " " . $phone . "\n";
+		$in = "register " . $name . " " . $psword_md5 . " " . $email . " " . $phone . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -51,7 +51,7 @@ class User_model extends CI_Model {
 			return -1;
 		}
 		$psword_md5 = md5($psword);
-		$in = "login ". $id . " " . $psword_md5 . "\n";
+		$in = "login ". $id . " " . $psword_md5 . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -77,7 +77,7 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "query_profile " . $id . "\n";
+		$in = "query_profile " . $id . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -106,7 +106,7 @@ class User_model extends CI_Model {
 			return -1;
 		}
 		$psword_md5 = md5($psword);
-		$in = "modify_profile ". $id . " " . $name . " " . $psword_md5 . " " . $email ." " . $phone . "\n";
+		$in = "modify_profile ". $id . " " . $name . " " . $psword_md5 . " " . $email ." " . $phone . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -133,7 +133,7 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "modify_privilege " . $id1 . " " . $id2 . " " . $privilege . "\n";
+		$in = "modify_privilege " . $id1 . " " . $id2 . " " . $privilege . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -143,5 +143,45 @@ class User_model extends CI_Model {
 		while ($out = socket_read($socket,8192));
 		socket_close($socket);
 		return intval($out);
+	}
+	public function clean()
+	{
+		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+		if ($socket < 0)	return -1;
+		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		if ($result < 0)
+		{
+			socket_close($socket);
+			return -1;
+		}
+		$in = "clean" . "#";
+		if (!socket_write($socket ,$in, strlen($in)))
+		{
+			socket_close($socket);
+			return -1;
+		}
+		$out = '';
+		while ($out = socket_read($socket,8192));
+		socket_close($socket);
+		return intval($out);
+	}
+	public function exit()
+	{
+		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+		if ($socket < 0)	return -1;
+		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		if ($result < 0)
+		{
+			socket_close($socket);
+			return -1;
+		}
+		$in = "exit" . "#";
+		if (!socket_write($socket ,$in, strlen($in)))
+		{
+			socket_close($socket);
+			return -1;
+		}
+		socket_close($socket);
+		return 1;
 	}
 }

@@ -12,5 +12,6 @@ class Train extends CI_Controller {
 	}
 	public function add_train()
 	{
-		$train_id=$this->input->
+	}
+	
 }

@@ -22,7 +22,7 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "query_ticket " . $loc1 . " " . $loc2 . " " . $date . " " . $catalog . "\n";
+		$in = "query_ticket " . $loc1 . " " . $loc2 . " " . $date . " " . $catalog . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -55,7 +55,7 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "query_transfer " . $loc1 . " " . $loc2 . " " . $date . " " . $catalog . "\n";
+		$in = "query_transfer " . $loc1 . " " . $loc2 . " " . $date . " " . $catalog . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -84,7 +84,7 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "buy_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . ticket_kind . "\n";
+		$in = "buy_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . ticket_kind . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -108,7 +108,7 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "buy_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . ticket_kind . "\n";
+		$in = "refund_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . ticket_kind . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -117,5 +117,32 @@ class Ticket_model extends CI_Model {
 		$out='';
 		while ($out = socket_read($socket,8192));
 		return intval($out);
+	}
+	public function query_order($id, $date, $catalog)
+	{
+		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+		if ($socket < 0)	return -1;
+		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		if ($result < 0)
+		{
+			socket_close($socket);
+			return -1;
+		}
+		$in = "query_order " . $id . " " . $date . " " . $catalog . "#";
+		if (!socket_write($socket ,$in, strlen($in)))
+		{
+			socket_close($socket);
+			return -1;
+		}
+		$out = '';
+		while ($out = socket_read($socket,8192));
+		$ans=array('num'=>intval($out),'val'=>array());
+		for ($i = 1;$i <= $ans['num'];$i++)
+		{
+			while ($out = socket_read($socket,8192));
+			$tmp=explode(" ",$out);
+			$ans['val'][$i]=$tmp;
+		}
+		return $ans;
 	}
 }
