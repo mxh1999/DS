@@ -192,17 +192,60 @@ BplusTree<train_id_key, TRAIN,164,1> train;
 BplusTree<tk_key, tk,38,18> ticket;
 BplusTree<user_order_key, tk_order,33,9> User;
 
-char buffer[9010];
+char buffer[9010],outbuf[9010];
+int len_out;
 int nowt,buffer_size;
 int ss,conn;
 struct sockaddr_in server_sockaddr;
 struct sockaddr_in client_addr;
 socklen_t length;
 
-void read(char *a)
+char getachar()
 {
+	if (nowt>=buffer_size)
+	{
+		memset(buffer,0,sizeof(buffer));
+		buffer_size = recv(conn, buffer, sizeof(buffer), 0);
+        nowt=0;
+	}
+	return buffer[nowt++];
 }
-void get_command(char *a)
+void Read(char *a)
+{
+	char ch=getachar();
+	while (ch=='#' || ch==' ' || ch=='\n' || ch=='\r')	ch=getachar();
+	int i=0;
+	while (!(ch=='#' || ch==' ' || ch=='\n' || ch=='\r'))
+	{
+		a[i++]=ch;
+		ch=getachar();
+	}
+	a[i]=0;
+}
+void Read(int &digit)
+{
+	digit=0;
+	char c;
+	for (c=getachar();(c<'0' || c>'9') && c!='-';c=getachar());
+	bool type=false;
+	if (c=='-')
+		type=true,c=getachar();
+	for (;c>='0' && c<='9';digit=digit*10+c-'0',c=getachar());
+	if (type==true)	digit=-digit;
+}
+void Read(short &digit)
+{
+	digit=0;
+	char c;
+	for (c=getachar();(c<'0' || c>'9') && c!='-';c=getachar());
+	bool type=false;
+	if (c=='-')
+		type=true,c=getachar();
+	for (;c>='0' && c<='9';digit=digit*10+c-'0',c=getachar());
+	if (type==true)	digit=-digit;
+}
+
+int get_command(char *a)
 {
 	conn = accept(ss, (struct sockaddr*)&client_addr, &length);
     if( conn < 0 ) {
@@ -211,7 +254,17 @@ void get_command(char *a)
     }
 	memset(buffer,0,sizeof(buffer));
 	buffer_size=recv(conn, buffer, sizeof(buffer), 0);
-	
+	if (buffer_size==0)	return 0;
+	nowt=0;
+	char ch=getachar();
+	while (!(ch<='z' && ch>='a'))	ch=getchar();
+	int i=0;
+	while ((ch<='z' && ch>='a') || ch=='_')
+	{
+		a[i++]=ch;
+		ch=getachar();
+	}
+	return 1;
 }
 void prepare()
 {
@@ -230,6 +283,61 @@ void prepare()
     struct sockaddr_in client_addr;
     socklen_t length = sizeof(client_addr);
 }
+void add_to_output(int x,int t=0)
+{
+	if (len_out!=0)	outbuf[len_out++]=' ';
+	if (t!=0)
+	{
+		strcpy(outbuf+len_out,"2018-6-");
+		len_out+=7;
+		outbuf[len_out++]=x/10+'0';
+		outbuf[len_out++]=x%10+'0';
+	}	else
+	{
+		char a[20];
+		int l=0;
+		while (x)
+		{
+			a[++l]=x%10+'0';
+			x/=10;
+		}
+		for (int i=l;i>=1;i--)
+			outbuf[len_out++]=a[i];
+	}
+}
+void add_to_output(char *a)
+{
+	int l=strlen(a);
+	if (len_out!=0)	outbuf[len_out++]=' ';
+	for (int i=0;i<l;i++)
+		outbuf[len_out++]=a[i];
+}
+void add_to_output(double x)
+{
+	int t=trunc(x);
+	x-=t;
+	x*=10;
+	int t1=trunc(x);
+	x-=t1;
+	int t2=trunc(x*10);
+	add_to_output(t);
+	outbuf[len_out++]='.';
+	outbuf[len_out++]=t1+'0';
+	outbuf[len_out++]=t2+'0';
+}
+void flush_buffer()
+{
+	int q=send(conn, outbuf, len_out , 0);
+	memset(outbut,0,sizeof(outbut));
+	len_out=0;
+	usleep(100);
+}
+
+void close_con()
+{
+	close(conn);
+	close(ss);
+}
 int main() {
 	prepare();
     //ios::sync_with_stdio(0);
@@ -242,59 +350,93 @@ int main() {
     while (get_command(a)) {
         if (strcmp(a, "register") == 0) {//注册用户
             USER now;
-            cin >> now.name >> now.password >> now.mail >> now.phone_num;
-            cout << user.Register(now.name, now.password, now.mail, now.phone_num) << '\n';
+			Read(now.name);Read(now.password);Read(now.mail);Read(now.phone_num);
+            //cin >> now.name >> now.password >> now.mail >> now.phone_num;
+			add_to_output(user.Register(now.name, now.password, now.mail, now.phone_num));
+			flush_buffer();
+            //cout << user.Register(now.name, now.password, now.mail, now.phone_num) << '\n';
         }
         else if (strcmp(a, "login") == 0) {//用户登陆
             int user_id;
             char user_pw[21];
-            cin >> user_id >> user_pw;
-            cout << user.Login(user_id, user_pw) << '\n';
+			Read(user_id);Read(user_pw);
+            //cin >> user_id >> user_pw;
+			add_to_output(user.Login(user_id, user_pw));
+			flush_buffer();
+            //cout << user.Login(user_id, user_pw) << '\n';
         }
         else if (strcmp(a, "query_profile") == 0) {//查询用户信息
             USER now;
             int user_id;
-            cin >> user_id;
+			Read(user_id);
+            //cin >> user_id;
             if (user.Query_profile(user_id, now.name, now.mail, now.phone_num, now.privilege)) {
-                cout << now.name << ' ' << now.mail << ' ' << now.phone_num << ' ' << (int) now.privilege << '\n';
-            } else cout << 0 << '\n';
+				add_to_output(now.name);
+				add_to_output(now.mail);
+				add_to_output(now.phone_num);
+				add_to_output((int)now.privilege);
+				flush_buffer();
+                //cout << now.name << ' ' << now.mail << ' ' << now.phone_num << ' ' << (int) now.privilege << '\n';
+            } else
+			{
+				add_to_output(0);
+				flush_buffer();
+				//cout << 0 << '\n';
+			}
         }
         else if (strcmp(a, "modify_profile") == 0) {//修改用户信息
             USER now;
             int user_id;
-            cin >> user_id >> now.name >> now.password >> now.mail >> now.phone_num;
+			Read(user_id);Read(now.name);Read(now.password);Read(now.mail);Read(now.phone_num);
+            //cin >> user_id >> now.name >> now.password >> now.mail >> now.phone_num;
             if (user.Modify_profile(user_id, now.name, now.password, now.mail, now.phone_num))
-                cout << 1 << '\n';
-            else cout << 0 << '\n';
+			{
+				add_to_output(1);
+				flush_buffer();
+				//cout << 1 << '\n';
+			}
+            else
+			{
+				add_to_output(0);
+				flush_buffer();
+				//cout << 0 << '\n';
+			}
         }
         else if (strcmp(a, "modify_privilege") == 0) {//修改用户权限
             int user1_id, user2_id;
             int pvl;
-            cin >> user1_id >> user2_id >> pvl;
-            cout << user.Modify_privilege(user1_id, user2_id, (char) pvl) << '\n';
+			Read(user1_id);Read(user2_id);Read(pvl);
+            //cin >> user1_id >> user2_id >> pvl;
+			add_to_output(user.Modify_privilege(user1_id, user2_id, (char) pvl));
+			flush_buffer();
+            //cout << user.Modify_privilege(user1_id, user2_id, (char) pvl) << '\n';
         }
         else if (strcmp(a, "add_train") == 0) {//添加车次
             /*新建车次，车次编号，车次名称，车次类型，车站数，车票数，车票信息
              * 更新车票内容*/
             TRAIN now;
-            cin >> now.train_id >> now.train_name >> now.train_kind >> now.num_station >> now.num_ticket_kind;
+			Read(now.train_id);Read(now.train_name);Read(now.train_kind);Read(now.num_station);Read(now.num_ticket_kind);
+            //cin >> now.train_id >> now.train_name >> now.train_kind >> now.num_station >> now.num_ticket_kind;
             train_id_key ID;
             strcpy(ID.train_id, now.train_id);
             for (int i = 0; i < now.num_ticket_kind; ++i)
-                cin >> now.ticket_kind[i];
+				Read(now.ticket_kind[i]);
+                //cin >> now.ticket_kind[i];
             for (int i = 0; i < now.num_station; ++i) {//插入车站信息
-                cin >> now.station[i].loc >> now.station[i].time_arrive >> now.station[i].time_start
-                    >> now.station[i].time_stop;
+				Read(now.station[i].loc);Read(now.station[i].time_arrive);Read(now.station[i].time_start);
+				Read(now.station[i].time_stop);
+                //cin >> now.station[i].loc >> now.station[i].time_arrive >> now.station[i].time_start
+                //    >> now.station[i].time_stop;
                 for (int j = 0; j < now.num_ticket_kind; ++j) {
                     char tmp;
                     int ans = 0;
                     double dis = 0.1;
-                    for (tmp = cin.get(); tmp < '0' || tmp > '9'; tmp = cin.get());
+                    for (tmp = getachar() tmp < '0' || tmp > '9'; tmp = getachar());
                     ans = tmp - '0';
-                    for (tmp = cin.get(); tmp >= '0' && tmp <= '9'; tmp = cin.get())
+                    for (tmp = getachar(); tmp >= '0' && tmp <= '9'; tmp = getachar())
                         ans = ans * 10 + (tmp - '0');
                     now.station[i].price[j] = ans;
-                    for (tmp = cin.get(); tmp >= '0' && tmp <= '9'; tmp = cin.get()) {
+                    for (tmp = getachar(); tmp >= '0' && tmp <= '9'; tmp = getachar()) {
                         now.station[i].price[j] += (tmp - '0') * dis;
                         dis *= 0.1;
                     }
@@ -310,25 +452,31 @@ int main() {
                 }
             }
             now.isSale = 0;
-//            //test:map
-//            bool insert_success;
-//            map<int, TRAIN>::iterator test;
-//            train.insert(make_pair(ID, now));
-            //test:map
             train.insert(ID, now);//还差判断和输出
-            cout << 1 << '\n';
+			add_to_output(1);
+			flush_buffer();
+            //cout << 1 << '\n';
         }
         else if (strcmp(a, "sale_train") == 0) {
             train_id_key K;
             //TRAIN now;
-            cin >> K.train_id;
+			Read(K.train_id);
+            //cin >> K.train_id;
             if (!train.check(K))
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else {
                 TRAIN *_now = train.find(K);
 				TRAIN &now=(*_now);
                 if (now.isSale == 1)
-                    cout << 0 << '\n';
+				{
+					add_to_output(0);
+					flush_buffer();
+                    //cout << 0 << '\n';
+				}
                 else {
                     now.isSale = 1;
                     train.modify(K, now);
@@ -356,7 +504,9 @@ int main() {
                         }
                     }
 //                cout << "ticket中的票数:" << ticket.size() << '\n';
-                    cout << 1 << '\n';
+					add_to_output(1);
+					flush_buffer();
+                    //cout << 1 << '\n';
                 }
 				delete _now;
             }
@@ -364,30 +514,57 @@ int main() {
         else if (strcmp(a, "query_train") == 0) {
             train_id_key K;
             //TRAIN now;
-            cin >> K.train_id;
+			Read(K.train_id);
+            //cin >> K.train_id;
             if (train.check(K) == 0)
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else {
                 TRAIN *_now = train.find(K);
 				TRAIN &now=(*_now);
                 if(now.isSale == 0)
-                    cout << 0 << '\n';
+				{
+					add_to_output(0);
+					flush_buffer();
+                    //cout << 0 << '\n';
+				}
                 else{
-                    cout << now.train_id << ' ' << now.train_name << ' ' << now.train_kind << ' ' << now.num_station << ' '
-                         << now.num_ticket_kind;
+					add_to_output(now.train_id);
+					add_to_output(now.train_name);
+					add_to_output(now.train_kind);
+					add_to_output(now.num_station);
+					add_to_output(now.num_ticket_kind);
+                    //cout << now.train_id << ' ' << now.train_name << ' ' << now.train_kind << ' ' << now.num_station << ' '
+                    //     << now.num_ticket_kind;
                     for (int i = 0; i < now.num_ticket_kind; ++i)
-                        cout << ' ' << now.ticket_kind[i];
-                    cout << '\n';
+						add_to_output(now.ticket_kind[i]);
+                        //cout << ' ' << now.ticket_kind[i];
+					flush_buffer();
+                    //cout << '\n';
                     for (int i = 0; i < now.num_station; ++i) {
-                        cout << now.station[i].loc << ' ' << now.station[i].time_arrive << ' ' << now.station[i].time_start
-                             << ' ' << now.station[i].time_stop;
+						add_to_output(now.station[i].loc);
+						add_to_output(now.station[i].time_arrive);
+						add_to_output(now.station[i].time_start);
+						add_to_output(now.station[i].time_stop);
+                        //cout << now.station[i].loc << ' ' << now.station[i].time_arrive << ' ' << now.station[i].time_start
+                        //     << ' ' << now.station[i].time_stop;
                         for (int j = 0; j < now.num_ticket_kind; ++j){
                             if(i == 0)
-                                cout << ' ' << "￥" << fixed << setprecision(6) << now.station[i].price[j];
-                            else cout << ' ' << "￥" << fixed << setprecision(6) << now.station[i].price[j] - now.station[i - 1].price[j];
+							{
+								add_to_output(now.station[i].price[j]);
+                                //cout << ' ' << "￥" << fixed << setprecision(6) << now.station[i].price[j];
+							}
+                            else
+							{
+								add_to_output(now.station[i].price[j] - now.station[i - 1].price[j]);
+								//cout << ' ' << "￥" << fixed << setprecision(6) << now.station[i].price[j] - now.station[i - 1].price[j];
+							}
                         }
-                        //要记得用printf
-                        cout << '\n';
+						flush_buffer();
+                        //cout << '\n';
                     }
                 }
 				delete _now;
@@ -396,17 +573,28 @@ int main() {
         else if (strcmp(a, "delete_train") == 0) {
             train_id_key K;
             //TRAIN now;
-            cin >> K.train_id;
+			Read(K.train_id);
+            //cin >> K.train_id;
             if (train.check(K) == 0)
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else {
                 TRAIN *_now = train.find(K);
 				TRAIN &now = (*_now);
                 if (now.isSale == 1)
-                    cout << 0 << '\n';
+				{
+					add_to_output(0);
+					flush_buffer();
+                    //cout << 0 << '\n';
+				}
                 else {
                     train.erase(K);
-                    cout << 1 << '\n';
+					add_to_output(1);
+					flush_buffer();
+                    //cout << 1 << '\n';
                 }
 				delete (_now);
             }
@@ -414,31 +602,49 @@ int main() {
         else if (strcmp(a, "modify_train") == 0) {
             train_id_key K;
             //TRAIN now;
-            cin >> K.train_id;
+			Read(K.train_id);
+            //cin >> K.train_id;
             if (train.check(K) == 0)
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else {
 				TRAIN *_now = train.find(K);
                 TRAIN &now = (*_now);
                 if (now.isSale == 1)
-                    cout << 0 << '\n';
+				{
+					add_to_output(0);
+					flush_buffer();
+                    //cout << 0 << '\n';
+				}
                 else {
-                    cin >> now.train_name >> now.train_kind >> now.num_station >> now.num_ticket_kind;
+					Read(now.train_name);
+					Read(now.train_kind);
+					Read(now.num_station);
+					Read(now.num_ticket_kind);
+                    //cin >> now.train_name >> now.train_kind >> now.num_station >> now.num_ticket_kind;
                     for (int i = 0; i < now.num_ticket_kind; ++i)
-                        cin >> now.ticket_kind[i];
+					{
+						Read(now.ticket_kind[i]);
+                        //cin >> now.ticket_kind[i];
+					}
                     for (int i = 0; i < now.num_station; ++i) {
-                        cin >> now.station[i].loc >> now.station[i].time_arrive >> now.station[i].time_start
-                            >> now.station[i].time_stop;
+						Read(now.station[i].loc);Read(now.station[i].time_arrive);Read(now.station[i].time_start);
+						Read(now.station[i].time_stop);
+                        //cin >> now.station[i].loc >> now.station[i].time_arrive >> now.station[i].time_start
+                        //    >> now.station[i].time_stop;
                         for (int j = 0; j < now.num_ticket_kind; ++j) {
                             char tmp;
                             int ans = 0;
                             double dis = 0.1;
-                            for (tmp = cin.get(); tmp < '0' || tmp > '9'; tmp = cin.get());
+                            for (tmp = getachar(); tmp < '0' || tmp > '9'; tmp = getachar());
                             ans = tmp - '0';
-                            for (tmp = cin.get(); tmp >= '0' && tmp <= '9'; tmp = cin.get())
+                            for (tmp = getachar(); tmp >= '0' && tmp <= '9'; tmp = getachar())
                                 ans = ans * 10 + (tmp - '0');
                             now.station[i].price[j] = ans;
-                            for (tmp = cin.get(); tmp >= '0' && tmp <= '9'; tmp = cin.get()) {
+                            for (tmp = getachar(); tmp >= '0' && tmp <= '9'; tmp = getachar()) {
                                 now.station[i].price[j] += (tmp - '0') * dis;
                                 dis *= 0.1;
                             }
@@ -447,7 +653,9 @@ int main() {
                         }
                     }
                     train.modify(K, now);
-                    cout << 1 << '\n';
+					add_to_output(1);
+					flush_buffer();
+                    //cout << 1 << '\n';
                 }
 				delete (_now);
             }
@@ -456,19 +664,14 @@ int main() {
             /*查询两地的票，根据loc1, catalog, loc2查询出第一个符合条件的车次，
              * 然后用迭代器迭代
              * 日期影响输出*/
-//            BplusTree<tk_key, tk>::iterator it1;
-//            int cc = 0;
-//            for(it1 = ticket.begin();ticket.isValid(it1); cc++){
-//                cout << it1.Record().loc1 << it1.Record().loc2 << ' ';
-//                it1++;
-//            }
             tk_key K;
             tk_query T[8000];
             BplusTree<tk_key, tk,38,18>::iterator it;
             char date[12];
             char catalog[11];
             int dt;
-            cin >> K.loc1 >> K.loc2 >> date >> catalog;
+			Read(K.loc1);Read(K.loc2);Read(date);Read(catalog);
+            //cin >> K.loc1 >> K.loc2 >> date >> catalog;
             dt = (date[8] - '0') * 10 + (date[9] - '0');
             int cnt_train = 0;
             for (int cnt = 0; catalog[cnt] != '\0'; ++cnt) {
@@ -525,15 +728,29 @@ int main() {
                 }
             }
             if (cnt_train == 0)
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else {
-                cout << cnt_train << '\n';
+				add_to_output(cnt_train);
+				flush_buffer();
+                //cout << cnt_train << '\n';
                 for (int i = 0; i < cnt_train; ++i) {
-                    cout << T[i].ky.train_id << ' ' << T[i].ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << T[i].dt1 << ' ' << T[i].tm_st << ' ' << T[i].ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << T[i].dt2;
-                    cout << ' ' << T[i].tm_arrive;
+					add_to_output(T[i].ky.train_id);add_to_output(T[i].ky.loc1);add_to_output(T[i].dt1,2);add_to_output(T[i].tm_st);
+					add_to_output(T[i].ky.loc2);add_to_output(T[i].dt2,2);add_to_output(T[i].tm_arrive);
+                    //cout << T[i].ky.train_id << ' ' << T[i].ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << T[i].dt1 << ' ' << T[i].tm_st << ' ' << T[i].ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << T[i].dt2;
+                    //cout << ' ' << T[i].tm_arrive;
                     for (int p = 0; p < T[i].tk_kind_num; ++p)
-                        cout << ' ' << T[i].tk_name[p] << ' ' << T[i].tk_remain[p] << ' ' << fixed << setprecision(6) << T[i].price[p];//要记得用printf
-                    cout << '\n';
+					{
+						add_to_output(T[i].tk_name[p]);
+						add_to_output(T[i].tk_remain[p]);
+						add_to_output(T[i].price[p]);
+                        //cout << ' ' << T[i].tk_name[p] << ' ' << T[i].tk_remain[p] << ' ' << fixed << setprecision(6) << T[i].price[p];
+					}
+					flush_buffer();
+                    //cout << '\n';
                 }
             }
         }
@@ -546,17 +763,12 @@ int main() {
             int dt;
             char train_kind;
             char catalog[11];
-            cin >> K1.loc1 >> K2.loc1 >> date >> catalog;
+			Read(K1.loc1);Read(K2.loc1);Read(date);Read(catalog);
+            //cin >> K1.loc1 >> K2.loc1 >> date >> catalog;
             dt = (date[8] - '0') * 10 + (date[9] - '0');
             int cnt = 0;
             tk T_1[5000], T_2[5000];//用来记录每个确定中转站的最短时间的tk的信息
             tk_query TK1, TK2;
-//            BplusTree<tk_key, tk>::iterator lyt;
-//            int cc = 0;
-//            for(lyt = ticket.begin();ticket.isValid(lyt); cc++){
-//                cout << lyt.Record().loc1 << lyt.Record().loc2 << ' ';
-//                lyt++;
-//            }
             for (int b = 0; catalog[b] != '\0'; ++b) {
                 train_kind = catalog[b];
                 K1.train_kind = train_kind;
@@ -640,7 +852,9 @@ int main() {
                 }
             }
             if (cnt == 0) {
-                cout << -1 << '\n';
+				add_to_output(-1);
+				flush_buffer();
+                //cout << -1 << '\n';
             } else {
                 int min_tm = 1440, I;
                 for (int i = 0; i < cnt; ++i) {
@@ -703,14 +917,36 @@ int main() {
                     TK2.tk_remain[p] = min_ticket_remain1[p];
                     TK2.price[p] = now1.station[j].price[p] - now1.station[i].price[p];
                 }
-                cout << TK1.ky.train_id << ' ' << TK1.ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK1.tm_st << ' ' << TK1.ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK1.tm_arrive;
+				add_to_output(TK1.ky.train_id);
+				add_to_output(TK1.ky.loc1);
+				add_to_output(dt,2);
+				add_to_output(TK1.tm_st);
+				add_to_output(TK1.ky.loc2);
+				add_to_output(dt,2);
+				add_to_output(TK1.tm_arrive);
+                //cout << TK1.ky.train_id << ' ' << TK1.ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK1.tm_st << ' ' << TK1.ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK1.tm_arrive;
                 for (int p = 0; p < TK1.tk_kind_num; ++p)
-                    cout << ' ' << TK1.tk_name[p] << ' ' << TK1.tk_remain[p] << ' ' << fixed << setprecision(6) << TK1.price[p];//要记得用printf;
-                cout << '\n';
-                cout << TK2.ky.train_id << ' ' << TK2.ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK2.tm_st << ' ' << TK2.ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK2.tm_arrive;
+				{
+					add_to_output(TK1.tk_name[p]);add_to_output(TK1.tk_remain[p]);add_to_output(TK1.price[p]);
+                    //cout << ' ' << TK1.tk_name[p] << ' ' << TK1.tk_remain[p] << ' ' << fixed << setprecision(6) << TK1.price[p];
+				}
+				flush_buffer();
+                //cout << '\n';
+				add_to_output(TK2.ky.train_id);
+				add_to_output(TK2.ky.loc1);
+				add_to_output(dt,2);
+				add_to_output(TK2.tm_st);
+				add_to_output(TK2.ky.loc2);
+				add_to_output(dt,2);
+				add_to_output(TK2.tm_arrive);
+                //cout << TK2.ky.train_id << ' ' << TK2.ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK2.tm_st << ' ' << TK2.ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << TK2.tm_arrive;
                 for (int p = 0; p < TK2.tk_kind_num; ++p)
-                    cout << ' ' << TK2.tk_name[p] << ' ' << TK2.tk_remain[p] << ' ' << fixed << setprecision(6) << TK2.price[p];//要记得用printf
-                cout << '\n';
+				{
+					add_to_output(TK2.tk_name[p]);add_to_output(TK2.tk_remain[p]);add_to_output(TK2.price[p]);
+                    //cout << ' ' << TK2.tk_name[p] << ' ' << TK2.tk_remain[p] << ' ' << fixed << setprecision(6) << TK2.price[p];
+				}
+				flush_buffer();
+                //cout << '\n';
 				delete (_now);
 				delete (_now1);
             }
@@ -722,14 +958,23 @@ int main() {
             char tk_kind[21];
             bool order_succeed = true;
             train_id_key K;
-            cin >> U.user_id >> num >> U.train_id >> U.loc1 >> U.loc2 >> U.date >> tk_kind;
+			Read(U.user_id);Read(num);Read(U.train_id);Read(U.loc1);Read(U.loc2);Read(U.date);Read(tk_kind);
+            //cin >> U.user_id >> num >> U.train_id >> U.loc1 >> U.loc2 >> U.date >> tk_kind;
             if(!user.isvalid(U.user_id))
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else{
                 strcpy(K.train_id, U.train_id);
                 dt = (U.date[8] - '0') * 10 + (U.date[9] - '0');
                 if(!train.check(K))
-                    cout << 0 << '\n';
+				{
+					add_to_output(0);
+					flush_buffer();
+                    //cout << 0 << '\n';
+				}
                 else{
                     TRAIN *_now = train.find(K);
 					TRAIN &now = (*_now);
@@ -738,7 +983,11 @@ int main() {
                         if (strcmp(tk_kind, now.ticket_kind[p]) == 0)
                             break;
                     if(p == now.num_ticket_kind)
-                        cout << 0 << '\n';
+					{
+						add_to_output(0);
+						flush_buffer();
+                        //cout << 0 << '\n';
+					}
                     else{
                         int i;
                         for (i = 0; i != now.num_station - 1 && strcmp(now.station[i].loc, U.loc1) != 0; ++i);
@@ -773,9 +1022,16 @@ int main() {
                                     Tk.price[q] = now.station[j].price[q] - now.station[i].price[q];
                                 User.modify(U, Tk);
                             }
-                            cout << 1 << '\n';
+							add_to_output(1);
+							flush_buffer();
+                            //cout << 1 << '\n';
                         }
-                        else cout << 0 << '\n';
+                        else
+						{
+							add_to_output(0);
+							flush_buffer();
+							//cout << 0 << '\n';
+						}
                     }
 					delete (_now);
                 }
@@ -785,12 +1041,17 @@ int main() {
             user_order_key K;
             int dt;
             char catalog[11];
-            cin >> K.user_id >> K.date >> catalog;
+			Read(K.user_id);Read(K.date);Read(catalog);
+            //cin >> K.user_id >> K.date >> catalog;
             dt = (K.date[8] - '0') * 10 + (K.date[9] - '0');
             tk_order t[8000];
             int cnt = 0;
             if(!user.isvalid(K.user_id))
-                cout << -1 << '\n';
+			{
+				add_to_output(-1);
+				flush_buffer();
+                //cout << -1 << '\n';
+			}
             else{
                 BplusTree<user_order_key, tk_order,33,9>::iterator it;
                 for (int b = 0; catalog[b] != '\0'; ++b) {
@@ -806,18 +1067,28 @@ int main() {
                         } else break;
                     }
                 }
-                if (cnt == 0)
-                    cout << -1 << '\n';
+				if (cnt == 0)
+				{
+					add_to_output(-1);
+					flush_buffer();
+					//cout << -1 << '\n';
+				}
                 else {
-                    cout << cnt << '\n';
+					add_to_output(cnt);
+					flush_buffer();
+                    //cout << cnt << '\n';
                     for (int i = 0; i < cnt; ++i) {
-                        cout << t[i].ky.train_id << ' ' << t[i].ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << t[i].tm_st;
-                        cout << ' ' << t[i].ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << t[i].tm_arrive;
+						add_to_output(t[i].ky.train_id);add_to_output(t[i].ky.loc1);add_to_output(dt,2);add_to_output(t[i].tm_st);
+                        //cout << t[i].ky.train_id << ' ' << t[i].ky.loc1 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << t[i].tm_st;
+						add_to_output(t[i].ky.loc2);add_to_output(dt,2);add_to_output(t[i].tm_arrive);
+                        //cout << ' ' << t[i].ky.loc2 << ' ' << "2018-06-" << setw(2) << setfill('0') << dt << ' ' << t[i].tm_arrive;
                         for (int p = 0; p < t[i].num_tk_kind; ++p) {
-                            cout << ' ' << t[i].tk_name[p] << ' ' << t[i].tk_order_num[p] << ' '
-                                 << fixed << setprecision(6) << t[i].price[p];//要记得用printf
+							add_to_output(t[i].tk_name[p]);add_to_output(t[i].tk_order_num[p]);add_to_output(t[i].price[p]);
+                            //cout << ' ' << t[i].tk_name[p] << ' ' << t[i].tk_order_num[p] << ' '
+                            //     << fixed << setprecision(6) << t[i].price[p];//要记得用printf
                         }
-                        cout << '\n';
+						flush_buffer();
+                        //cout << '\n';
                     }
                 }
             }
@@ -826,18 +1097,27 @@ int main() {
             user_order_key K;
             int dt, num;
             char tk_kind[21];
-            cin >> K.user_id >> num >> K.train_id >> K.loc1 >> K.loc2 >> K.date >> tk_kind;
+			Read(K.user_id);Read(num);Read(K.train_id);Read(K.loc1);Read(K.loc2);Read(K.date);Read(tk_kind);
+            //cin >> K.user_id >> num >> K.train_id >> K.loc1 >> K.loc2 >> K.date >> tk_kind;
             dt = (K.date[8] - '0') * 10 + (K.date[9] - '0');
             train_id_key train_K;
             strcpy(train_K.train_id, K.train_id);
             if (train.check(train_K) == 0)
-                cout << 0 << '\n';
+			{
+				add_to_output(0);
+				flush_buffer();
+                //cout << 0 << '\n';
+			}
             else {
                 TRAIN *_now = train.find(train_K);
 				TRAIN &now = (*_now);
                 K.train_kind = now.train_kind;
                 if (!User.check(K))
-                    cout << 0 << '\n';
+				{
+					add_to_output(0);
+					flush_buffer();
+                    //cout << 0 << '\n';
+				}
                 else {
                     tk_order *_Tk = User.find(K);
 					tk_order &Tk = (*_Tk);
@@ -846,7 +1126,11 @@ int main() {
                         if (strcmp(tk_kind, Tk.tk_name[p]) == 0)
                             break;
                     if (Tk.tk_order_num[p] < num)
-                        cout << 0 << '\n';
+					{
+						add_to_output(0);
+						flush_buffer();
+                        //cout << 0 << '\n';
+					}
                     else {
                         Tk.tk_order_num[p] -= num;
                         User.modify(K, Tk);
@@ -856,7 +1140,9 @@ int main() {
                         for (j = i; strcmp(now.station[j].loc, Tk.ky.loc2) != 0; ++j)
                             now.tk_remain[dt][j][p] += num;
                         train.modify(train_K, now);
-                        cout << 1 << '\n';
+						add_to_output(1);
+						flush_buffer();
+                        //cout << 1 << '\n';
                     }
 					delete (_Tk);
                 }
@@ -864,7 +1150,8 @@ int main() {
             }
         }
         else if (strcmp(a, "exit") == 0) {
-            cout << "BYE" << '\n';
+			close_con();
+            //cout << "BYE" << '\n';
 //            train.exit();
 //            ticket.exit();
 //            User.exit();
@@ -875,8 +1162,11 @@ int main() {
             train.clear();
             ticket.clear();
             User.clear();
-            cout << 1 << '\n';
+			add_to_output(1);
+			flush_buffer();
+            //cout << 1 << '\n';
         }
+		close_con();
     }
     return 0;
 }
