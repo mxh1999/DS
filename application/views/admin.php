@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
+    var station_num = 0;
     function check_cookie ()
     {
       var x = '<%=session("id")%>';
@@ -60,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
       document.getElementById("add_train_ticket").style.display = "none";
+      station_num = 0;
       if($(window).height()==$(document).height())
       {
         $("#time_footer").addClass("navbar-fixed-bottom");
@@ -76,6 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("open_train").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
+      station_num = 0;
       if($(window).height()==$(document).height())
       {
         $("#time_footer").addClass("navbar-fixed-bottom");
@@ -92,6 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("add_admin").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
+      station_num = 0;
       if($(window).height()==$(document).height())
       {
         $("#time_footer").addClass("navbar-fixed-bottom");
@@ -108,6 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("delete_train").style.display = "inline";
       document.getElementById("change_train").style.display = "none";
+      station_num = 0;
       if($(window).height()==$(document).height())
       {
         $("#time_footer").addClass("navbar-fixed-bottom");
@@ -125,6 +130,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "inline";
       document.getElementById("change_train_ticket").style.display = "none";
+      station_num = 0;
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
+    function add_train_add_station()
+    {
+      var x = $("input[name=add_ticket_num]").val();
+      var A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","add_station_name");
+      A.setAttribute("placeholder", "车站名" + station_num);
+      document.getElementById("add_train_station_form").appendChild(A);
+      A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","add_station_arrive_time_" + station_num);
+      A.setAttribute("placeholder", "车站" + station_num + "到达时间");
+      document.getElementById("add_train_station_form").appendChild(A);
+      A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","add_station_start_time_" + station_num);
+      A.setAttribute("placeholder", "车站" + station_num + "出发时间");
+      document.getElementById("add_train_station_form").appendChild(A);
+      A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","add_station_stopover_time_" + station_num);
+      A.setAttribute("placeholder", "车站" + station_num + "停留时间");
+      document.getElementById("add_train_station_form").appendChild(A);
+      A = document.createElement("br");
+      document.getElementById("add_train_station_form").appendChild(A);
+      for (var j = 0; j < Number(x); j++)
+      {
+        A = document.createElement("input");
+        A.setAttribute("type","text");
+        A.setAttribute("class","form-control");
+        A.setAttribute("required", "required");
+        A.setAttribute("name","add_station_price_" + station_num);
+        A.setAttribute("placeholder", "车票" + j + "票价");
+        document.getElementById("add_train_station_form").appendChild(A);
+      }
+      A = document.createElement("br");
+      document.getElementById("add_train_station_form").appendChild(A);
+      station_num++;
+      document.getElementById("add_station_num").val = station_num;
       if($(window).height()==$(document).height())
       {
         $("#time_footer").addClass("navbar-fixed-bottom");
@@ -139,6 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("add_train_ticket").style.display = "inline";
       var x = $("input[name=add_ticket_num]").val();
       var y = $("input[name=add_station_num]").val();
+      station_num = Number(y);
       var A;
       for (var i = 0; i < Number(x); i++)
       {
@@ -150,8 +213,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("placeholder", "车票名" + i);
         document.getElementById("add_train_ticket_form").appendChild(A);
       }
-      A = document.createElement("br");
-      document.getElementById("add_train_station_form").appendChild(A);
+      A = document.createElement("button");
+      A.setAttribute ("class", "btn btn-default");
+      A.setAttribute ("type", "button");
+      A.setAttribute ("onclick", "add_train_add_station()");
+      A.innerHTML = "增加车站";
+      document.getElementById("add_train_ticket_form").appendChild(A);
       for (var i = 0; i < Number(y); i++)
       {
         A = document.createElement("input");
@@ -206,11 +273,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $("#time_footer").removeClass(" navbar-fixed-bottom");
       }
     }
+    function change_train_add_station()
+    {
+      var x = $("input[name=change_ticket_num]").val();
+      var A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","change_station_name");
+      A.setAttribute("placeholder", "车站名" + station_num);
+      document.getElementById("change_train_station_form").appendChild(A);
+      A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","change_station_arrive_time_" + station_num);
+      A.setAttribute("placeholder", "车站" + station_num + "到达时间");
+      document.getElementById("change_train_station_form").appendChild(A);
+      A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","change_station_start_time_" + station_num);
+      A.setAttribute("placeholder", "车站" + station_num + "出发时间");
+      document.getElementById("change_train_station_form").appendChild(A);
+      A = document.createElement("input");
+      A.setAttribute("type","text");
+      A.setAttribute("class","form-control");
+      A.setAttribute("required", "required");
+      A.setAttribute("name","change_station_stopover_time_" + station_num);
+      A.setAttribute("placeholder", "车站" + station_num + "停留时间");
+      document.getElementById("change_train_station_form").appendChild(A);
+      A = document.createElement("br");
+      document.getElementById("change_train_station_form").appendChild(A);
+      for (var j = 0; j < Number(x); j++)
+      {
+        A = document.createElement("input");
+        A.setAttribute("type","text");
+        A.setAttribute("class","form-control");
+        A.setAttribute("required", "required");
+        A.setAttribute("name","change_station_price_" + station_num);
+        A.setAttribute("placeholder", "车票" + j + "票价");
+        document.getElementById("change_train_station_form").appendChild(A);
+      }
+      A = document.createElement("br");
+      document.getElementById("change_train_station_form").appendChild(A);
+      station_num++;
+      document.getElementById("change_station_num").val = station_num;
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
+    }
     function change_train_ticket_1(elem)
     {
       document.getElementById("change_train_ticket").style.display = "inline";
       var x = $("input[name=change_ticket_num]").val();
       var y = $("input[name=change_station_num]").val();
+      station_num = Number(y);
       var A;
       for (var i = 0; i < Number(x); i++)
       {
@@ -222,8 +346,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("placeholder", "车票名" + i);
         document.getElementById("change_train_ticket_form").appendChild(A);
       }
-      A = document.createElement("br");
-      document.getElementById("change_train_station_form").appendChild(A);
+      A = document.createElement("button");
+      A.setAttribute ("class", "btn btn-default");
+      A.setAttribute ("type", "button");
+      A.setAttribute ("onclick", "change_train_add_station()");
+      A.innerHTML = "增加车站";
+      document.getElementById("change_train_ticket_form").appendChild(A);
       for (var i = 0; i < Number(y); i++)
       {
         A = document.createElement("input");
@@ -357,7 +485,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
   <input type = "text" class = "form-control" placeholder="车名" required="required" name = "train_name">
   <input type = "text" class = "form-control" placeholder="类型" required="required" name = "train_style">
-  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "add_station_num">
+  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "add_station_num" id = "add_station_num">
   <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "add_ticket_num">
   <button class="btn btn-default" type = "button" onclick="add_train_ticket_1(this);">
             输入车次及车票信息
