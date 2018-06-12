@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 <div class="col-md-offset-2">
-<form action="change_user.php" method="post" row = "form" name = "ticket_check" id = "ticket_check">
+<form action="index.php/user/" method="post" row = "form" name = "ticket_check" id = "ticket_check">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="类别" required="required" name = "catalog">
   <input type = "password" class = "form-control" placeholder="日期" required="required" name = "date">
@@ -159,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 <div class="col-md-offset-2">
-<form action="index.php/user/profile" method="post" row = "form" onsubmit="return check()" name = "change_users" id = "change_users">
+<form action="index.php/user/profile" method="post" row = "form" name = "change_users" id = "change_users">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
   <input type = "password" class = "form-control" placeholder="密码" required="required" name = "password">

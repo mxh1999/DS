@@ -36,14 +36,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("un_login").style.display = "visible";
     }
   }
-  function book_ticket(train_num, ticket_case)
+  function book_ticket_0(train_num, ticket_case)
   {
-    var x = <?php echo $transnum; ?>;
+    var x;
     x = <?php echo $ans['val']['train_num'][0]; ?>;
     document.getElementById("book_id").value = x;
     x = <?php echo $ans['val']['train_num'][1]; ?>;
+    document.getElementById("book_loc1").value = x;
+    x = <?php echo $ans['val']['train_num'][4]; ?>;
+    document.getElementById("book_loc2").value = x;
+    x = <?php echo $ans['val']['train_num']['ticket_case']; ?>;
+    document.getElementById("book_ticket_kind").value = x;
+    x = <?php echo $ans['val']['train_num'][2]; ?>;
     document.getElementById("book_date").value = x;
-    x = 
+    return true;
+  }
+  function book_ticket_1(train_num, ticket_case)
+  {
+    var x;
+    x = <?php echo $ans['val']['train_num'][0]; ?>;
+    document.getElementById("book_id").value = x;
+    x = <?php echo $ans['val']['train_num'][1]; ?>;
+    document.getElementById("book_loc1").value = x;
+    x = <?php echo $ans['val']['train_num'][4]; ?>;
+    document.getElementById("book_loc2").value = x;
+    x = <?php echo $ans['val']['train_num']['ticket_case']; ?>;
+    document.getElementById("book_ticket_kind").value = x;
+    x = <?php echo $ans['val']['train_num'][2]; ?>;
+    document.getElementById("book_date").value = x;
+    return true;
   }
   function show_train()
   {
@@ -54,12 +75,98 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       for (var i = 0; i < Number(x); i++)
       {
         var A;
-        A = document.createElement()
+        A = document.createElement("tr");
+        var B;
+        for (var j = 0; j < 7; j++)
+        {
+          B = document.createElement("td");
+          B.innerHTML = <?php echo $ans['val'][j]; ?>;
+          A.appendChild(B);
+        }
+        document.getElementById("book_train").appendChild(A);
+        A = document.createElement("tr");
+        for (var j = 7; <?php echo $ans['val'][j] != ''; ?>)
+        {
+          B = document.createElement("td");
+          B.innerHTML = <?php echo $ans['val'][j]; ?>;
+          A.appendChild(B);
+          j++;
+          B = document.createElement("td");
+          B.innerHTML = "票价：" + <?php echo $ans['val'][j]; ?>;
+          A.appendChild(B);
+          j++;
+          B = document.createElement("td");
+          B.innerHTML = "余票：" + <?php echo $ans['val'][j]; ?>;
+          j++;
+          A.appendChild(B);
+          B = document.createElement("td");
+          var C = document.createElement("input");
+          C.setAttribute("type","text");
+          C.setAttribute("class","form-control");
+          C.setAttribute("required", "required");
+          C.setAttribute("name", "num");
+          C.setAttribute("placeholder", "购买票数");
+          B.appendChild(C);
+          C = document.createElement("button");
+          C.setAttribute("type", "submit");
+          C.setAttribute("class", "btn btn-default");
+          C.setAttribute("onclick", "book_ticket_0(" + i + "," + (j - 3) + ")");
+          C.innerHTML = "购票";
+          B.appendChild(C);
+          A.appendChild(B);
+          document.getElementById("book_train").appendChild(A);
+          A = document.createElement("tr");
+        }
       }
     }
     else
     {
-
+      for (var i = 0; i < 2; i++)
+      {
+        var A;
+        A = document.createElement("tr");
+        var B;
+        for (var j = 0; j < 7; j++)
+        {
+          B = document.createElement("td");
+          B.innerHTML = <?php echo $ans1[i][j]; ?>;
+          A.appendChild(B);
+        }
+        document.getElementById("book_train").appendChild(A);
+        A = document.createElement("tr");
+        for (var j = 7; <?php echo $ans1[i][j] != ''; ?>)
+        {
+          B = document.createElement("td");
+          B.innerHTML = <?php echo $ans1[i][j]; ?>;
+          A.appendChild(B);
+          j++;
+          B = document.createElement("td");
+          B.innerHTML = "票价：" + <?php echo $ans1[i][j]; ?>;
+          A.appendChild(B);
+          j++;
+          B = document.createElement("td");
+          B.innerHTML = "余票：" + <?php echo $ans1[i][j]; ?>;
+          j++;
+          A.appendChild(B);
+          B = document.createElement("td");
+          var C = document.createElement("input");
+          C.setAttribute("type","text");
+          C.setAttribute("class","form-control");
+          C.setAttribute("required", "required");
+          C.setAttribute("name", "num");
+          C.setAttribute("placeholder", "购买票数");
+          B.appendChild(C);
+          C = document.createElement("button");
+          C.setAttribute("type", "submit");
+          C.setAttribute("class", "btn btn-default");
+          C.setAttribute("onclick", "book_ticket_1(" + i + "," + (j - 3) + ")");
+          C.innerHTML = "购票";
+          B.appendChild(C);
+          A.appendChild(B);
+          document.getElementById("book_train").appendChild(A);
+          A = document.createElement("tr");
+        }
+      }
     }
   }
 </script>
@@ -115,6 +222,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "book_date">
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "book_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "book_ticket_kind">
+  <table id = "book_ticket">
+  </table>
+</form>
+<a href="index.php/Ticket" class="btn btn-default">
+  重新查询
+</a>
 <script type="text/javascript">
   check_cookie();
   show_train();

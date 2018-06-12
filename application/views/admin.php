@@ -215,7 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
         A.setAttribute("name","name_price[" + i + "]");
-        A.setAttribute("placeholder", "车票名" + i);
+        A.setAttribute("placeholder", "第" + i + "种车票名");
         document.getElementById("add_train_ticket_form").appendChild(A);
       }
       for (var i = 0; i < Number(y); i++)
