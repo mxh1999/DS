@@ -213,12 +213,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("placeholder", "车票名" + i);
         document.getElementById("add_train_ticket_form").appendChild(A);
       }
-      A = document.createElement("button");
-      A.setAttribute ("class", "btn btn-default");
-      A.setAttribute ("type", "button");
-      A.setAttribute ("onclick", "add_train_add_station()");
-      A.innerHTML = "增加车站";
-      document.getElementById("add_train_ticket_form").appendChild(A);
       for (var i = 0; i < Number(y); i++)
       {
         A = document.createElement("input");
@@ -346,12 +340,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("placeholder", "车票名" + i);
         document.getElementById("change_train_ticket_form").appendChild(A);
       }
-      A = document.createElement("button");
-      A.setAttribute ("class", "btn btn-default");
-      A.setAttribute ("type", "button");
-      A.setAttribute ("onclick", "change_train_add_station()");
-      A.innerHTML = "增加车站";
-      document.getElementById("change_train_ticket_form").appendChild(A);
       for (var i = 0; i < Number(y); i++)
       {
         A = document.createElement("input");
@@ -499,7 +487,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div id = "add_train_station_form" class="form-inline col-md-offset-2" name = "add_train_station_form">
     
   </div>
-  <button type="submit" class="btn btn-default col-md-offset-5">
+  <button type="button" class="btn btn-default col-md-offset-4" onclick="add_train_add_station()">
+  增加车站
+  </button>
+  <button type="submit" class="btn btn-default">
   提交车次及车票信息
   </button>
   <button type="reset" class="btn btn-default" onclick="add_train_ticket_2();">
@@ -529,7 +520,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div id = "change_train_station_form" class="form-inline col-md-offset-2" name = "change_train_station_form">
     
   </div>
-  <button type="submit" class="btn btn-default col-md-offset-5">
+  <button type="button" class="btn btn-default col-md-offset-4" onclick="change_train_add_station()">
+  增加车站
+  </button>
+  <button type="submit" class="btn btn-default">
   提交车次及车票信息
   </button>
   <button type="reset" class="btn btn-default" onclick="change_train_ticket_2();">

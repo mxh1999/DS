@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       alert("phone number error");
       return false;
     }
-    return false;
+    return true;
   }
 </script>
 </head>
