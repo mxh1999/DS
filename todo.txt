@@ -3,9 +3,10 @@ TODOS：
 model\ user_model.php √ Train_model X
 修改view代码里的表单 name = "X" id = "X"
 book
-fix train
-modify profile时检验密码 增加密码修改功能
+fix train√
+modify profile时检验密码 增加密码修改功能√
 admin controller
+修改所有的socket_read();
 
 
 \application\config\constants.php 定义整个项目的常量
