@@ -41,17 +41,24 @@ class Profile extends CI_Controller {
 			$id=_SESSION['id'];
 			$name=$this->input->post('name');
 			$psword=$this->input->post('psword');
+			$psword1=$this->input->post('new_psword');
+			if (!isset($psword1))	$psword1=$psword;
 			$email=$this->input->post('email');
 			$phone=$this->input->post('phone');
-			$ok=$this->User_model->modify_profile($id, $name, $psword, $email, $phone);
+			$ok=$this->User_model->login($id,$psword);
 			if ($ok === -1)
 			{
 				$this->load->view('RE');
-			}
+			}	else
 			else if ($ok === 0)
 			{
 				$msg="密码错误";
 				%this->load->view('WA',array('msg'=>$msg));
+			}
+			$ok=$this->User_model->modify_profile($id, $name, $psword1, $email, $phone);
+			if ($ok === -1)
+			{
+				$this->load->view('RE');
 			}
 		}
 	}

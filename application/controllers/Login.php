@@ -30,7 +30,7 @@ class Login extends CI_Controller {
 			}
 			else
 			{
-				$userdata=$this->user_model->query($id);
+				$userdata=$this->User_model->query($id);
 				if ($userdata === -1)
 				{
 					$this->load->view('RE');
