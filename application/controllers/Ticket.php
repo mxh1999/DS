@@ -23,7 +23,7 @@ class Ticket extends CI_Controller {
 		{
 			$ans1= $this->Ticket_model->query_transfer($loc1,$loc2,$date,$catalog);
 		}
-		$this->load->view('query/result',array('transnum' => $transnum,'ans' => $ans,'ans1' => $ans1));
+		$this->load->view('query/result',array('transnum' => $transnum,'straight' => $ans,'transfer' => $ans1));
 	}
 	public function book()
 	{

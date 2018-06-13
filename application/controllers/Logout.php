@@ -8,14 +8,14 @@ class Profile extends CI_Controller {
 	public function index()
 	{
 	    session_start();
-		if (!isset(_SESSION['id']))
+		if (!isset($_SESSION['id']))
 		{
 			$msg="请先登录";
-			this->load->view('WA',$msg);
+			$this->load->view('WA',$msg);
 		}
 		else
 		{
-			_SESSION = array();
+			$_SESSION = array();
 			if (isset($_COOKIE['user']))
 				setcookie('user',"", time()-3600);
 			if (isset($_COOKIE[session_name()]))

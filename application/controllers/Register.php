@@ -23,7 +23,6 @@ class Register extends CI_Controller {
 	public function check()
 	{
 		session_start();
-		setcookie('session', $session_id());
 		$name = $this->input->post('name');
 		$psword = $this->input->post('psword');
 		$email = $this->input->post('email');
