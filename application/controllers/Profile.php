@@ -83,7 +83,7 @@ class Profile extends CI_Controller {
 				$this->load->view('RE');
 			}	else
 			{
-				$this->load->view('query_order',$ans);
+				$this->load->view('query/order',$ans);
 			}
 		}
 	}
