@@ -50,7 +50,7 @@ class Profile extends CI_Controller {
 			if ($ok === -1)
 			{
 				$this->load->view('RE');
-			}	else
+			}
 			else if ($ok === 0)
 			{
 				$msg="密码错误";
