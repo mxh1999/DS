@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include <sys/shm.h>
 #include <thread>
+#include <cmath>
 #include <unistd.h>
 #define PORT 7000
 #define QUEUE 20
@@ -222,6 +223,13 @@ void Read(char *a)
 	}
 	a[i]=0;
 }
+void Read(char &a)
+{
+	char ch=getachar();
+	while (ch=='#' || ch==' ' || ch=='\n' || ch=='\r')	ch=getachar();
+	a=ch;
+	return;
+}
 void Read(int &digit)
 {
 	digit=0;
@@ -328,7 +336,7 @@ void add_to_output(double x)
 void flush_buffer()
 {
 	int q=send(conn, outbuf, len_out , 0);
-	memset(outbut,0,sizeof(outbut));
+	memset(outbuf,0,sizeof(outbuf));
 	len_out=0;
 	usleep(100);
 }
@@ -431,7 +439,7 @@ int main() {
                     char tmp;
                     int ans = 0;
                     double dis = 0.1;
-                    for (tmp = getachar() tmp < '0' || tmp > '9'; tmp = getachar());
+                    for (tmp = getachar(); tmp < '0' || tmp > '9'; tmp = getachar());
                     ans = tmp - '0';
                     for (tmp = getachar(); tmp >= '0' && tmp <= '9'; tmp = getachar())
                         ans = ans * 10 + (tmp - '0');
