@@ -48,14 +48,14 @@ class Train extends CI_Controller {
 					$price_num = array();
 					for ($i = 0;$i < $num_price;$i++)
 					{
-						name_price[$i]=$this->input->post("name_price[$i]");
+						$name_price[$i]=$this->input->post("name_price[$i]");
 					}
 					for ($i = 0;$i < $num_station; $i++)
 					{
-						name[$i]=$this->input->post("name[$i]");
-						time_arr[$i]=$this->input->post("time_arrive[$i]");
-						time_sta[$i]=$this->input->post("time_start[$i]");
-						time_sto[$i]=$this->input->post("time_stopover[$i]");
+						$name[$i]=$this->input->post("name[$i]");
+						$time_arr[$i]=$this->input->post("time_arrive[$i]");
+						$time_sta[$i]=$this->input->post("time_start[$i]");
+						$time_sto[$i]=$this->input->post("time_stopover[$i]");
 						for ($j = 0; $j<$num_price;$j++)
 						{
 							$price_num[$i][$j]=$this->input->post("price[$i][$j]");
@@ -110,14 +110,14 @@ class Train extends CI_Controller {
 					$price_num = array();
 					for ($i = 0;$i < $num_price;$i++)
 					{
-						name_price[$i]=$this->input->post("name_price[$i]");
+						$name_price[$i]=$this->input->post("name_price[$i]");
 					}
 					for ($i = 0;$i < $num_station; $i++)
 					{
-						name[$i]=$this->input->post("name[$i]");
-						time_arr[$i]=$this->input->post("time_arrive[$i]");
-						time_sta[$i]=$this->input->post("time_start[$i]");
-						time_sto[$i]=$this->input->post("time_stopover[$i]");
+						$name[$i]=$this->input->post("name[$i]");
+						$time_arr[$i]=$this->input->post("time_arrive[$i]");
+						$time_sta[$i]=$this->input->post("time_start[$i]");
+						$time_sto[$i]=$this->input->post("time_stopover[$i]");
 						for ($j = 0; $j<$num_price;$j++)
 						{
 							$price_num[$i][$j]=$this->input->post("price[$i][$j]");
