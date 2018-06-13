@@ -7,7 +7,7 @@ class Ticket_model extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
-	function public add_train($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station)
+	public function add_train($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station)
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
@@ -44,7 +44,7 @@ class Ticket_model extends CI_Model {
 		while (!isset($out))	$out = socket_read($socket,8192);
 		return intval($out);
 	}
-	function public modify_train($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station)
+	public function modify_train($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station)
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
@@ -81,7 +81,7 @@ class Ticket_model extends CI_Model {
 		while (!isset($out))	$out = socket_read($socket,8192);
 		return intval($out);
 	}
-	function public query_train($train_id)
+	public function query_train($train_id)
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
@@ -129,7 +129,7 @@ class Ticket_model extends CI_Model {
 		}
 		return ans;
 	}
-	function public sale_train($train_id)
+	public function sale_train($train_id)
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
@@ -149,7 +149,7 @@ class Ticket_model extends CI_Model {
 		while (!isset($out))	$out = socket_read($socket,8192);
 		return intval($out);
 	}
-	function public delete_train($train_id)
+	public function delete_train($train_id)
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
