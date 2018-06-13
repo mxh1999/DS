@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var x = getSession().getAttribute("id");
     if (x != null)
     {
+      alert("x");
       document.getElementById("user_name").innerHTML = x;
       var A = document.createElement('b');
       A.setAttribute("class","caret");
@@ -26,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     else
     {
+      alert("un_login");
       var A = document.createElement('b');
       A.setAttribute("class","caret");
       document.getElementById("un_login").appendChild(A);
