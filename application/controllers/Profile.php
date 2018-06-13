@@ -18,6 +18,7 @@ class Profile extends CI_Controller {
 		}
 		else
 		{
+			$id=$_SESSION['id'];
 			$userdata=$this->User_model->query($id);
 			if ($userdata === -1)
 			{
