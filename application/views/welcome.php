@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function check_cookie ()
   {
     var x = "<?php echo $_COOKIE['user']?>";
-    if (x != '')
+    if (x != "")
     {
       document.getElementById("user_name").innerHTML = x;
       var A = document.createElement('b');

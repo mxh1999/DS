@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   function check_cookie ()
   {
-    var x = getSession().getAttribute("id");
+    var x = "<?php echo $_COOKIE['user']?>";
     if (x != '')
     {
       document.getElementById("user_name").innerHTML = x;
@@ -39,6 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     A.innerHTML = "车次" + "<?php echo $train_id; ?>" + " 类型" + "<?php echo $catalog; ?>";
     document.getElementById("train").appendChild(A);
     A = document.createElement("table");
+    A.setAttribute("class", "table");
+    var D = document.createElement("thead");
+    A.appendChild(D);
+    D = document.createElement("tbody");
     var B = document.createElement("tr");
     var C = document.createElement("th");
     C.innerHTML = "车站名";
@@ -58,30 +62,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       C.innerHTML = "<?php echo $price[x]; ?>" + "类票票价";
       B.appendChild(C);
     }
-    A.appendChild(B);
+    D.appendChild(B);
     for (var i = 0; i < "<?php echo $num_station; ?>"; i++)
     {
       B = document.createElement("tr");
-      C = document.createElement("tb");
+      C = document.createElement("td");
       C.innerHTML = "<?php echo $Station['name'][i]; ?>";
       B.appendChild(C);
-      C = document.createElement("tb");
+      C = document.createElement("td");
       C.innerHTML = "<?php echo $Station['arr'][i]; ?>";
       B.appendChild(C);
-      C = document.createElement("tb");
+      C = document.createElement("td");
       C.innerHTML = "<?php echo $Station['sta'][i]; ?>";
       B.appendChild(C);
-      C = document.createElement("tb");
+      C = document.createElement("td");
       C.innerHTML = "<?php echo $Station['sto'][i]; ?>";
       B.appendChild(C);
       for (var j = 0; j < "<?php echo $num_price ?>"; j++)
       {
-        C = document.createElement("tb");
+        C = document.createElement("td");
         C.innerHTML = "<?php echo $Price['num'][i][j]; ?>";
         B.appendChild(C);
       }
-      A.document.getElementById(B);
+      D.appendChild(B);
     }
+    A.appendChild(D);
     document.getElementById("train").appendChild(A);
   }
 </script>
