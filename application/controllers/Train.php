@@ -52,7 +52,7 @@ class Train extends CI_Controller {
 					}
 					for ($i = 0;$i < $num_station; $i++)
 					{
-						$name[$i]=$this->input->post("name[$i]");
+						$name_s[$i]=$this->input->post("name_s[$i]");
 						$time_arr[$i]=$this->input->post("time_arrive[$i]");
 						$time_sta[$i]=$this->input->post("time_start[$i]");
 						$time_sto[$i]=$this->input->post("time_stopover[$i]");
@@ -62,7 +62,7 @@ class Train extends CI_Controller {
 						}
 					}
 					$Price = array('name'=>$name_price , 'num' => $price_num);
-					$Station = array('name'=>$name,'arr'=>$time_arr,'sta'=>$time_sta,'sto'=>$time_sto);
+					$Station = array('name'=>$name_s,'arr'=>$time_arr,'sta'=>$time_sta,'sto'=>$time_sto);
 					var_dump($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station);
 					die();
 					$ok = $this->Train_model->add_train($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station);
