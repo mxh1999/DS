@@ -58,25 +58,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      {
       document.getElementById("ticket_check").style.display = "inline";
       document.getElementById("change_users").style.display = "none";
-      document.getElementById("required_ticket").style.display = "none";
-     }
-     function delete_users_train()
-     {
-      document.getElementById("ticket_check").style.display = "none";
-      document.getElementById("change_users").style.display = "none";
-      document.getElementById("required_ticket").style.display = "inline";
+      document.getElementById("users_data").style.display = "none";
      }
      function change_user()
      {
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "inline";
-      document.getElementById("required_ticket").style.display = "none";
+      document.getElementById("users_data").style.display = "none";
+     }
+     function show_users_data()
+     {
+      document.getElementById("ticket_check").style.display = "none";
+      document.getElementById("change_users").style.display = "none";
+      document.getElementById("users_data").style.display = "inline";
      }
      function Init()
      {
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "none";
-      document.getElementById("required_ticket").style.display = "none";
+      document.getElementById("users_data").style.display = "none";
+      var x = <?php echo $privilege; ?>;
+      if (x == 0)
+      {
+        document.getElementById("go_to_admin").style.display = "none";
+      }
+      else
+      {
+        document.getElementById("go_to_admin").style.display = "inline";
+      }
      }
    </script>
 </head>
@@ -125,30 +134,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   check_cookie();
 </script>
 <div class="col-md-offset-2">
-  <h1>
-    个人信息:
-  </h1>
-  <div name ="go_to_admin" id = "goto_admin">
-  <a href="index.php/admin"  class="btn btn-default">
-    管理员界面
-  </a>
-</div>
-</div>
-<div class="col-md-offset-2">
 <div class="radio">
+  <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_users_data()">个人信息
+  </label>
   <label class = "radio-inline">
     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_users_train()">查询个人订票情况
   </label>
   <label class = "radio-inline">
     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="change_user()">修改个人信息
   </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="delete_users_train()">退票
+  <label class = "radio-inline" id = "go_to_admin">
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="window.location.href = 'index.php/Admin'">管理员页面
   </label>
 </div>
 </div>
 <div class="col-md-offset-2">
-<form action="index.php/user/" method="post" row = "form" name = "ticket_check" id = "ticket_check">
+  <div id = users_data>
+    <p>
+      姓名：<?php echo $name;?>
+    </p>
+    <p>
+      邮箱：<?php echo $email;?>
+    </p>
+    <p>
+      电话：<?php echo $phone;?>
+    </p>
+  </div>
+</div>
+<div class="col-md-offset-2">
+<form action="index.php/user/" method="get" row = "form" name = "ticket_check" id = "ticket_check">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="类别" required="required" name = "catalog">
   <input type = "password" class = "form-control" placeholder="日期" required="required" name = "date">
@@ -171,20 +186,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </form>
 </div>
-<div class="col-md-offset-2">
-<form action="index.php/ticket/refund" method="post" row = "form" name = "required_ticket" id = "required_ticket">
-<div class="form-inline">
-  <input type = "text" class = "form-control" placeholder="车次" required="required" name = "id">
-  <input type = "text" class = "form-control" placeholder="日期" required="required" name = "date">
-  <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
-  <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
-  <input type = "text" class = "form-control" placeholder="数目" required="required" name = "num">
-  <input type = "text" class = "form-control" placeholder="车票种类" required="required" name = "ticket_kind">
-  <button type="submit" class="btn btn-default">
-    提交
-  </button>
-</div>
-</form>
 <script type="text/javascript">
   Init();
   check_cookie();

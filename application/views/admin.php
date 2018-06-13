@@ -12,26 +12,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script type="text/javascript">
     var station_num = 0;
     function check_cookie ()
-  {
-    var x = '<%=session("id")%>';
-    if (x != '')
     {
-      document.getElementById("user_name").innerHTML = x;
-      var A = document.createElement('b');
-      A.setAttribute("class","caret");
-      document.getElementById("user_name").appendChild(A);
-      document.getElementById("qqq").style.display = "visible";
-      document.getElementById("un_login").style.display = "none";
+      var x = '<%=session("id")%>';
+      if (x != '')
+      {
+        document.getElementById("user_name").innerHTML = x;
+        var A = document.createElement('b');
+        A.setAttribute("class","caret");
+        document.getElementById("user_name").appendChild(A);
+        document.getElementById("qqq").style.display = "visible";
+        document.getElementById("un_login").style.display = "none";
+      }
+      else
+      {
+        var A = document.createElement('b');
+        A.setAttribute("class","caret");
+        document.getElementById("un_login").appendChild(A);
+        document.getElementById("qqq").style.display = "none";
+        document.getElementById("un_login").style.display = "visible";
+      }
     }
-    else
-    {
-      var A = document.createElement('b');
-      A.setAttribute("class","caret");
-      document.getElementById("un_login").appendChild(A);
-      document.getElementById("qqq").style.display = "none";
-      document.getElementById("un_login").style.display = "visible";
-    }
-  }
     function get_id()
     {
       document.getElementById("add_admin").style.display = "none";
@@ -39,24 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("add_train").style.display = "none";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
-    }
-    function check_id()
-    {
-      var x = document.forms["users"]["name"].value;
-      if(!(/^[A-Za-z0-9\_\-]+$/gi).test(x))
-      {
-        alert("username error");
-        return false;
-      }
-    }
-    function check_train()
-    {
-      var x = document.forms["users"]["name"].value;
-      if(!(/^[\d]+$/gi).test(x))
-      {
-        alert("username error");
-        return false;
-      }
+      document.getElementById("check_train").style.display = "none";
     }
     function show_add_train()
     {
@@ -66,6 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
       document.getElementById("add_train_ticket").style.display = "none";
+      document.getElementById("check_train").style.display = "none";
       station_num = 0;
       if($(window).height()==$(document).height())
       {
@@ -83,6 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("open_train").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
+      document.getElementById("check_train").style.display = "none";
       station_num = 0;
       if($(window).height()==$(document).height())
       {
@@ -100,6 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("add_admin").style.display = "inline";
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "none";
+      document.getElementById("check_train").style.display = "none";
       station_num = 0;
       if($(window).height()==$(document).height())
       {
@@ -117,6 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("add_admin").style.display = "none";
       document.getElementById("delete_train").style.display = "inline";
       document.getElementById("change_train").style.display = "none";
+      document.getElementById("check_train").style.display = "none";
       station_num = 0;
       if($(window).height()==$(document).height())
       {
@@ -135,6 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("delete_train").style.display = "none";
       document.getElementById("change_train").style.display = "inline";
       document.getElementById("change_train_ticket").style.display = "none";
+      document.getElementById("check_train").style.display = "none";
       station_num = 0;
       if($(window).height()==$(document).height())
       {
@@ -159,21 +147,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       A.setAttribute("type","text");
       A.setAttribute("class","form-control");
       A.setAttribute("required", "required");
-        A.setAttribute("name","name[" + station_num + "]");
+      A.setAttribute("name","name[" + station_num + "]");
+      A.setAttribute("name","add_time_arrive_" + station_num);
       A.setAttribute("placeholder", "车站" + station_num + "到达时间");
       document.getElementById("add_train_station_form").appendChild(A);
       A = document.createElement("input");
       A.setAttribute("type","text");
       A.setAttribute("class","form-control");
       A.setAttribute("required", "required");
-        A.setAttribute("name","time_start[" + station_num + "]");
+      A.setAttribute("name","time_start[" + station_num + "]");
+      A.setAttribute("name","add_time_start_" + station_num);
       A.setAttribute("placeholder", "车站" + station_num + "出发时间");
       document.getElementById("add_train_station_form").appendChild(A);
       A = document.createElement("input");
       A.setAttribute("type","text");
       A.setAttribute("class","form-control");
       A.setAttribute("required", "required");
-        A.setAttribute("name","time_stoopover[" + station_num + "]");
+      A.setAttribute("name","time_stopover[" + station_num + "]");
       A.setAttribute("placeholder", "车站" + station_num + "停留时间");
       document.getElementById("add_train_station_form").appendChild(A);
       A = document.createElement("br");
@@ -184,7 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("type","text");
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
-          A.setAttribute("name","price[" + station_num + "][" + j + "]");
+        A.setAttribute("name","price[" + station_num + "][" + j + "]");
         A.setAttribute("placeholder", "车票" + j + "票价");
         document.getElementById("add_train_station_form").appendChild(A);
       }
@@ -232,6 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
         A.setAttribute("name","time_arrive[" + i + "]");
+        A.setAttribute("name","add_time_arrive_" + i);
         A.setAttribute("placeholder", "车站" + i + "到达时间");
         document.getElementById("add_train_station_form").appendChild(A);
         A = document.createElement("input");
@@ -239,13 +230,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
         A.setAttribute("name","time_start[" + i + "]");
+        A.setAttribute("name","add_time_start_" + i);
         A.setAttribute("placeholder", "车站" + i + "出发时间");
         document.getElementById("add_train_station_form").appendChild(A);
         A = document.createElement("input");
         A.setAttribute("type","text");
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
-        A.setAttribute("name","time_stoopover[" + i + "]");
+        A.setAttribute("name","time_stopover[" + i + "]");
         A.setAttribute("placeholder", "车站" + i + "停留时间");
         document.getElementById("add_train_station_form").appendChild(A);
         A = document.createElement("br");
@@ -286,7 +278,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       A.setAttribute("type","text");
       A.setAttribute("class","form-control");
       A.setAttribute("required", "required");
-        A.setAttribute("name","name[" + station_num + "]");
+      A.setAttribute("name","name[" + station_num + "]");
+      A.setAttribute("name","change_time_arrive_" + station_num);
       A.setAttribute("placeholder", "车站" + station_num + "到达时间");
       document.getElementById("change_train_station_form").appendChild(A);
       A = document.createElement("input");
@@ -294,13 +287,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       A.setAttribute("class","form-control");
       A.setAttribute("required", "required");
       A.setAttribute("name","time_start[" + station_num + "]");
+      A.setAttribute("name","change_time_start_" + station_num);
       A.setAttribute("placeholder", "车站" + station_num + "出发时间");
       document.getElementById("change_train_station_form").appendChild(A);
       A = document.createElement("input");
       A.setAttribute("type","text");
       A.setAttribute("class","form-control");
       A.setAttribute("required", "required");
-        A.setAttribute("name","time_stoopover[" + station_num + "]");
+      A.setAttribute("name","time_stopover[" + station_num + "]");
       A.setAttribute("placeholder", "车站" + station_num + "停留时间");
       document.getElementById("change_train_station_form").appendChild(A);
       A = document.createElement("br");
@@ -311,7 +305,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("type","text");
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
-          A.setAttribute("name","price[" + station_num + "][" + j + "]");
+        A.setAttribute("name","price[" + station_num + "][" + j + "]");
         A.setAttribute("placeholder", "车票" + j + "票价");
         document.getElementById("change_train_station_form").appendChild(A);
       }
@@ -359,6 +353,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
         A.setAttribute("name","time_arrive[" + i + "]");
+        A.setAttribute("name","change_time_arrive_" + i);
         A.setAttribute("placeholder", "车站" + i + "到达时间");
         document.getElementById("change_train_station_form").appendChild(A);
         A = document.createElement("input");
@@ -366,13 +361,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
         A.setAttribute("name","time_start[" + i + "]");
+        A.setAttribute("name","change_time_start_" + i);
         A.setAttribute("placeholder", "车站" + i + "出发时间");
         document.getElementById("change_train_station_form").appendChild(A);
         A = document.createElement("input");
         A.setAttribute("type","text");
         A.setAttribute("class","form-control");
         A.setAttribute("required", "required");
-        A.setAttribute("name","time_stoopover[" + i + "]");
+        A.setAttribute("name","time_stopover[" + i + "]");
         A.setAttribute("placeholder", "车站" + i + "停留时间");
         document.getElementById("change_train_station_form").appendChild(A);
         A = document.createElement("br");
@@ -399,6 +395,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $("#time_footer").removeClass(" navbar-fixed-bottom");
       }
     }
+    function add_train_test()
+    {
+      var x = document.getElementById("add_num_station").val;
+      document.getElementById("add_time_arrive_1").val = "--:--";
+      document.getElementById("add_time_start_" + x).val = "--:--";
+      return true;
+    }
+    function change_train_test()
+    {
+      var x = document.getElementById("change_num_station").val;
+      document.getElementById("change_time_arrive_1").val = "--:--";
+      document.getElementById("change_time_start_" + x).val = "--:--";
+      return true;
+    }
    </script>
    <script type="text/javascript">
      function add_train_ticket_2()
@@ -412,6 +422,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("change_train_station_form").innerHTML = "";
       document.getElementById("change_train_ticket_form").innerHTML = "";
       document.getElementById("change_train_ticket").style.display = "none";
+     }
+     function show_check_train()
+     {
+      document.getElementById("open_train").style.display = "none";
+      document.getElementById("add_train").style.display = "none";
+      document.getElementById("add_admin").style.display = "none";
+      document.getElementById("delete_train").style.display = "none";
+      document.getElementById("change_train").style.display = "none";
+      document.getElementById("check_train").style.display = "inline";
+      station_num = 0;
+      if($(window).height()==$(document).height())
+      {
+        $("#time_footer").addClass("navbar-fixed-bottom");
+      }
+      else
+      {
+        $("#time_footer").removeClass(" navbar-fixed-bottom");
+      }
      }
    </script>
 </head>
@@ -472,13 +500,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="show_delete_train()">删除车次
   </label>
   <label class = "radio-inline">
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="show_check_train()">查询车次
+  </label>
+  <label class = "radio-inline">
     <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" onclick="show_add_admin()">增加管理员
   </label>
 </div>
 </div>
 <div id = "add_admin">
 <div class="col-md-offset-2">
-<form action="change_user.php" method="post" row = "form" name = "users">
+<form action="index.php/" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
           <button type="submit" class="btn btn-default">
@@ -489,7 +520,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 <div name = "add_train" id = "add_train">
-<form action="public_train.php" method="post" row = "form"  name = "users">
+<form action="inedx.php/" method="post" row = "form"  name = "users" onsubmit="add_train_test()">
 <div class="form-inline">
 <div class="col-md-offset-2">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
@@ -522,7 +553,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 <div name = "change_train" id = "change_train">
-<form action="public_train.php" method="post" row = "form"  name = "change" class="row">
+<form action="index.php/" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()">
 <div class="col-md-offset-2">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
@@ -556,7 +587,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "open_train">
 <div class="col-md-offset-2">
-<form action="public_train.php" method="post" row = "form"  name = "users">
+<form action="index.php/" method="post" row = "form"  name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -568,11 +599,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "delete_train">
 <div class="col-md-offset-2">
-<form action="delete_train.php" method="post" row = "form" name = "users">
+<form action="index.php/" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
             删除
+          </button>
+</div>
+</form>
+</div>
+</div>
+<div id = "check_train">
+<div class="col-md-offset-2">
+<form action="delete_train.php" method="post" row = "form" name = "users">
+<div class="form-inline">
+          <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
+          <button type="submit" class="btn btn-default">
+            查询
           </button>
 </div>
 </form>
