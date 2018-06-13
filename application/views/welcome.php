@@ -14,10 +14,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   function check_cookie ()
   {
-    var x = getSession().getAttribute("id");
-    if (x != null)
+    var x = document.cookie;
+    if (x != '')
     {
-      alert("x");
       document.getElementById("user_name").innerHTML = x;
       var A = document.createElement('b');
       A.setAttribute("class","caret");
@@ -27,7 +26,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     else
     {
-      alert("un_login");
       var A = document.createElement('b');
       A.setAttribute("class","caret");
       document.getElementById("un_login").appendChild(A);
