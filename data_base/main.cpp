@@ -260,7 +260,6 @@ int get_command(char *a)
         perror("connect");
         exit(1);
     }
-	cerr<<"accept ok!"<<endl;
 	memset(buffer,0,sizeof(buffer));
 	buffer_size=recv(conn, buffer, sizeof(buffer), 0);
 	if (buffer_size==0)	return 0;
@@ -273,6 +272,7 @@ int get_command(char *a)
 		a[i++]=ch;
 		ch=getachar();
 	}
+	a[i]=0;
 	return 1;
 }
 void prepare()
@@ -305,10 +305,16 @@ void add_to_output(int x,int t=0)
 	{
 		char a[20];
 		int l=0;
-		while (x)
+		if (x==0)
 		{
-			a[++l]=x%10+'0';
-			x/=10;
+			a[++l]='0';
+		}	else
+		{
+			while (x)
+			{
+				a[++l]=x%10+'0';
+				x/=10;
+			}
 		}
 		for (int i=l;i>=1;i--)
 			outbuf[len_out++]=a[i];
@@ -345,7 +351,6 @@ void flush_buffer()
 void close_con()
 {
 	close(conn);
-	close(ss);
 }
 int main() {
 	prepare();
@@ -1160,6 +1165,7 @@ int main() {
         }
         else if (strcmp(a, "exit") == 0) {
 			close_con();
+			close(ss);
             //cout << "BYE" << '\n';
 //            train.exit();
 //            ticket.exit();
@@ -1176,6 +1182,7 @@ int main() {
             //cout << 1 << '\n';
         }
 		close_con();
+		close(ss);
     }
     return 0;
 }
