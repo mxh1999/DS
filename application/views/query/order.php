@@ -57,41 +57,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     for (var i = 0; i < x; i++)
     {
       var A = document.getElementById("tr");
-      var B = document.getElementById("tb");
+      var B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['train_id'] ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['loc1'] ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['data_from'] ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['time_from'] ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['loc2'] ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['data_to'] ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_ticket['ticket'][i]['time_to'] ?>";
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
       for (var j = 0; j < "<?php echo $query_ticket['ticket'][i]['num_price'] ?>"; j++)
       {
         A = document.createElement("tr");
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['Price'][j]['kind'] ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['Price'][j]['num_left'] ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['Price'][j]['num_price'] ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         var C = document.createElement("input");
         C.setAttribute("type","text");
         C.setAttribute("class","form-control");
@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C.setAttribute("placeholder", "购买票数");
         B.appendChild(C);
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         C = document.createElement("button");
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "refund_date">
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "refund_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "refund_ticket_kind">
-  <table id = "refund_ticket">
+  <table id = "refund_ticket" class="table">
   </table>
 </form>
 <a href="<?php echo This_URL ?>/Profile" class="btn btn-default">

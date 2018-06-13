@@ -90,41 +90,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       for (var i = 0; i < x; i++)
       {
         var A = document.getElementById("tr");
-        var B = document.getElementById("tb");
+        var B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['train_id']; ?>";
         A.appendChild(B);
-        B = document.getElementById("tb");
+        B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['loc1']; ?>";
         A.appendChild(B);
-        B = document.getElementById("tb");
+        B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['data_from']; ?>";
         A.appendChild(B);
-        B = document.getElementById("tb");
+        B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['time_from']; ?>";
         A.appendChild(B);
-        B = document.getElementById("tb");
+        B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['loc2']; ?>";
         A.appendChild(B);
-        B = document.getElementById("tb");
+        B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['data_to']; ?>";
         A.appendChild(B);
-        B = document.getElementById("tb");
+        B = document.getElementById("td");
         B.innerHTML = "<?php echo $query_ticket['ticket'][i]['time_to']; ?>";
         A.appendChild(B);
         document.getElementById("book_train").appendChild(A);
         for (var j = 0; j < "<?php echo $query_ticket['ticket'][i]['num_price']; ?>"; j++)
         {
           A = document.createElement("tr");
-          B = document.createElement("tb");
+          B = document.createElement("td");
           B.innerHTML = "<?php echo $query_ticket['ticket'][i]['Price'][j]['kind']; ?>";
           A.appendChild(B);
-          B = document.createElement("tb");
+          B = document.createElement("td");
           B.innerHTML = "<?php echo $query_ticket['ticket'][i]['Price'][j]['num_left']; ?>";
           A.appendChild(B);
-          B = document.createElement("tb");
+          B = document.createElement("td");
           B.innerHTML = "<?php echo $query_ticket['ticket'][i]['Price'][j]['num_price']; ?>";
           A.appendChild(B);
-          B = document.createElement("tb");
+          B = document.createElement("td");
           var C = document.createElement("input");
           C.setAttribute("type","text");
           C.setAttribute("class","form-control");
@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           C.setAttribute("placeholder", "购买票数");
           B.appendChild(C);
           A.appendChild(B);
-          B = document.createElement("tb");
+          B = document.createElement("td");
           C = document.createElement("button");
           C.setAttribute("type", "submit");
           C.setAttribute("class", "btn btn-default");
@@ -149,41 +149,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     else
     {
       var A = document.getElementById("tr");
-      var B = document.getElementById("tb");
+      var B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['train_id']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['loc1']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['data_from']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['time_from']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['loc2']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['data_to']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket1']['time_to']; ?>";
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
       for (var i = 0; i < "<?php echo $query_transfer['ticket1']['num_price']; ?>"; i++)
       {
         A = document.createElement("tr");
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_transfer['ticket1']['Price'][i]['kind']; ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_transfer['ticket1']['Price'][i]['num_left']; ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_transfer['ticket1']['Price'][i]['num_price']; ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         var C = document.createElement("input");
         C.setAttribute("type","text");
         C.setAttribute("class","form-control");
@@ -192,7 +192,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C.setAttribute("placeholder", "购买票数");
         B.appendChild(C);
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         C = document.createElement("button");
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
@@ -203,41 +203,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.getElementById("book_train").appendChild(A);
         A = document.createElement("tr");
       }
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['train_id']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['loc1']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['data_from']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['time_from']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['loc2']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['data_to']; ?>";
       A.appendChild(B);
-      B = document.getElementById("tb");
+      B = document.getElementById("td");
       B.innerHTML = "<?php echo $query_transfer['ticket2']['time_to']; ?>";
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
       for (var i = 0; i < "<?php echo $query_transfer['ticket2']['num_price']; ?>"; i++)
       {
         A = document.createElement("tr");
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_transfer['ticket2']['Price'][i]['kind']; ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_transfer['ticket2']['Price'][i]['num_left']; ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         B.innerHTML = "<?php echo $query_transfer['ticket2']['Price'][i]['num_price']; ?>";
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         var C = document.createElement("input");
         C.setAttribute("type","text");
         C.setAttribute("class","form-control");
@@ -246,7 +246,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C.setAttribute("placeholder", "购买票数");
         B.appendChild(C);
         A.appendChild(B);
-        B = document.createElement("tb");
+        B = document.createElement("td");
         C = document.createElement("button");
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
@@ -312,7 +312,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "book_date">
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "book_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "book_ticket_kind">
-  <table id = "book_train">
+  <table id = "book_train" class="table">
   </table>
 </form>
 <a href="<?php echo This_URL ?>/Ticket" class="btn btn-default">
