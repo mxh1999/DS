@@ -29,8 +29,8 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out='';
-		while ($out = socket_read($socket,8192));
+		$out = socket_read($socket,8192);
+		while (!isset($out))	$out = socket_read($socket,8192);
 		socket_close($socket);
 		return intval($out);
 	}
@@ -57,8 +57,8 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out='';
-		while ($out = socket_read($socket,8192));
+		$out = socket_read($socket,8192);
+		while (!isset($out))	$out = socket_read($socket,8192);
 		socket_close($socket);
 		return intval($out);
 	}
@@ -83,8 +83,8 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out='';
-		while ($out = socket_read($socket,8192));
+		$out = socket_read($socket,8192);
+		while (!isset($out))	$out = socket_read($socket,8192);
 		$tmp = explode(" ",$out);
 		$ans = array("name" => tmp[0], "email" => tmp[1], "phone" => intval(tmp[2]), "privilege" => inval(tmp[3]));
 		return ans;
@@ -112,8 +112,8 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out='';
-		while ($out = socket_read($socket,8192));
+		$out = socket_read($socket,8192);
+		while (!isset($out))	$out = socket_read($socket,8192);
 		socket_close($socket);
 		return intval($out);
 	}
@@ -139,8 +139,8 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out='';
-		while ($out = socket_read($socket,8192));
+		$out = socket_read($socket,8192);
+		while (!isset($out))	$out = socket_read($socket,8192);
 		socket_close($socket);
 		return intval($out);
 	}
@@ -160,8 +160,8 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out = '';
-		while ($out = socket_read($socket,8192));
+		$out = socket_read($socket,8192);
+		while (!isset($out))	$out = socket_read($socket,8192);
 		socket_close($socket);
 		return intval($out);
 	}

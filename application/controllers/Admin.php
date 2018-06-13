@@ -9,13 +9,15 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 	    session_start();
-        if (!isset(_SESSION['id']))
+		session_write_close();
+        if (!isset($_SESSION['id']))
 		{
 			$msg="请先登录";
-			this->load->view('WA',array('msg'=>$msg));
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
+			$id = $_SESSION['id'];
 			$userdata=$this->User_model->query($id);
 			if ($userdata === -1)
 			{
@@ -25,11 +27,11 @@ class Admin extends CI_Controller {
 				if ($userdata['privilege'] < 2)
 				{
 					$msg = "您不是管理员";
-					this->load->view('WA',array('msg'=>$msg));
+					$this->load->view('WA',array('msg'=>$msg));
 				}
 				else
 				{
-					this->load->view('user/admin');
+					$this->load->view('user/admin');
 				}
 			}
 		}
