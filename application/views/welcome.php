@@ -14,8 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   function check_cookie ()
   {
-    var x = document.cookie;
-    alert(x);
+    var x = "<?php echo $_COOKIE['user']?>";
     if (x != '')
     {
       document.getElementById("user_name").innerHTML = x;
@@ -81,7 +80,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="row">
       <div class="col-md-8 col-md-offset-2" style="background-color: white; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
         <h1>
-		<?php echo $_COOKIE['user']?>
          火车票订票系统了解一下
         </h1>
       </div>

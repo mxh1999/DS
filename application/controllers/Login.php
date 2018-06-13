@@ -35,9 +35,7 @@ class Login extends CI_Controller {
 				{
 					$_SESSION['id']=$id;
 					$this->input->set_cookie("user",$userdata['name'],60);
-					//setcookie("user",$userdata['name']);
 					echo $this->input->cookie("user");
-					//echo $_COOKIE["user"];
 				}
 			}
 		}
