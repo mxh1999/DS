@@ -216,16 +216,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   查询结果:
 </div>
 <form action="index.php/Ticket/book" method="post" row = "form">
-  <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "id" id = "book_id">
-  <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "book_loc1">
-  <input type = "hidden" class = "form-control" placeholder="目的地" required="required" name = "loc2" id = "book_loc2">
-  <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "book_date">
-  <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "book_catalog">
-  <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "book_ticket_kind">
-  <table id = "book_train">
+  <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "id" id = "refund_id">
+  <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "refund_loc1">
+  <input type = "hidden" class = "form-control" placeholder="目的地" required="required" name = "loc2" id = "refund_loc2">
+  <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "refund_date">
+  <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "refund_catalog">
+  <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "refund_ticket_kind">
+  <table id = "book_ticket">
   </table>
 </form>
-<a href="index.php/Ticket" class="btn btn-default">
+<a href="index.php/Profile" class="btn btn-default">
   重新查询
 </a>
 <script type="text/javascript">
