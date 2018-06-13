@@ -260,6 +260,7 @@ int get_command(char *a)
         perror("connect");
         exit(1);
     }
+	cerr<<"accept ok!"<<endl;
 	memset(buffer,0,sizeof(buffer));
 	buffer_size=recv(conn, buffer, sizeof(buffer), 0);
 	if (buffer_size==0)	return 0;
