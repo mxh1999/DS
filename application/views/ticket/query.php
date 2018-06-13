@@ -47,11 +47,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="<php? echo This_URL ?>">火车票订票系统</a>
+        <a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="<php? echo This_URL ?>/Ticket">购票</a></li>
+            <li class="active"><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -59,8 +59,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="<php? echo This_URL ?>/Profile">profile</a></li>
-          <li><a href="<php? echo This_URL ?>/Logout">logout</a></li>
+          <li><a href="<?php echo This_URL ?>/Profile">profile</a></li>
+          <li><a href="<?php echo This_URL ?>/Logout">logout</a></li>
         </ul>
         </li>
       </div>
@@ -70,12 +70,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           登录
         </a>
         <ul class="dropdown-menu">
-          <form action = "<php? echo This_URL ?>/Login" method="post" row = "form">
+          <form action = "<?php echo This_URL ?>/Login" method="post" row = "form">
           <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
           <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
-            <a href="<php? echo This_URL ?>/Register" class="btn btn-default">注册</a>
+            <a href="<?php echo This_URL ?>/Register" class="btn btn-default">注册</a>
           </li>
           </form>
         </ul>
@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 <div class="col-md-offset-4">
 <div class="form-inline">
-  <form action="<php? echo This_URL ?>/Ticket/query" method="get" row = "form">
+  <form action="<?php echo This_URL ?>/Ticket/query" method="get" row = "form">
     <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
     <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
     <br>

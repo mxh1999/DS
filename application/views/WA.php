@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-        <li class="active"><a class="navbar-brand" href="<php? echo This_URL ?>">火车票订票系统</a></li>
+        <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
     <div>
@@ -53,8 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="<php? echo This_URL ?>/Profile">profile</a></li>
-          <li><a href="<php? echo This_URL ?>/Logout">logout</a></li>
+          <li><a href="<?php echo This_URL ?>/Profile">profile</a></li>
+          <li><a href="<?php echo This_URL ?>/Logout">logout</a></li>
         </ul>
         </li>
       </div>
@@ -64,12 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           登录
         </a>
         <ul class="dropdown-menu">
-          <form action = "<php? echo This_URL ?>/Login">
+          <form action = "<?php echo This_URL ?>/Login">
           <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
           <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
-            <a href="<php? echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
+            <a href="<?php echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
           </form>
         </ul>
         </li>
@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php echo $msg; ?>
 </h1>
   <br>
-  <a href="<php? echo This_URL ?>" role ="button" class="btn btn-default">
+  <a href="<?php echo This_URL ?>" role ="button" class="btn btn-default">
   返回首页
   </a>
 </div>

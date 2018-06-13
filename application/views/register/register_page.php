@@ -48,16 +48,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="<php? echo This_URL ?>">火车票订票系统</a>
+        <a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="<php? echo This_URL ?>/Ticket">购票</a></li>
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
 </nav>
 <div class="col-md-offset-3">
-<form action="<php? echo This_URL ?>/Register/check" method="post" row = "form" onsubmit="return check_name()" name = "register">
+<form action="<?php echo This_URL ?>/Register/check" method="post" row = "form" onsubmit="return check_name()" name = "register">
   <div class="col-lg-4">
           <input type = "text" class = "form-control" placeholder="姓名" name = "name" required="required">
           <input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required">
