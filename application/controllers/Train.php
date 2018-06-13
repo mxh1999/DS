@@ -247,7 +247,7 @@ class Train extends CI_Controller {
 					}
 					else
 					{
-						$this->load->view('XXXX',$ans);
+						$this->load->view('query_train',$ans);
 					}
 				}
 			}

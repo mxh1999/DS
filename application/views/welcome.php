@@ -40,7 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-        <li class="active"><a class="navbar-brand" href="index.php">火车票订票系统</a></li>
+        <li class="active"><a class="navbar-brand" href="<php? echo This_URL ?>
+">火车票订票系统</a></li>
         </ul>
     </div>
     <div>

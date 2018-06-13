@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </a>
 </div>
 <script type="text/javascript">
-  get_message();
+  check_cookie();
 </script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
