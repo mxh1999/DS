@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function show_train()
   {
     var A = document.createElement("p");
-    A.innerHTML = "车次" + <?php echo $train_id; ?> + " 类型" + <?php echo $catalog; ?>;
+    A.innerHTML = "车次" + "<?php echo $train_id; ?>" + " 类型" + "<?php echo $catalog; ?>";
     document.getElementById("train").appendChild(A);
     A = document.createElement("table");
     var B = document.createElement("tr");
@@ -52,32 +52,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     C = document.createElement("th");
     C.innerHTML = "停留时间";
     B.appendChild(C);
-    for (var x = 0; x < <?php echo $num_price; ?>; x++)
+    for (var x = 0; x < "<?php echo $num_price; ?>"; x++)
     {
       C = document.createElement("th");
-      C.innerHTML = <?php echo $price[x]; ?> + "类票票价";
+      C.innerHTML = "<?php echo $price[x]; ?>" + "类票票价";
       B.appendChild(C);
     }
     A.appendChild(B);
-    for (var i = 0; i < <?php echo $num_station; ?>; i++)
+    for (var i = 0; i < "<?php echo $num_station; ?>"; i++)
     {
       B = document.createElement("tr");
       C = document.createElement("tb");
-      C.innerHTML = <?php echo $Station['name'][i]; ?>;
+      C.innerHTML = "<?php echo $Station['name'][i]; ?>";
       B.appendChild(C);
       C = document.createElement("tb");
-      C.innerHTML = <?php echo $Station['arr'][i]; ?>;
+      C.innerHTML = "<?php echo $Station['arr'][i]; ?>";
       B.appendChild(C);
       C = document.createElement("tb");
-      C.innerHTML = <?php echo $Station['sta'][i]; ?>;
+      C.innerHTML = "<?php echo $Station['sta'][i]; ?>";
       B.appendChild(C);
       C = document.createElement("tb");
-      C.innerHTML = <?php echo $Station['sto'][i]; ?>;
+      C.innerHTML = "<?php echo $Station['sto'][i]; ?>";
       B.appendChild(C);
-      for (var j = 0; j < <?php echo $num_price ?>; j++)
+      for (var j = 0; j < "<?php echo $num_price ?>"; j++)
       {
         C = document.createElement("tb");
-        C.innerHTML = <?php echo $Price['num'][i][j]; ?>;
+        C.innerHTML = "<?php echo $Price['num'][i][j]; ?>";
         B.appendChild(C);
       }
       A.document.getElementById(B);
