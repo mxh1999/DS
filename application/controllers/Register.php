@@ -37,7 +37,7 @@ class Register extends CI_Controller {
 		{
 			$_SESSION['id']=$id;
 			setcookie('user',$name);
-			this->load->view('register/success',array('id'=>$id));
+			$this->load->view('register/success',array('id'=>$id));
 		}
 	}
 }
