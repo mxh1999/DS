@@ -40,7 +40,7 @@ class Train extends CI_Controller {
 					$catalog = $this->input->post('catalog');
 					$num_station = intval($this->input->post('num_station'));
 					$num_price = intval($this->input->post('num_price'));
-					$name = array();
+					$name_s = array();
 					$name_price = array();
 					$time_arr = array();
 					$time_sta = array();
