@@ -16,7 +16,7 @@ class Ticket_model extends CI_Model {
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
-		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		$result = socket_connect($socket, DATABASE_IP, DATABASE_PORT);
 		if ($result < 0)
 		{
 			socket_close($socket);
@@ -55,7 +55,7 @@ class Ticket_model extends CI_Model {
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
-		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		$result = socket_connect($socket, DATABASE_IP, DATABASE_PORT);
 		if ($result < 0)
 		{
 			socket_close($socket);
@@ -99,7 +99,7 @@ class Ticket_model extends CI_Model {
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
-		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		$result = socket_connect($socket, DATABASE_IP, DATABASE_PORT);
 		if ($result < 0)
 		{
 			socket_close($socket);
@@ -123,7 +123,7 @@ class Ticket_model extends CI_Model {
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
-		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		$result = socket_connect($socket, DATABASE_IP, DATABASE_PORT);
 		if ($result < 0)
 		{
 			socket_close($socket);
@@ -143,7 +143,7 @@ class Ticket_model extends CI_Model {
 	{
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
-		$result = socket_connect($socket, $DATABASE_IP, $DATABASE_PORT);
+		$result = socket_connect($socket, DATABASE_IP, DATABASE_PORT);
 		if ($result < 0)
 		{
 			socket_close($socket);
