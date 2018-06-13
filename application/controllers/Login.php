@@ -34,8 +34,8 @@ class Login extends CI_Controller {
 				else
 				{
 					$_SESSION['id']=$id;
-					setcookie('user',$userdata['name']);
-					echo $_COOKIE['user'];
+					setcookie("user",$userdata['name']);
+					echo $_COOKIE["user"];
 				}
 			}
 		}
