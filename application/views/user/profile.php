@@ -145,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="change_user()">修改个人信息
   </label>
   <label class = "radio-inline" id = "go_to_admin">
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="window.location.href = 'index.php/Admin'">管理员页面
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="window.location.href = '<?php echo This_URL ?>/Admin'">管理员页面
   </label>
 </div>
 </div>

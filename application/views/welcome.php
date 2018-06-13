@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function check_cookie ()
   {
     var x = getSession().getAttribute("id");
-    if (x != '')
+    if (x != null)
     {
       document.getElementById("user_name").innerHTML = x;
       var A = document.createElement('b');
