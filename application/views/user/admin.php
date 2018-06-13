@@ -449,12 +449,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" href="index.php">火车票订票系统</a></li>
+        <li><a class="navbar-brand" href="<php? echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="index.php/Ticket">购票</a></li>
+            <li><a href="<php? echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -462,8 +462,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="index.php/Profile">profile</a></li>
-          <li><a href="index.php/Logout">logout</a></li>
+          <li><a href="<php? echo This_URL ?>/Profile">profile</a></li>
+          <li><a href="<php? echo This_URL ?>/Logout">logout</a></li>
         </ul>
         </li>
       </div>
@@ -473,12 +473,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           登录
         </a>
         <ul class="dropdown-menu">
-          <form action = "index.php/Login" method="post" row = "form">
+          <form action = "<php? echo This_URL ?>/Login" method="post" row = "form">
           <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
           <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
-            <a href="index.php/Register" class="btn btn-default">注册</a></li>
+            <a href="<php? echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
           </form>
         </ul>
         </li>
@@ -509,7 +509,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "add_admin">
 <div class="col-md-offset-2">
-<form action="index.php/" method="post" row = "form" name = "users">
+<form action="<php? echo This_URL ?>/" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
           <button type="submit" class="btn btn-default">
@@ -520,7 +520,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 <div name = "add_train" id = "add_train">
-<form action="inedx.php/" method="post" row = "form"  name = "users" onsubmit="add_train_test()">
+<form action="<php? echo This_URL ?>/Train/add" method="post" row = "form"  name = "users" onsubmit="add_train_test()">
 <div class="form-inline">
 <div class="col-md-offset-2">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
@@ -553,7 +553,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 <div name = "change_train" id = "change_train">
-<form action="index.php/" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()">
+<form action="<php? echo This_URL ?>/Ticket/modify" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()">
 <div class="col-md-offset-2">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
@@ -587,7 +587,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "open_train">
 <div class="col-md-offset-2">
-<form action="index.php/" method="post" row = "form"  name = "users">
+<form action="<php? echo This_URL ?>/Ticket/sale" method="post" row = "form"  name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -599,7 +599,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "delete_train">
 <div class="col-md-offset-2">
-<form action="index.php/" method="post" row = "form" name = "users">
+<form action="<php? echo This_URL ?>/Ticket/erase" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -611,7 +611,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "check_train">
 <div class="col-md-offset-2">
-<form action="delete_train.php" method="post" row = "form" name = "users">
+<form action="<php? echo This_URL ?>/Ticket/query" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">

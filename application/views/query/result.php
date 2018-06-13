@@ -266,12 +266,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-        <li class="active"><a class="navbar-brand" href="index.php">火车票订票系统</a></li>
+        <li class="active"><a class="navbar-brand" href="<php? echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="index.php/Ticket">购票</a></li>
+            <li><a href="<php? echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -279,8 +279,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="index.php/Profile">profile</a></li>
-          <li><a href="index.php/Logout">logout</a></li>
+          <li><a href="<php? echo This_URL ?>/Profile">profile</a></li>
+          <li><a href="<php? echo This_URL ?>/Logout">logout</a></li>
         </ul>
         </li>
       </div>
@@ -290,12 +290,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           登录
         </a>
         <ul class="dropdown-menu">
-          <form action = "index.php/Login" method="post" row = "form">
+          <form action = "<php? echo This_URL ?>/Login" method="post" row = "form">
           <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
           <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
-            <a href="index.php/Register" class="btn btn-default">注册</a></li>
+            <a href="<php? echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
           </form>
         </ul>
         </li>
@@ -305,7 +305,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div>
   查询结果:
 </div>
-<form action="index.php/Ticket/book" method="post" row = "form">
+<form action="<php? echo This_URL ?>/Ticket/book" method="post" row = "form">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "id" id = "book_id">
   <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "book_loc1">
   <input type = "hidden" class = "form-control" placeholder="目的地" required="required" name = "loc2" id = "book_loc2">
@@ -315,7 +315,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <table id = "book_train">
   </table>
 </form>
-<a href="index.php/Ticket" class="btn btn-default">
+<a href="<php? echo This_URL ?>/Ticket" class="btn btn-default">
   重新查询
 </a>
 <script type="text/javascript">

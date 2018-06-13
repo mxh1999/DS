@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script type="text/javascript">
   function check_cookie ()
   {
-    var x = '<%=session("id")%>';
+    var x = getSession().getAttribute("id");
     if (x != '')
     {
       document.getElementById("user_name").innerHTML = x;
@@ -40,12 +40,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-        <li class="active"><a class="navbar-brand" href="index.php">火车票订票系统</a></li>
+        <li class="active"><a class="navbar-brand" href="<php? echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="index.php/Ticket">购票</a></li>
+            <li><a href="<php? echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -53,8 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="index.php/Profile">profile</a></li>
-          <li><a href="index.php/Logout">logout</a></li>
+          <li><a href="<php? echo This_URL ?>/Profile">profile</a></li>
+          <li><a href="<php? echo This_URL ?>/Logout">logout</a></li>
         </ul>
         </li>
       </div>
@@ -64,12 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           登录
         </a>
         <ul class="dropdown-menu">
-          <form action = "index.php/Login">
+          <form action = "<php? echo This_URL ?>/Login">
           <li><input type = "text" class = "form-control" placeholder="账号" name = "username" required="required"></li>
           <li><input type = "password" class = "form-control" placeholder="密码" name = "password" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
-            <a href="index.php/Register" class="btn btn-default">注册</a></li>
+            <a href="<php? echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
           </form>
         </ul>
         </li>
