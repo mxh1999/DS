@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           B.innerHTML = <?php echo $ans['val'][j]; ?>;
           A.appendChild(B);
         }
-        document.getElementById("book_train").appendChild(A);
+        document.getElementById("refund_ticket").appendChild(A);
         A = document.createElement("tr");
         for (var j = 7; <?php echo $ans['val'][j] != ''; ?>)
         {
@@ -110,11 +110,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           C = document.createElement("button");
           C.setAttribute("type", "submit");
           C.setAttribute("class", "btn btn-default");
-          C.setAttribute("onclick", "book_ticket_0(" + i + "," + (j - 3) + ")");
+          C.setAttribute("onclick", "refund_ticket_0(" + i + "," + (j - 3) + ")");
           C.innerHTML = "购票";
           B.appendChild(C);
           A.appendChild(B);
-          document.getElementById("book_train").appendChild(A);
+          document.getElementById("refund_ticket").appendChild(A);
           A = document.createElement("tr");
         }
       }
@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           B.innerHTML = <?php echo $ans1[i][j]; ?>;
           A.appendChild(B);
         }
-        document.getElementById("book_train").appendChild(A);
+        document.getElementById("refund_ticket").appendChild(A);
         A = document.createElement("tr");
         for (var j = 7; <?php echo $ans1[i][j] != ''; ?>)
         {
@@ -159,11 +159,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           C = document.createElement("button");
           C.setAttribute("type", "submit");
           C.setAttribute("class", "btn btn-default");
-          C.setAttribute("onclick", "book_ticket_1(" + i + "," + (j - 3) + ")");
+          C.setAttribute("onclick", "refund_ticket_1(" + i + "," + (j - 3) + ")");
           C.innerHTML = "购票";
           B.appendChild(C);
           A.appendChild(B);
-          document.getElementById("book_train").appendChild(A);
+          document.getElementById("refund_ticket").appendChild(A);
           A = document.createElement("tr");
         }
       }
@@ -222,7 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "refund_date">
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "refund_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "refund_ticket_kind">
-  <table id = "book_ticket">
+  <table id = "refund_ticket">
   </table>
 </form>
 <a href="index.php/Profile" class="btn btn-default">

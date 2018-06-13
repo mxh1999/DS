@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   function check_name()
   {
-    var x = document.forms["register"]["username"].value;
+    var x = document.forms["register"]["name"].value;
     if(!(/^[A-Za-z0-9\_\-]+$/gi).test(x))
     {
       alert("username error");
@@ -57,10 +57,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </nav>
 <div class="col-md-offset-3">
-<form action="index.php/register" method="post" row = "form" onsubmit="return check_name()" name = "register">
-  <div class="form-inline">
-          <input type = "text" class = "form-control" placeholder="账号" name = "username" required="required">
-          <input type = "password" class = "form-control" placeholder="密码" name = "password" required="required">
+<form action="index.php/Register/check" method="post" row = "form" onsubmit="return check_name()" name = "register">
+  <div class="">
+          <input type = "text" class = "form-control" placeholder="姓名" name = "name" required="required">
+          <input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required">
           <input type = "text" class = "form-control" placeholder="邮箱地址" name = "email" required="required">
           <input type = "text" class = "form-control" placeholder="电话号码" name = "phone" required="required">
           <button type="submit" class="btn btn-default">
