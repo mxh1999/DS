@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 <div class="col-md-offset-3">
 <form action="index.php/Register/check" method="post" row = "form" onsubmit="return check_name()" name = "register">
-  <div class="">
+  <div class="col-lg-4">
           <input type = "text" class = "form-control" placeholder="姓名" name = "name" required="required">
           <input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required">
           <input type = "text" class = "form-control" placeholder="邮箱地址" name = "email" required="required">

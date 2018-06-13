@@ -36,136 +36,80 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("un_login").style.display = "visible";
     }
   }
-  function book_ticket_0(train_num, ticket_case)
+  function refund_ticket(train_num, ticket_case)
   {
     var x;
-    x = <?php echo $ans['val']['train_num'][0]; ?>;
-    document.getElementById("book_id").value = x;
-    x = <?php echo $ans['val']['train_num'][1]; ?>;
-    document.getElementById("book_loc1").value = x;
-    x = <?php echo $ans['val']['train_num'][4]; ?>;
-    document.getElementById("book_loc2").value = x;
-    x = <?php echo $ans['val']['train_num']['ticket_case']; ?>;
-    document.getElementById("book_ticket_kind").value = x;
-    x = <?php echo $ans['val']['train_num'][2]; ?>;
-    document.getElementById("book_date").value = x;
-    return true;
-  }
-  function book_ticket_1(train_num, ticket_case)
-  {
-    var x;
-    x = <?php echo $ans['val']['train_num'][0]; ?>;
-    document.getElementById("book_id").value = x;
-    x = <?php echo $ans['val']['train_num'][1]; ?>;
-    document.getElementById("book_loc1").value = x;
-    x = <?php echo $ans['val']['train_num'][4]; ?>;
-    document.getElementById("book_loc2").value = x;
-    x = <?php echo $ans['val']['train_num']['ticket_case']; ?>;
-    document.getElementById("book_ticket_kind").value = x;
-    x = <?php echo $ans['val']['train_num'][2]; ?>;
-    document.getElementById("book_date").value = x;
+    x = <?php echo $query_ticket['ticket'][train_num]['train_id']; ?>;
+    document.getElementById("refund_id").value = x;
+    x = <?php echo $query_ticket['ticket'][train_num]['loc1']; ?>;
+    document.getElementById("refund_loc1").value = x;
+    x = <?php echo $query_ticket['ticket'][train_num]['loc2']; ?>;
+    document.getElementById("refund_loc2").value = x;
+    x = <?php echo $query_ticket['ticket'][train_num]['Price'][ticket_case]['kind']; ?>;
+    document.getElementById("refund_ticket_kind").value = x;
+    x = <?php echo $query_ticket['ticket'][train_num]['data_from']; ?>;
+    document.getElementById("refund_date").value = x;
     return true;
   }
   function show_train()
   {
-    var x = <?php echo $transnum; ?>;
-    if (x === 0)
+    var x = <?php echo $query_ticket['num']; ?>;
+    for (var i = 0; i < x; i++)
     {
-      x = <?php echo $ans['num']; ?>;
-      for (var i = 0; i < Number(x); i++)
+      var A = document.getElementById("tr");
+      var B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['train_id']; ?>;
+      A.appendChild(B);
+      B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['loc1']; ?>;
+      A.appendChild(B);
+      B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['data_from']; ?>;
+      A.appendChild(B);
+      B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['time_from']; ?>;
+      A.appendChild(B);
+      B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['loc2']; ?>;
+      A.appendChild(B);
+      B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['data_to']; ?>;
+      A.appendChild(B);
+      B = document.getElementById("tb");
+      B.innerHTML = <?php echo $query_ticket['ticket'][i]['time_to']; ?>;
+      A.appendChild(B);
+      document.getElementById("book_train").appendChild(A);
+      for (var j = 0; j < <?php echo $query_ticket['ticket'][i]['num_price']; ?>; j++)
       {
-        var A;
         A = document.createElement("tr");
-        var B;
-        for (var j = 0; j < 7; j++)
-        {
-          B = document.createElement("td");
-          B.innerHTML = <?php echo $ans['val'][j]; ?>;
-          A.appendChild(B);
-        }
-        document.getElementById("refund_ticket").appendChild(A);
+        B = document.createElement("tb");
+        B.innerHTML = <?php echo $query_ticket['ticket'][i]['Price'][j]['kind']; ?>;
+        A.appendChild(B);
+        B = document.createElement("tb");
+        B.innerHTML = <?php echo $query_ticket['ticket'][i]['Price'][j]['num_left']; ?>;
+        A.appendChild(B);
+        B = document.createElement("tb");
+        B.innerHTML = <?php echo $query_ticket['ticket'][i]['Price'][j]['num_price']; ?>;
+        A.appendChild(B);
+        B = document.createElement("tb");
+        var C = document.createElement("input");
+        C.setAttribute("type","text");
+        C.setAttribute("class","form-control");
+        C.setAttribute("required", "required");
+        C.setAttribute("name", "num");
+        C.setAttribute("placeholder", "购买票数");
+        B.appendChild(C);
+        A.appendChild(B);
+        B = document.createElement("tb");
+        C = document.createElement("button");
+        C.setAttribute("type", "submit");
+        C.setAttribute("class", "btn btn-default");
+        C.setAttribute("onclick", "book_ticket(" + i + ")");
+        C.innerHTML = "购票";
+        B.appendChild(C);
+        A.appendChild(B);
+        document.getElementById("book_train").appendChild(A);
         A = document.createElement("tr");
-        for (var j = 7; <?php echo $ans['val'][j] != ''; ?>)
-        {
-          B = document.createElement("td");
-          B.innerHTML = <?php echo $ans['val'][j]; ?>;
-          A.appendChild(B);
-          j++;
-          B = document.createElement("td");
-          B.innerHTML = "票价：" + <?php echo $ans['val'][j]; ?>;
-          A.appendChild(B);
-          j++;
-          B = document.createElement("td");
-          B.innerHTML = "余票：" + <?php echo $ans['val'][j]; ?>;
-          j++;
-          A.appendChild(B);
-          B = document.createElement("td");
-          var C = document.createElement("input");
-          C.setAttribute("type","text");
-          C.setAttribute("class","form-control");
-          C.setAttribute("required", "required");
-          C.setAttribute("name", "num");
-          C.setAttribute("placeholder", "购买票数");
-          B.appendChild(C);
-          C = document.createElement("button");
-          C.setAttribute("type", "submit");
-          C.setAttribute("class", "btn btn-default");
-          C.setAttribute("onclick", "refund_ticket_0(" + i + "," + (j - 3) + ")");
-          C.innerHTML = "购票";
-          B.appendChild(C);
-          A.appendChild(B);
-          document.getElementById("refund_ticket").appendChild(A);
-          A = document.createElement("tr");
-        }
-      }
-    }
-    else
-    {
-      for (var i = 0; i < 2; i++)
-      {
-        var A;
-        A = document.createElement("tr");
-        var B;
-        for (var j = 0; j < 7; j++)
-        {
-          B = document.createElement("td");
-          B.innerHTML = <?php echo $ans1[i][j]; ?>;
-          A.appendChild(B);
-        }
-        document.getElementById("refund_ticket").appendChild(A);
-        A = document.createElement("tr");
-        for (var j = 7; <?php echo $ans1[i][j] != ''; ?>)
-        {
-          B = document.createElement("td");
-          B.innerHTML = <?php echo $ans1[i][j]; ?>;
-          A.appendChild(B);
-          j++;
-          B = document.createElement("td");
-          B.innerHTML = "票价：" + <?php echo $ans1[i][j]; ?>;
-          A.appendChild(B);
-          j++;
-          B = document.createElement("td");
-          B.innerHTML = "余票：" + <?php echo $ans1[i][j]; ?>;
-          j++;
-          A.appendChild(B);
-          B = document.createElement("td");
-          var C = document.createElement("input");
-          C.setAttribute("type","text");
-          C.setAttribute("class","form-control");
-          C.setAttribute("required", "required");
-          C.setAttribute("name", "num");
-          C.setAttribute("placeholder", "购买票数");
-          B.appendChild(C);
-          C = document.createElement("button");
-          C.setAttribute("type", "submit");
-          C.setAttribute("class", "btn btn-default");
-          C.setAttribute("onclick", "refund_ticket_1(" + i + "," + (j - 3) + ")");
-          C.innerHTML = "购票";
-          B.appendChild(C);
-          A.appendChild(B);
-          document.getElementById("refund_ticket").appendChild(A);
-          A = document.createElement("tr");
-        }
       }
     }
   }
@@ -215,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div>
   查询结果:
 </div>
-<form action="index.php/Ticket/book" method="post" row = "form">
+<form action="index.php/Ticket/Refund" method="post" row = "form">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "id" id = "refund_id">
   <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "refund_loc1">
   <input type = "hidden" class = "form-control" placeholder="目的地" required="required" name = "loc2" id = "refund_loc2">
@@ -226,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </table>
 </form>
 <a href="index.php/Profile" class="btn btn-default">
-  重新查询
+  返回
 </a>
 <script type="text/javascript">
   check_cookie();
