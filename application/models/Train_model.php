@@ -2,7 +2,7 @@
 /**
  * 车次管理模型，用于与车次有关的所有操作
  */
-class Ticket_model extends CI_Model {
+class Train_model extends CI_Model {
 	
 	function __construct() {
 		parent::__construct();
