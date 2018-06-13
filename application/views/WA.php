@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="index.php/Ticket">购票</a></li>
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">

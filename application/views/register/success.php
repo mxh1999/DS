@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     注册成功，你的用户ID为 <?php echo $id; ?>.
 </h1>
   <br>
-  <a href="index.php" role ="button" class="btn btn-default">
+  <a href="<?php echo This_URL ?>" role ="button" class="btn btn-default">
   返回首页
   </a>
 </div>
