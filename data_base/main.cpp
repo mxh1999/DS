@@ -1182,8 +1182,8 @@ int main() {
             //cout << 1 << '\n';
         }
 		close_con();
-		close(ss);
     }
+	close(ss);
     return 0;
 }
 //如果查询操作过多的话建议把余票信息存在票的信息里
