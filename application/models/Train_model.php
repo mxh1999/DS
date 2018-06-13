@@ -101,33 +101,33 @@ class Ticket_model extends CI_Model {
 		while (!isset($out))	$out = socket_read($socket,8192);
 		$tmp=explode(' ',$out);
 		$ans = array();
-		ans['train_id']=$tmp[0];
-		ans['name']=$tmp[1];
-		ans['catalog']=$tmp[2];
-		ans['num_station']=intval($tmp[3]);
-		ans['num_price']=intval($tmp[4]);
-		ans['Price']=array('name'=>array(),'num'=>array());
-		ans['Station']=array('name'=>array(),'arr'=>array(),'sta'=>array(),'sto'=>array());
+		$ans['train_id']=$tmp[0];
+		$ans['name']=$tmp[1];
+		$ans['catalog']=$tmp[2];
+		$ans['num_station']=intval($tmp[3]);
+		$ans['num_price']=intval($tmp[4]);
+		$ans['Price']=array('name'=>array(),'num'=>array());
+		$ans['Station']=array('name'=>array(),'arr'=>array(),'sta'=>array(),'sto'=>array());
 		for ($i = 0;$i < ans['num_price'];$i++)
 		{
-			ans['Price']['name'][$i]=$tmp[5+$i];
+			$ans['Price']['name'][$i]=$tmp[5+$i];
 		}
 		for ($i = 0;$i < ans['num_station'];$i++)
 		{
 			$out = socket_read($socket,8192);
 			while (!isset($out))	$out = socket_read($socket,8192);
 			$tmp=explode(' ',$out);
-			ans['Station']['name'][$i]=$tmp[0];
-			ans['Station']['arr'][$i]=$tmp[1];
-			ans['Station']['sta'][$i]=$tmp[2];
-			ans['Station']['sto'][$i]=$tmp[3];
-			ans['Price']['num'][$i]=array();
+			$ans['Station']['name'][$i]=$tmp[0];
+			$ans['Station']['arr'][$i]=$tmp[1];
+			$ans['Station']['sta'][$i]=$tmp[2];
+			$ans['Station']['sto'][$i]=$tmp[3];
+			$ans['Price']['num'][$i]=array();
 			for ($j = 0;$j<ans['num_price'];$j++)
 			{
-				ans['Price']['num'][$i][$j]=$tmp[4+$j];
+				$ans['Price']['num'][$i][$j]=$tmp[4+$j];
 			}
 		}
-		return ans;
+		return $ans;
 	}
 	public function sale_train($train_id)
 	{
