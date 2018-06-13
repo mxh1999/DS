@@ -71,8 +71,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>
         <ul class="dropdown-menu">
           <form action = "index.php/Login" method="post" row = "form">
-          <li><input type = "text" class = "form-control" placeholder="账号" name = "username" required="required"></li>
-          <li><input type = "password" class = "form-control" placeholder="密码" name = "password" required="required"></li>
+          <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
+          <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
           <li>
             <button type="submit" class="btn btn-default">登录</button>
             <a href="index.php/Register" class="btn btn-default">注册</a>
