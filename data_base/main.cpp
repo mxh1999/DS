@@ -255,11 +255,13 @@ void Read(short &digit)
 
 int get_command(char *a)
 {
+	cerr<<"start listen"<<endl;
 	conn = accept(ss, (struct sockaddr*)&client_addr, &length);
     if( conn < 0 ) {
         perror("connect");
         exit(1);
     }
+	cerr<<"connection accept"<<endl;
 	memset(buffer,0,sizeof(buffer));
 	buffer_size=recv(conn, buffer, sizeof(buffer), 0);
 	if (buffer_size==0)	return 0;
@@ -342,6 +344,7 @@ void add_to_output(double x)
 }
 void flush_buffer()
 {
+	cerr<<"send: "<<outbuf<<endl;
 	int q=send(conn, outbuf, len_out , 0);
 	memset(outbuf,0,sizeof(outbuf));
 	len_out=0;
@@ -350,6 +353,7 @@ void flush_buffer()
 
 void close_con()
 {
+	cerr<<"connection close"<<endl;
 	close(conn);
 }
 int main() {
@@ -362,6 +366,7 @@ int main() {
     ticket.init("ticket_in", "ticket_out");
     char a[20];
     while (get_command(a)) {
+		cerr<<"command: "<<a<<endl;
         if (strcmp(a, "register") == 0) {//注册用户
             USER now;
 			Read(now.name);Read(now.password);Read(now.mail);Read(now.phone_num);
