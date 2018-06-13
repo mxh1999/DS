@@ -86,7 +86,7 @@ class User_model extends CI_Model {
 		$out = socket_read($socket,8192);
 		while (!isset($out))	$out = socket_read($socket,8192);
 		$tmp = explode(" ",$out);
-		$ans = array("name" => tmp[0], "email" => tmp[1], "phone" => intval(tmp[2]), "privilege" => inval(tmp[3]));
+		$ans = array("name" => $tmp[0], "email" => $tmp[1], "phone" => intval($tmp[2]), "privilege" => inval($tmp[3]));
 		return ans;
 	}
 	/**

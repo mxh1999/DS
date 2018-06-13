@@ -19,7 +19,7 @@
 #define QUEUE 20
 using namespace std;
 struct USER {
-    char name[41], password[21], mail[21], phone_num[21];
+    char name[41], password[41], mail[21], phone_num[21];
     char privilege;
 };
 
@@ -377,7 +377,7 @@ int main() {
         }
         else if (strcmp(a, "login") == 0) {//用户登陆
             int user_id;
-            char user_pw[21];
+            char user_pw[41];
 			Read(user_id);Read(user_pw);
             //cin >> user_id >> user_pw;
 			add_to_output(user.Login(user_id, user_pw));
