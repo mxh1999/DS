@@ -8,10 +8,6 @@ class Login extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('login');
-	}
-	public function check()
-	{
 	    session_start();
 		$id=$this->input->post('id');
 		$psword=$this->input->post('psword');
