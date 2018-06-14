@@ -11,7 +11,7 @@ class Logout extends CI_Controller {
 		if (!isset($_SESSION['id']))
 		{
 			$msg="请先登录";
-			$this->load->view('WA',$msg);
+			$this->load->view('WA',array('msg'=>$msg));
 		}
 		else
 		{
