@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
    <meta charset="utf-8">
-    <title>火车票订票系统</title>
+    <title>查票结果</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
@@ -166,6 +166,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
   }
 </script>
+<style type="text/css">
+  body 
+  {
+    background: no-repeat;
+    background-image:url("http://chuantu.biz/t6/328/1528999320x-1404793154.jpg");
+    background-color:#cccccc;
+    background-size:100%;
+    width: 100%;
+    background-attachment: fixed;
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -185,9 +196,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
         </li>
       </div>
-      <div class="navbar-right navbar-nav nav">
-        <li class="dropdown">
-        <a href="<?php echo This_URL ?>/Login" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
+      <div class="navbar-right navbar-nav nav" id = "un_login">
+        <li>
+        <a href="<?php echo This_URL ?>/Login">
           登录/注册
         </a>
         </li>
@@ -199,9 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </nav>
-<div>
-  查询结果:
-</div>
+<div class="col-md-8 col-md-offset-2" style="background-color: rgba(248,248,255,0.3);padding: 15px; padding-top: 30px; height: 500px; overflow-y: auto;">
 <form action="<?php echo This_URL ?>/Ticket/Refund" method="post" row = "form">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "id" id = "refund_id">
   <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "refund_loc1">
@@ -213,16 +222,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <table id = "refund_ticket" class="table">
   </table>
 </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="text-align: center;">
 <a href="<?php echo This_URL ?>/Profile" class="btn btn-default">
   返回
 </a>
+</div>
 <script type="text/javascript">
   check_cookie();
   show_train();
 </script>
 <footer class="footer navbar-fixed-bottom">
     <div class="container">
-    <div style = "text-align: center">
+    <div style = "text-align: center; color: white;">
     <p>当前时间
     <script type="text/javascript">
         document.write(Date());

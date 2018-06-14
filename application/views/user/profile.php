@@ -53,6 +53,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         alert("phone number error");
         return false;
       }
+      x = document.forms["change_users"]["new_psword"].value;
+      var y = document.forms["change_users"]["re_new_psword"].value;
+      if (x != y)
+      {
+        alert("重复密码错误");
+        return false;
+      }
+      return true;
      }
      function show_users_train()
      {
@@ -87,7 +95,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.getElementById("go_to_admin").style.display = "inline";
       }
      }
+  function get_catalog()
+  {
+    var ans = '';
+    var find = document.getElementsByName("catalog_");
+    for (var i = 0; i < 8; i++)
+    {
+      if (find[i].checked)
+        ans = ans + find[i].value;
+    }
+    document.getElementById("catalog").value = ans;
+    return true;
+  }
    </script>
+<style type="text/css">
+  body 
+  {
+    background: no-repeat;
+    background-image:url("http://chuantu.biz/t6/328/1528999320x-1404793154.jpg");
+    background-color:#cccccc;
+    background-size:100%;
+    width: 100%;
+    background-attachment: fixed;
+  }
+</style>
 </head>
 <body>
 
@@ -95,11 +126,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a>
-    </div>
-    <div>
         <ul class="nav navbar-nav">
-            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -107,33 +135,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo This_URL ?>/Profile">profile</a></li>
-          <li><a href="<?php echo This_URL ?>/Logout">logout</a></li>
+          <li><a href="<?php echo This_URL ?>/Profile">用户</a></li>
+          <li><a href="<?php echo This_URL ?>/Logout">登出</a></li>
         </ul>
         </li>
       </div>
-      <div class="navbar-right navbar-nav nav">
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
-          登录
+      <div class="navbar-right navbar-nav nav" id = "un_login">
+        <li>
+        <a href="<?php echo This_URL ?>/Login">
+          登录/注册
         </a>
-        <ul class="dropdown-menu">
-          <form action = "<?php echo This_URL ?>/Login">
-          <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
-          <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
-          <li>
-            <button type="submit" class="btn btn-default">登录</button>
-            <a href="<?php echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
-          </form>
-        </ul>
         </li>
       </div>
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        </ul>
+    </div>
   </div>
 </nav>
 <script type="text/javascript">
   check_cookie();
 </script>
-<div class="col-md-offset-2">
+<div class="col-md-8 col-md-offset-2" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 20px; border-width: 0px; top: 50px; height: 450px;">
+<div>
     <button type="button" class="btn btn-default" onclick = "show_users_data()">
       个人信息
     </button>
@@ -147,43 +172,118 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       管理员页面
     </a>
 </div>
-<div class="col-md-offset-2">
+<div class="col-md-offset-1" style="color: white; padding-top: 30px; font-size: 20px;">
   <div id = users_data>
     <p>
       姓名：<?php echo $name;?>
     </p>
+    <br>
     <p>
       邮箱：<?php echo $email;?>
     </p>
+    <br>
     <p>
       电话：<?php echo $phone;?>
     </p>
   </div>
 </div>
-<div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Profile/query_order" method="get" row = "form" name = "ticket_check" id = "ticket_check">
+    <div style="text-align: center; padding-top: 50px;">
+<form action="<?php echo This_URL ?>/Profile/query_order" method="get" row = "form" name = "ticket_check" id = "ticket_check"  onsubmit = "get_catalog()">
 <div class="form-inline">
-  <input type = "text" class = "form-control" placeholder="类别" required="required" name = "catalog">
-  <input type = "text" class = "form-control" placeholder="日期" required="required" name = "date">
+  <p class="col-md-4" style="color: white;">日期:</p>
+    <div class="col-md-6">
+    <input type = "text" class = "form-control" required="required" name = "date">
+    </div>
+    <input type = "hidden"  required="required" name = "catalog" id = "catalog">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="col-md-4" style="color: white;">车次类型:</p>
+    <div class="col-md-6">
+    <input type = "checkbox" name = "catalog_" value = "C" checked="checked">C
+    <input type = "checkbox" name = "catalog_" value = "D" checked="checked">D
+    <input type = "checkbox" name = "catalog_" value = "G" checked="checked">G
+    <input type = "checkbox" name = "catalog_" value = "Z" checked="checked">Z
+    <input type = "checkbox" name = "catalog_" value = "T" checked="checked">T
+    <input type = "checkbox" name = "catalog_" value = "K" checked="checked">K
+    <input type = "checkbox" name = "catalog_" value = "L" checked="checked">L
+    <input type = "checkbox" name = "catalog_" value = "O" checked="checked">O
+    <input type = "hidden" class = "form-control" required="required" name = "transnum" id = "transnum">
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   <button type="submit" class="btn btn-default">
     提交
   </button>
 </div>
 </form>
 </div>
-<div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Profile/change" method="post" row = "form" name = "change_users" id = "change_users">
-<div class="form-inline">
-  <input type = "text" class = "form-control" placeholder="姓名" required="required" name = "name">
-  <input type = "password" class = "form-control" placeholder="原密码" required="required" name = "psword">
-  <input type = "password" class = "form-control" placeholder="新密码" required="required" name = "new_psword">
-  <input type = "text" class = "form-control" placeholder="邮箱" required="required" name = "email">
-  <input type = "text" class = "form-control" placeholder="电话" required="required" name = "phone">
+<div style = "text-align: center;">
+<form action="<?php echo This_URL ?>/Profile/change" method="post" row = "form" name = "change_users" id = "change_users" onsubmit = "check()">
+  <div class="col-md-4" style="color: white;">
+  <p>姓名:</p>
+</div>
+  <div class="col-md-6">
+  <input type = "text" class = "form-control" required="required" name = "name">
+  </div>
+  <br>
+  <br>
+  <div class="col-md-4" style="color: white;">
+  <p>原密码:</p>
+</div>
+  <div class="col-md-6">
+  <input type = "password" class = "form-control" required="required" name = "psword">
+</div>
+  <br>
+  <br>
+  <div class="col-md-4" style="color: white;">
+  <p>新密码:</p>
+</div>
+  <div class="col-md-6">
+  <input type = "password" class = "form-control" required="required" name = "new_psword">
+</div>
+  <br>
+  <br>
+  <div class="col-md-4" style="color: white;">
+  <p>重复新密码:</p>
+</div>
+  <div class="col-md-6">
+  <input type = "password" class = "form-control" required="required" name = "re_new_psword">
+</div>
+  <br>
+  <br>
+  <div class="col-md-4" style="color: white;">
+  <p>邮箱:</p>
+</div>
+  <div class="col-md-6">
+  <input type = "text" class = "form-control" required="required" name = "email">
+</div>
+  <br>
+  <br>
+  <div class="col-md-4" style="color: white;">
+  <p>电话号码:</p>
+</div>
+  <div class="col-md-6">
+  <input type = "text" class = "form-control" required="required" name = "phone">
+  <br>
+  <br>
+</div>
+<br>
+<br>
+<br>
+<br>
   <button type="submit" class="btn btn-default">
     提交
   </button>
-</div>
 </form>
+</div>
 </div>
 <script type="text/javascript">
   Init();
@@ -191,7 +291,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
-    <div style = "text-align: center">
+    <div style = "text-align: center ;color:white;">
     <p>当前时间
     <script type="text/javascript">
         document.write(Date());
