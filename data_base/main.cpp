@@ -313,6 +313,11 @@ void add_to_output(int x,int t=0)
 	{
 		char a[20];
 		int l=0;
+		if (x<0)
+		{
+			a[++l]='-';
+			x=-x;
+		}
 		if (x==0)
 		{
 			a[++l]='0';
