@@ -79,10 +79,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = new Array();
-    y0[0]=<?php echo $transfer['ticket1']['num']?>
+    y0[0]=<?php echo $transfer['ticket']['num']?>
     y0[1]=new Array();
     <?php $j=0;
-  foreach ($transfer['ticket1'] as $value) {
+  foreach ($transfer['ticket'] as $value) {
     echo "y0[1][$j]=new Array();";
       echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
       echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
@@ -118,10 +118,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = Array();
-    y0[0]=<?php echo $transfer['ticket2']['num']?>
+    y0[0]=<?php echo $transfer['ticket']['num']?>
     y0[1]=new Array();
     <?php $j=0;
-  foreach ($transfer['ticket2'] as $value) {
+  foreach ($transfer['ticket'] as $value) {
     echo "y0[1][$j]=new Array();";
       echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
       echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
@@ -141,15 +141,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       }
     $j++;
     } ?>
-    x = y0[1][0][0];
+    x = y0[1][1][0];
     document.getElementById("book_id").value = x;
-    x = y0[1][0][1];
+    x = y0[1][1][1];
     document.getElementById("book_loc1").value = x;
-    x = y0[1][0][4];
+    x = y0[1][1][4];
     document.getElementById("book_loc2").value = x;
-    x = y0[1][0][8][ticket_case][0];
+    x = y0[1][1][8][ticket_case][0];
     document.getElementById("book_ticket_kind").value = x;
-    x = y0[1][0][2];
+    x = y0[1][1][2];
     document.getElementById("book_date").value = x;
     return true;
   }
@@ -246,10 +246,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     else
     {
       var y0 = new Array();
-      y0[0]=<?php echo $transfer['ticket1']?>
+      y0[0]=<?php echo $transfer['ticket']['num']?>
       y0[1]=new Array();
       <?php $j=0;
-  foreach ($transfer['ticket1'] as $value) {
+  foreach ($transfer['ticket'] as $value) {
     echo "y0[1][$j]=new Array();";
       echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
       echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
@@ -324,63 +324,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.getElementById("book_train").appendChild(A);
         A = document.createElement("tr");
       }
-      y0[0]=<?php echo $transfer['ticket2']?>
-      y0[1]=new Array();
-      <?php $j=0;
-  foreach ($transfer['ticket2'] as $value) {
-    echo "y0[1][$j]=new Array();";
-      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
-      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
-      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
-      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
-      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
-      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
-      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
-      echo "y0[1][$j][7]=",$value['num_price'];
-      echo "y0[1][$j][8]=new Array();";
-      for ($i=0;$i<$value['num_price'];$i++)
-      {
-        echo "y0[1][$j][8][$i]=new Array();";
-        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
-        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
-        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
-      }
-    $j++;
-    } ?>
       var A = document.createElement("tr");
       var B = document.createElement("td");
-      B.innerHTML = y0[1][0][0];
+      B.innerHTML = y0[1][1][0];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][0][1];
+      B.innerHTML = y0[1][1][1];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][0][2];
+      B.innerHTML = y0[1][1][2];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][0][3];
+      B.innerHTML = y0[1][1][3];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][0][4];
+      B.innerHTML = y0[1][1][4];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][0][5];
+      B.innerHTML = y0[1][1][5];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][0][6];
+      B.innerHTML = y0[1][1][6];
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
-      for (var i = 0; i < y0[1][0][7]; i++)
+      for (var i = 0; i < y0[1][1][7]; i++)
       {
         A = document.createElement("tr");
         B = document.createElement("td");
-        B.innerHTML = y0[1][0][8][0];
+        B.innerHTML = y0[1][1][8][0];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0[1][0][8][1];
+        B.innerHTML = y0[1][1][8][1];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0[1][0][8][2];
+        B.innerHTML = y0[1][1][8][2];
         A.appendChild(B);
         B = document.createElement("td");
         var C = document.createElement("input");
