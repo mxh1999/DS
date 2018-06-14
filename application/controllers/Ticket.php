@@ -22,6 +22,11 @@ class Ticket extends CI_Controller {
 		if ($transnum === 1)
 		{
 			$ans1= $this->Ticket_model->query_transfer($loc1,$loc2,$date,$catalog);
+			if ($ans1 === 0)
+			{
+				$transnum=0;
+				$ans1=array();
+			}
 		}
 		$this->load->view('query/result',array('transnum' => $transnum,'straight' => $ans,'transfer' => $ans1));
 	}
