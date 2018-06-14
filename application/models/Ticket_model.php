@@ -30,12 +30,15 @@ class Ticket_model extends CI_Model {
 		}
 		$out = socket_read($socket,8192);
 		while (!isset($out))	$out = socket_read($socket,8192);
+		var_dump($out);
 		$ans=array('num'=>intval($out),'ticket'=>array());
 		for ($i = 0;$i < $ans['num'];$i++)
 		{
 			$out = socket_read($socket,8192);
 			while (!isset($out))	$out = socket_read($socket,8192);
+			var_dump($out);
 			$tmp=explode(" ",$out);
+			var_dump($tmp);
 			$ans['ticket'][$i]=array('train_id'=>$tmp[0],'loc1'=>$tmp[1],'date_from'=>$tmp[2],'time_from'=>$tmp[3],'loc2'=>$tmp[4],'date_to'=>$tmp[5],'time_to'=>$tmp[6],'num_price'=>0,'Price'=>array());
 			$ans['ticket'][$i]['num_price']=(count($tmp)-7)/3;
 			for ($j=0;$j<$ans['ticket'][$i]['num_price'];$j++)
@@ -44,6 +47,8 @@ class Ticket_model extends CI_Model {
 			}
 		}
 		socket_close($socket);
+		var_dump($ans);
+		die();
 		return $ans;
 	}
 	/**
