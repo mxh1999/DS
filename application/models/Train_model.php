@@ -34,6 +34,8 @@ class Train_model extends CI_Model {
 			for ($j = 0; $j< $num_price;$j++)
 				$in .= ' ' . $Price['num'][$i][$j];
 			$in .= '#';
+			var_dump($in);
+			die(0);
 			if (!socket_write($socket ,$in, strlen($in)))
 			{
 				socket_close($socket);
