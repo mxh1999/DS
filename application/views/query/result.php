@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = new Array();
-    y0[0]=<?php echo $straight['num']?>
+    y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = new Array();
-    y0[0]=<?php echo $straight['num']?>
+    y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = Array();
-    y0[0]=<?php echo $straight['num']?>
+    y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -159,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if (x === 0)
     {
       var y0 = new Array();
-      y0[0]=<?php echo $straight['num']?>
+      y0[0]=<?php echo $straight['num']?>;
       y0[1]=new Array();
       <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -316,7 +316,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   重新查询
 </a>
 <script type="text/javascript">
-  check_cookie();
   show_train();
 </script>
 <footer class="footer navbar-fixed-bottom">
