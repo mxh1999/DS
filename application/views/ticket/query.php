@@ -44,17 +44,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function get_catalog()
   {
     var ans = '';
+    var find = document.getElementsByName("catalog_");
     for (var i = 0; i < 8; i++)
     {
-      if (document.getElementById("catalog_" + i).value != '')
-        ans = ans + document.getElementById("catalog_" + i).value;
-    alert(document.getElementById("catalog_" + i).value);
+      if (find[i].checked)
+        ans = ans + find[i].value;
     }
     document.getElementById("catalog").value = ans;
-    alert(ans);
     return true;
   }
 </script>
+<style type="text/css">
+  body 
+  {
+    background: no-repeat;
+    background-image:url("http://chuantu.biz/t6/328/1528999320x-1404793154.jpg");
+    background-color:#cccccc;
+    background-size:100%;
+    width: 100%;
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -99,36 +108,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   check_cookie();
 </script>
-<div class="col-md-offset-4">
-<div class="form-inline">
+<div class="col-md-4 col-md-offset-4" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding-top: 50px; border-width: 0px; top: 50px; height: 350px; text-align: center;">
   <form action="<?php echo This_URL ?>/Ticket/query" method="get" row = "form" onsubmit = "get_catalog()">
-    <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
-    <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
-    <br>
-    <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
-    <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "catalog" id = "catalog">
-    <input type = "checkbox" id = "catalog_0" value="C">C
-    <input type = "checkbox" id = "catalog_1" value="D">D
-    <input type = "checkbox" id = "catalog_2" value="G">G
-    <input type = "checkbox" id = "catalog_3" value="Z">Z
-    <input type = "checkbox" id = "catalog_4" value="T">T
-    <input type = "checkbox" id = "catalog_5" value="K">K
-    <input type = "checkbox" id = "catalog_6" value="L">L
-    <input type = "checkbox" id = "catalog_7" value="O">O
-    <input type = "hidden" class = "form-control" required="required" name = "transnum" id = "transnum">
-    <div class="radio">
-    <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="transnum_1()">有中转站
-    </label>
-    <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="transnum_0()">无中转站
-    </label>
+    <div >
+    <p class="col-md-4" style="color: white;">出发地:</p>
+    <div class="col-md-6">
+    <input type = "text" placeholder="出发地" required="required" name = "loc1">
     </div>
+    <br>
+    <br>
+    <br>
+      <p class="col-md-4" style="color: white;">目的地:</p>
+    <div class="col-md-6">
+    <input type = "text" required="required" name = "loc2">
+    </div>
+    <br>
+    <br>
+    <br>
+    <p class="col-md-4" style="color: white;">日期:</p>
+    <div class="col-md-6">
+    <input type = "text" placeholder="时间" required="required" name = "date">
+    </div>
+    <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "catalog" id = "catalog">
+    <br>
+    <br>
+    <br>
+    <p class="col-md-4" style="color: white;">车次类型:</p>
+    <div class="col-md-6">
+    <input type = "checkbox" name = "catalog_" value = "C" checked="checked">C
+    <input type = "checkbox" name = "catalog_" value = "D" checked="checked">D
+    <input type = "checkbox" name = "catalog_" value = "G" checked="checked">G
+    <input type = "checkbox" name = "catalog_" value = "Z" checked="checked">Z
+    <input type = "checkbox" name = "catalog_" value = "T" checked="checked">T
+    <input type = "checkbox" name = "catalog_" value = "K" checked="checked">K
+    <input type = "checkbox" name = "catalog_" value = "L" checked="checked">L
+    <input type = "checkbox" name = "catalog_" value = "O" checked="checked">O
+    <input type = "hidden" class = "form-control" required="required" name = "transnum" id = "transnum">
+    </div>
+    <br>
+    <br>
+    <br>
   <button type="submit" class="btn btn-default">
     提交
   </button>
+  </div>
   </form>
-</div>
 </div>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
