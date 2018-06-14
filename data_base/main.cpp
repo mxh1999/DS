@@ -703,6 +703,7 @@ int main() {
                 K.train_kind = catalog[cnt];
                 it = ticket.lowerbound(K);
                 while (true) {
+					if (!ticket.isValid(it)) break;
                     tk_key KK = it.Record();
                     if (KK.train_kind == K.train_kind && strcmp(KK.loc1, K.loc1) == 0 &&
                         strcmp(KK.loc2, K.loc2) == 0 && ticket.isValid(it)) {
@@ -801,6 +802,8 @@ int main() {
                 it1 = ticket.lowerbound(K1);
                 it2 = ticket.lowerbound(K2);
                 while (true) {
+					if (!ticket.isValid(it1))	break;
+					if (!ticket.isValid(it2))	break;
                     tk_key KK1 = it1.Record();
                     tk_key KK2 = it2.Record();
                     //接下来的while循环是为了找到一个相同的中转站， KK1指的是A到某个中转站中第一个train_id, KK2指的是C到某个中转站中的第一个train_id;
@@ -1083,6 +1086,7 @@ int main() {
                     K.train_kind = catalog[b];
                     it = User.lowerbound(K);
                     while (true) {
+						if (!User.isValid(it))	break;
                         user_order_key k = it.Record();
                         tk_order tmp = it.Value();
                         if (k.train_kind == K.train_kind && User.isValid(it)) {
