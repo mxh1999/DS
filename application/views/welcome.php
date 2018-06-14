@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function check_cookie ()
   {
     var x = "<?php if (isset($_COOKIE['user'])) {echo $_COOKIE['user'];}?>";
+    x = "";
     if (x != "")
     {
       document.getElementById("user_name").innerHTML = x;
@@ -42,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     background-color:#cccccc;
     background-size:100%;
     width: 100%;
+    background-attachment: fixed;
   }
 </style>
 </head>
@@ -63,9 +65,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
         </li>
       </div>
-      <div class="navbar-right navbar-nav nav">
-        <li class="dropdown">
-        <a href="<?php echo This_URL ?>/Login" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
+      <div class="navbar-right navbar-nav nav" id = "un_login">
+        <li>
+        <a href="<?php echo This_URL ?>/Login">
           登录/注册
         </a>
         </li>

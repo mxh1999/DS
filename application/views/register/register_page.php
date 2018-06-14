@@ -58,6 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     background-color:#cccccc;
     background-size:100%;
     width: 100%;
+    background-attachment: fixed;
   }
 </style>
 </head>
@@ -77,14 +78,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav>
 <div class="col-md-4 col-md-offset-4" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
-  <a href="<?php echo This_URL ?>Login"><p style="color: white; padding: 10px;background-color: rgba(248,248,255,0); text-align: center;font-size: 20px;" class="col-md-6">
+  <a href="<?php echo This_URL ?>/Login"><p style="color: white; padding: 10px;background-color: rgba(248,248,255,0); text-align: center;font-size: 20px;" class="col-md-6">
     登录
   </p></a>
   <p style="color: white; padding: 10px;background-color: rgba(248,248,255,0.4);text-align: center;font-size: 20px;" class="col-md-6">
     注册
   </p>
   <div style="background-color: rgba(248,248,255,0.4);height: 301px;margin-top: 49px; padding-top: 30px; text-align: center;">
-    <form action = "<?php echo This_URL ?>Register/check">
+    <form action = "<?php echo This_URL ?>/Register/check">
     <p class="col-md-3 col-md-offset-1">
       用户ID:
     </p>

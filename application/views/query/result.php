@@ -179,6 +179,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
   }
 </script>
+<style type="text/css">
+  body 
+  {
+    background: no-repeat;
+    background-image:url("http://chuantu.biz/t6/328/1528999320x-1404793154.jpg");
+    background-color:#cccccc;
+    background-size:100%;
+    width: 100%;
+    background-attachment: fixed;
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -188,42 +199,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
-        </ul>
-    </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo This_URL ?>/Profile">profile</a></li>
-          <li><a href="<?php echo This_URL ?>/Logout">logout</a></li>
+          <li><a href="<?php echo This_URL ?>/Profile">用户</a></li>
+          <li><a href="<?php echo This_URL ?>/Logout">登出</a></li>
         </ul>
         </li>
       </div>
-      <div class="navbar-right navbar-nav nav">
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
-          登录
+      <div class="navbar-right navbar-nav nav" id = "un_login">
+        <li>
+        <a href="<?php echo This_URL ?>/Login">
+          登录/注册
         </a>
-        <ul class="dropdown-menu">
-          <form action = "<?php echo This_URL ?>/Login" method="post" row = "form">
-          <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
-          <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
-          <li>
-            <button type="submit" class="btn btn-default">登录</button>
-            <a href="<?php echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
-          </form>
-        </ul>
         </li>
       </div>
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        </ul>
+    </div>
   </div>
 </nav>
-<div>
-  查询结果:
-</div>
+<div class="col-md-8 col-md-offset-2" style="background-color: rgba(248,248,255,0.3);padding: 15px; padding-top: 30px; height: 500px; overflow-y: auto;">
 <form action="<?php echo This_URL ?>/Ticket/book" method="post" row = "form">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "train_id" id = "book_id">
   <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "book_loc1">
@@ -235,16 +235,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <table id = "book_train" class="table">
   </table>
 </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="text-align: center;">
 <a href="<?php echo This_URL ?>/Ticket" class="btn btn-default">
   重新查询
 </a>
+</div>
 <script type="text/javascript">
   show_train();
   check_cookie();
 </script>
 <footer class="footer navbar-fixed-bottom">
     <div class="container">
-    <div style = "text-align: center">
+    <div style = "text-align: center;color: white;">
     <p>当前时间
     <script type="text/javascript">
         document.write(Date());
