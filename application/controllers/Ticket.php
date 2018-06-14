@@ -16,19 +16,8 @@ class Ticket extends CI_Controller {
 		$loc2 = $this->input->get('loc2');
 		$date = $this->input->get('date');
 		$catalog = $this->input->get('catalog');
-		$transnum = intval($this->input->get('transnum'));
 		$ans = $this->Ticket_model->query_ticket($loc1,$loc2,$date,$catalog);
-		$ans1 = array();
-		if ($transnum === 1)
-		{
-			$ans1= $this->Ticket_model->query_transfer($loc1,$loc2,$date,$catalog);
-			if ($ans1 === 0)
-			{
-				$transnum=0;
-				$ans1=array();
-			}
-		}
-		$this->load->view('query/result',array('transnum' => $transnum,'straight' => $ans,'transfer' => $ans1));
+		$this->load->view('query/result',array('straight' => $ans));
 	}
 	public function book()
 	{
