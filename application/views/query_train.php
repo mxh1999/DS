@@ -35,6 +35,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
   function show_train()
   {
+    var y0 = new Array();
+    y0[0] = <?php echo $train_id?>;
+    y0[1] = <?php echo $catalog?>;
+    y0[2] =<?php echo $num_station?>;
+    y0[3] = <?php echo $num_price?>;
+    y0[4] = new Array();
+    y0[5] = new Array();
+    <? php
+      $j= 0;
+      foreach ($Price['name'] as $value) {
+       
+      }
+    ?>
     var A = document.createElement("p");
     A.innerHTML = "车次" + "<?php echo $train_id; ?>" + " 类型" + "<?php echo $catalog; ?>";
     document.getElementById("train").appendChild(A);
