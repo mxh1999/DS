@@ -69,7 +69,7 @@ class Train extends CI_Controller {
 						$this->load->view('RE');
 					}	else
 					{
-						$this->load->view('goto',array('url'=>"This_URL/Admin"));
+						$this->load->view('goto',array('url'=> This_URL.'/Admin'));
 					}
 				}
 			}
@@ -134,7 +134,7 @@ class Train extends CI_Controller {
 						$this->load->view('RE');
 					}	else
 					{
-						$this->load->view('goto',array('url'=>"This_URL/Admin"));
+						$this->load->view('goto',array('url'=> This_URL.'/Admin'));
 					}
 				}
 			}
@@ -177,7 +177,7 @@ class Train extends CI_Controller {
 						$this->load->view('WA',array('msg'=>$msg));
 					}	else
 					{
-						$this->load->view('goto',array('url'=>"This_URL/Admin"));
+						$this->load->view('goto',array('url'=> This_URL.'/Admin'));
 					}
 				}
 			}

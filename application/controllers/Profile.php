@@ -65,7 +65,7 @@ class Profile extends CI_Controller {
 					$this->load->view('RE');
 				} else
 				{
-					$this->load->view('goto',array('url'=>"This_URL/Profile"));
+					$this->load->view('goto',array('url'=>This_URL.'/Profile'));
 				}
 			}
 		}

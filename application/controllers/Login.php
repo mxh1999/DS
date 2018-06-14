@@ -39,7 +39,7 @@ class Login extends CI_Controller {
 				{
 					$_SESSION['id']=$id;
 					$this->input->set_cookie("user",$userdata['name'],1800);
-					$this->load->view('goto',array('url'=>"This_URL"));
+					$this->load->view('goto',array('url'=>This_URL));
 				}
 			}
 		}

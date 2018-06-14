@@ -19,7 +19,7 @@ class Logout extends CI_Controller {
 			$this->input->set_cookie('user','',0);
 			$this->input->set_cookie(session_name(),'',0);
 			session_destroy();
-			$this->load->view('goto',array('url'=>"This_URL"));
+			$this->load->view('goto',array('url'=>This_URL));
 		}
 	}
 }
