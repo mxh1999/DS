@@ -118,16 +118,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       B.innerHTML = y0[1][i][2];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0[1][i][3];
-      A.appendChild(B);
-      B = document.createElement("td");
       B.innerHTML = y0[1][i][4];
       A.appendChild(B);
       B = document.createElement("td");
       B.innerHTML = y0[1][i][5];
-      A.appendChild(B);
-      B = document.createElement("td");
-      B.innerHTML = y0[1][i][6];
       A.appendChild(B);
       document.getElementById("refund_ticket").appendChild(A);
       for (var j = 0; j < y0[1][i][7]; j++)
