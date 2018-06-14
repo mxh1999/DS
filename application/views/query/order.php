@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
       echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
       echo "y0[1][$j][7]=",$value['num_price'];
-      echo "y0[1][$j][8]=new Array();"
+      echo "y0[1][$j][8]=new Array();";
       for ($i=0;$i<$value['num_price'];$i++)
       {
         echo "y0[1][$j][8][$i]=new Array();";
@@ -93,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
       echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
       echo "y0[1][$j][7]=",$value['num_price'];
-      echo "y0[1][$j][8]=new Array();"
+      echo "y0[1][$j][8]=new Array();";
       for ($i=0;$i<$value['num_price'];$i++)
       {
         echo "y0[1][$j][8][$i]=new Array();";
