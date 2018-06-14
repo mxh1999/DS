@@ -31,13 +31,15 @@ class Ticket extends CI_Controller {
 		else
 		{
 			$id=$_SESSION['id'];
-			$num=$this->input->post('num');
+			$ticket_num=$this->input->post('num');
 			$train_id=$this->input->post('train_id');
 			$loc1=$this->input->post('loc1');
 			$loc2=$this->input->post('loc2');
 			$date=$this->input->post('date');
 			$ticket_kind=$this->input->post('ticket_kind');
-			$ok=$this->Ticket_model->buy($id,$num,$train_id,$loc1,$loc2,$date,$ticket_kind);
+			var_dump($ticket_num);
+			die();
+			$ok=$this->Ticket_model->buy($id,$train_id,$loc1,$loc2,$date,$ticket_kind,$ticket_num);
 			if ($ok === -1)
 			{
 				$msg= "服务器繁忙，请稍后再试";
