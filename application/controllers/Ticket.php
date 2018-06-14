@@ -17,6 +17,9 @@ class Ticket extends CI_Controller {
 		$date = $this->input->get('date');
 		$catalog = $this->input->get('catalog');
 		$transnum = $this->input->get('transnum');
+		var_dump($loc1);
+		var_dump($loc2);
+		var_dump($transnum);
 		$ans = $this->Ticket_model->query_ticket($loc1,$loc2,$date,$catalog);
 		$ans1 = array();
 		if ($transnum)
