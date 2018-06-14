@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           C.setAttribute("type","text");
           C.setAttribute("class","form-control");
           C.setAttribute("name", "num");
-          C.setAttribute("id", "num_" + i);
+          C.setAttribute("id", "num_" + i + "_" + j);
           C.setAttribute("placeholder", "购买票数");
           B.appendChild(C);
           A.appendChild(B);
