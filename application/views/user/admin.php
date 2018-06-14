@@ -603,7 +603,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "check_train">
 <div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Ticket/query" method="post" row = "form" name = "users">
+<form action="<?php echo This_URL ?>/Train/query" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
