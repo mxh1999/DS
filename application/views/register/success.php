@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 <div style="text-align: center">
   <h1 id = "message_to_user" name = "message_to_user">
-    <?php echo $msg?>
+    注册成功，你的用户ID为 <?php echo $id; ?>.
 </h1>
   <br>
   <a href="<?php echo This_URL ?>" role ="button" class="btn btn-default">
