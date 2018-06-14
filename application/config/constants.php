@@ -87,4 +87,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('DATABASE_IP', '127.0.0.1');
 define('DATABASE_PORT',7000);
 define('This_URL','http://47.106.80.106/index.php');
-define('IMG_Path','/var/www/DS/applications/img/');
+define('IMG_Path','/var/www/DS/application/img/');
