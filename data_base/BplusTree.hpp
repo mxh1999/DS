@@ -332,6 +332,7 @@ public:
 		fidx.seekg(sizeof(int), ios::beg);
 		fidx.read(reinterpret_cast<char*>(&root), sizeof(int));
 		fidx.close();
+		if (root==0)	return iterator(dataname,0,0);
 		return lowerbound(x, root);
 	}
 
