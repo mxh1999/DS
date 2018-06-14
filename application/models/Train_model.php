@@ -17,8 +17,8 @@ class Train_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'add_train ' . $train_id . ' ' . $name . ' ' . $catalog . ' ' . $num_station;
-		for ($i = 0; $i < $num_station;$i++)
+		$in = 'add_train ' . $train_id . ' ' . $name . ' ' . $catalog . ' ' . $num_station . ' ' .$num_price;
+		for ($i = 0; $i < $num_price;$i++)
 		{
 			$in .= ' ' . $Price['name'][$i];
 		}
@@ -54,8 +54,8 @@ class Train_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'modify_train ' . $train_id . ' ' . $name . ' ' . $catalog . ' ' . $num_station;
-		for ($i = 0; $i < $num_station;$i++)
+		$in = 'modify_train ' . $train_id . ' ' . $name . ' ' . $catalog . ' ' . $num_station . ' ' .$num_price;
+		for ($i = 0; $i < $num_price;$i++)
 		{
 			$in .= ' ' . $Price['name'][$i];
 		}
