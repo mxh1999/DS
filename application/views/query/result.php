@@ -259,6 +259,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         A = document.createElement("tr");
       }
     }
+    if($(window).height()==$(document).height())
+    {
+      $("#time_footer").addClass("navbar-fixed-bottom");
+    }
+    else
+    {
+      $("#time_footer").removeClass(" navbar-fixed-bottom");
+    }
   }
 </script>
 </head>
