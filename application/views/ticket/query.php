@@ -41,6 +41,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     document.getElementById("transnum").value = 0;
   }
+  function get_catalog()
+  {
+    var ans = '';
+    for (var i = 0; i < 8; i++)
+    {
+      if (document.getElementById("catalog_" + i).value != '')
+        ans = ans + document.getElementById("catalog_" + i).value;
+    }
+    document.getElementById("catalog").value = ans;
+    alert(ans);
+    return true;
+  }
 </script>
 </head>
 <body>

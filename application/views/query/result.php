@@ -148,7 +148,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           var C = document.createElement("input");
           C.setAttribute("type","text");
           C.setAttribute("class","form-control");
-          C.setAttribute("name", "num_" + i + "_" + j);
           C.setAttribute("id", "num_" + i + "_" + j);
           C.setAttribute("placeholder", "购买票数");
           B.appendChild(C);
