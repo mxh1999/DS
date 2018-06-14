@@ -157,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           C = document.createElement("button");
           C.setAttribute("type", "submit");
           C.setAttribute("class", "btn btn-default");
-          C.setAttribute("onclick", "book_ticket_0(" + i + ")");
+          C.setAttribute("onclick", "book_ticket_0(" + i + "," + j + ")");
           C.innerHTML = "购票";
           B.appendChild(C);
           A.appendChild(B);
