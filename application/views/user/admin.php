@@ -518,8 +518,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
   <input type = "text" class = "form-control" placeholder="车名" required="required" name = "name">
   <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
-  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "num_staiton" id = "add_num_station">
-  <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "num_ticket" id = "add_num_ticket">
+  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "num_station" id = "add_num_station">
+  <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "num_price" id = "add_num_ticket">
   <button class="btn btn-default" type = "button" onclick="add_train_ticket_1(this);">
             输入车次及车票信息
   </button>
@@ -551,8 +551,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
   <input type = "text" class = "form-control" placeholder="车名" required="required" name = "name">
   <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
-  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "num_staiton" id = "change_num_station">
-  <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "num_ticket" id = "change_num_ticket">
+  <input type = "text" class = "form-control" placeholder="车站数目" required="required" name = "num_station" id = "change_num_station">
+  <input type = "text" class = "form-control" placeholder="车票种数" required="required" name = "num_price" id = "change_num_ticket">
   <button class="btn btn-default" type = "button" onclick="change_train_ticket_1(this);">
             输入车次及车票信息
   </button>
