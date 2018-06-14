@@ -313,9 +313,10 @@ void add_to_output(int x,int t=0)
 	{
 		char a[20];
 		int l=0;
+		bool fu=false;
 		if (x<0)
 		{
-			a[++l]='-';
+			fu=true;
 			x=-x;
 		}
 		if (x==0)
@@ -329,6 +330,7 @@ void add_to_output(int x,int t=0)
 				x/=10;
 			}
 		}
+		if (fu)	outbuf[len_out++]='-';
 		for (int i=l;i>=1;i--)
 			outbuf[len_out++]=a[i];
 	}
