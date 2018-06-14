@@ -155,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
   function show_train()
   {
-    var x = "<?php echo $transnum; ?>";
+    var x = 0;
     if (x === 0)
     {
       var y0 = new Array();
