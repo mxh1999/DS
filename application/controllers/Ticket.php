@@ -37,7 +37,7 @@ class Ticket extends CI_Controller {
 			$loc2=$this->input->post('loc2');
 			$date=$this->input->post('date');
 			$ticket_kind=$this->input->post('ticket_kind');
-			$ok=$this->Ticket_model->buy($id,$ticket_num,$train_id,$loc1,$loc2,$date,$ticket_kind);
+			$ok=$this->Ticket_model->buy($id,$train_id,$loc1,$loc2,$date,$ticket_kind,$ticket_num);
 			if ($ok === -1)
 			{
 				$msg= "服务器繁忙，请稍后再试";
