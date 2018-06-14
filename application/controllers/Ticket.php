@@ -28,6 +28,9 @@ class Ticket extends CI_Controller {
 				$ans1=array();
 			}
 		}
+		var_dump($ans);
+		var_dump($ans1);
+		die();
 		$this->load->view('query/result',array('transnum' => $transnum,'straight' => $ans,'transfer' => $ans1));
 	}
 	public function book()
