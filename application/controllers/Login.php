@@ -15,7 +15,8 @@ class Login extends CI_Controller {
 	    session_start();
 		$id=$this->input->post('id');
 		$psword=$this->input->post('psword');
-		
+		var_dump($id,$psword);
+		die();
 		$ok=$this->User_model->login($id,$psword);
 		if ($ok === -1)
 		{
