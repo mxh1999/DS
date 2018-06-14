@@ -39,9 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="container-fluid">
     <div class="navbar-header">
-        <ul class="nav navbar-nav">
-        <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
-        </ul>
+        <a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
@@ -85,6 +83,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   返回首页
   </a>
 </div>
+<script type="text/javascript">
+  check_cookie();
+</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">

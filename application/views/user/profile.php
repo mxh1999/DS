@@ -11,26 +11,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript">
     function check_cookie ()
-  {
-    var x = "<?php echo $_COOKIE['user']?>";
-    if (x != '')
     {
-      document.getElementById("user_name").innerHTML = x;
-      var A = document.createElement('b');
-      A.setAttribute("class","caret");
-      document.getElementById("user_name").appendChild(A);
-      document.getElementById("qqq").style.display = "visible";
-      document.getElementById("un_login").style.display = "none";
+      var x = "<?php echo $_COOKIE['user']?>";
+      if (x != '')
+      {
+        document.getElementById("user_name").innerHTML = x;
+        var A = document.createElement('b');
+        A.setAttribute("class","caret");
+        document.getElementById("user_name").appendChild(A);
+        document.getElementById("qqq").style.display = "visible";
+        document.getElementById("un_login").style.display = "none";
+      }
+      else
+      {
+        var A = document.createElement('b');
+        A.setAttribute("class","caret");
+        document.getElementById("un_login").appendChild(A);
+        document.getElementById("qqq").style.display = "none";
+        document.getElementById("un_login").style.display = "visible";
+      }
     }
-    else
-    {
-      var A = document.createElement('b');
-      A.setAttribute("class","caret");
-      document.getElementById("un_login").appendChild(A);
-      document.getElementById("qqq").style.display = "none";
-      document.getElementById("un_login").style.display = "visible";
-    }
-  }
      function check()
      {
       var x = document.forms["change_users"]["name"].value;
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "none";
       document.getElementById("users_data").style.display = "none";
-      var x = "<?php echo $privilege; ?>";
+      var x = "<?php echo $privilege ?>";
       if (x == 0)
       {
         document.getElementById("go_to_admin").style.display = "none";
@@ -134,20 +134,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   check_cookie();
 </script>
 <div class="col-md-offset-2">
-<div class="radio">
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_users_data()">个人信息
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_users_train()">查询个人订票情况
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="change_user()">修改个人信息
-  </label>
-  <label class = "radio-inline" id = "go_to_admin">
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="window.location.href = '<?php echo This_URL ?>/Admin'">管理员页面
-  </label>
-</div>
+    <button type="button" class="btn btn-default" onclick = "show_users_data()">
+      个人信息
+    </button>
+    <button type="button" class="btn btn-default" onclick = "show_users_train()">
+      查询个人订票情况
+    </button>
+    <button type="button" class="btn btn-default" onclick = "change_user()">
+      修改个人信息
+    </button>
+    <a href="<?php echo This_URL ?>/Admin" class = "btn-default btn" type = "button" id = "go_to_admin">
+      管理员页面
+    </a>
 </div>
 <div class="col-md-offset-2">
   <div id = users_data>
