@@ -73,84 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     document.getElementById("book_ticket_kind").value = x;
     x = y0[1][train_num][2];
     document.getElementById("book_date").value = x;
-    return true;
-  }
-  function book_ticket_1_1(ticket_case)
-  {
-    var x;
-    var y0 = new Array();
-    y0[0]=<?php echo $straight['num']?>;
-    y0[1]=new Array();
-    <?php $j=0;
-  foreach ($straight['ticket'] as $value) {
-    echo "y0[1][$j]=new Array();";
-      echo "y0[1][$j][0]=\"",$value['train_id'],"\";";
-      echo "y0[1][$j][1]=\"",$value['loc1'],"\";";
-      echo "y0[1][$j][2]=\"",$value['date_from'],"\";";
-      echo "y0[1][$j][3]=\"",$value['time_from'],"\";";
-      echo "y0[1][$j][4]=\"",$value['loc2'],"\";";
-      echo "y0[1][$j][5]=\"",$value['date_to'],"\";";
-      echo "y0[1][$j][6]=\"",$value['time_to'],"\";";
-      echo "y0[1][$j][7]=",$value['num_price'],";";
-      echo "y0[1][$j][8]=new Array();";
-      for ($i=0;$i<$value['num_price'];$i++)
-      {
-        echo "y0[1][$j][8][$i]=new Array();";
-        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\";";
-        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'],";";
-        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\";";
-      }
-    $j++;
-    } ?>
-    x = y0[1][0][0];
-    document.getElementById("book_id").value = x;
-    x = y0[1][0][1];
-    document.getElementById("book_loc1").value = x;
-    x = y0[1][0][4];
-    document.getElementById("book_loc2").value = x;
-    x = y0[1][0][8][ticket_case][0];
-    document.getElementById("book_ticket_kind").value = x;
-    x = y0[1][0][2];
-    document.getElementById("book_date").value = x;
-    return true;
-  }
-  function book_ticket_1_2(ticket_case)
-  {
-    var x;
-    var y0 = Array();
-    y0[0]=<?php echo $straight['num']?>;
-    y0[1]=new Array();
-    <?php $j=0;
-  foreach ($straight['ticket'] as $value) {
-    echo "y0[1][$j]=new Array();";
-     echo "y0[1][$j][0]=\"",$value['train_id'],"\";";
-      echo "y0[1][$j][1]=\"",$value['loc1'],"\";";
-      echo "y0[1][$j][2]=\"",$value['date_from'],"\";";
-      echo "y0[1][$j][3]=\"",$value['time_from'],"\";";
-      echo "y0[1][$j][4]=\"",$value['loc2'],"\";";
-      echo "y0[1][$j][5]=\"",$value['date_to'],"\";";
-      echo "y0[1][$j][6]=\"",$value['time_to'],"\";";
-      echo "y0[1][$j][7]=",$value['num_price'],";";
-      echo "y0[1][$j][8]=new Array();";
-      for ($i=0;$i<$value['num_price'];$i++)
-      {
-        echo "y0[1][$j][8][$i]=new Array();";
-        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\";";
-        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'],";";
-        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\";";
-      }
-    $j++;
-    } ?>
-    x = y0[1][1][0];
-    document.getElementById("book_id").value = x;
-    x = y0[1][1][1];
-    document.getElementById("book_loc1").value = x;
-    x = y0[1][1][4];
-    document.getElementById("book_loc2").value = x;
-    x = y0[1][1][8][ticket_case][0];
-    document.getElementById("book_ticket_kind").value = x;
-    x = y0[1][1][2];
-    document.getElementById("book_date").value = x;
+    alert(document.getElementById("book_id").value + "," + document.getElementById("book_loc1").value + "," + document.getElementById("book_loc2").value + "," + document.getElementById("book_ticket_kind").value + "," + document.getElementById("book_date").value + "," + document.getElementById("num_" + train_num).value);
     return true;
   }
   function show_train()
@@ -225,8 +148,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           var C = document.createElement("input");
           C.setAttribute("type","text");
           C.setAttribute("class","form-control");
-          C.setAttribute("required", "required");
           C.setAttribute("name", "num");
+          C.setAttribute("id", "num_" + i);
           C.setAttribute("placeholder", "购买票数");
           B.appendChild(C);
           A.appendChild(B);
@@ -317,6 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </a>
 <script type="text/javascript">
   show_train();
+  check_cookie();
 </script>
 <footer class="footer navbar-fixed-bottom">
     <div class="container">
