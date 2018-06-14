@@ -44,8 +44,6 @@ class Ticket_model extends CI_Model {
 			}
 		}
 		socket_close($socket);
-		var_dump($ans);
-		die();
 		return $ans;
 	}
 	/**
