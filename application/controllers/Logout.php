@@ -16,10 +16,8 @@ class Logout extends CI_Controller {
 		else
 		{
 			$_SESSION = array();
-			if (isset($_COOKIE['user']))
-				setcookie('user',"", time()-3600);
-			if (isset($_COOKIE[session_name()]))
-				setcookie(session_name(),"", time()-3600);
+			$this->input->set_cookie('user','',0);
+			$this->input->set_cookie(session_name(),'',0);
 			session_destroy();
 		}
 	}
