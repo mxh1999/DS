@@ -75,20 +75,20 @@ class Ticket_model extends CI_Model {
 			return $ans;
 		}
 		$tmp=explode(" ",$out);
-		$ans['ticket1'][$i]=array('train_id'=>$tmp[0],'loc1'=>$tmp[1],'date_from'=>$tmp[2],'time_from'=>$tmp[3],'loc2'=>$tmp[4],'date_to'=>$tmp[5],'time_to'=>$tmp[6],'num_price'=>0,'Price'=>array());
-		$ans['ticket1'][$i]['num_price']=(count($tmp)-7)/3;
-		for ($j=0;$j<$ans['ticket1'][$i]['num_price'];$j++)
+		$ans['ticket1']=array('train_id'=>$tmp[0],'loc1'=>$tmp[1],'date_from'=>$tmp[2],'time_from'=>$tmp[3],'loc2'=>$tmp[4],'date_to'=>$tmp[5],'time_to'=>$tmp[6],'num_price'=>0,'Price'=>array());
+		$ans['ticket1']['num_price']=(count($tmp)-7)/3;
+		for ($j=0;$j<$ans['ticket1']['num_price'];$j++)
 		{
-			$ans['ticket1'][$i]['Price'][$j]=array('kind'=>$tmp[6+3*$j+1],'num_left'=>intval($tmp[6+3*$j+2]),'num_price'=>$tmp[6+3*$j+3]);
+			$ans['ticket1']['Price'][$j]=array('kind'=>$tmp[6+3*$j+1],'num_left'=>intval($tmp[6+3*$j+2]),'num_price'=>$tmp[6+3*$j+3]);
 		}
 		$out = socket_read($socket,8192);
 		while (!isset($out))	$out = socket_read($socket,8192);
 		$tmp=explode(" ",$out);
-		$ans['ticket2'][$i]=array('train_id'=>$tmp[0],'loc1'=>$tmp[1],'date_from'=>$tmp[2],'time_from'=>$tmp[3],'loc2'=>$tmp[4],'date_to'=>$tmp[5],'time_to'=>$tmp[6],'num_price'=>0,'Price'=>array());
-		$ans['ticket2'][$i]['num_price']=(count($tmp)-7)/3;
-		for ($j=0;$j<$ans['ticket2'][$i]['num_price'];$j++)
+		$ans['ticket2']=array('train_id'=>$tmp[0],'loc1'=>$tmp[1],'date_from'=>$tmp[2],'time_from'=>$tmp[3],'loc2'=>$tmp[4],'date_to'=>$tmp[5],'time_to'=>$tmp[6],'num_price'=>0,'Price'=>array());
+		$ans['ticket2']['num_price']=(count($tmp)-7)/3;
+		for ($j=0;$j<$ans['ticket2']['num_price'];$j++)
 		{
-			$ans['ticket2'][$i]['Price'][$j]=array('kind'=>$tmp[6+3*$j+1],'num_left'=>intval($tmp[6+3*$j+2]),'num_price'=>$tmp[6+3*$j+3]);
+			$ans['ticket2']['Price'][$j]=array('kind'=>$tmp[6+3*$j+1],'num_left'=>intval($tmp[6+3*$j+2]),'num_price'=>$tmp[6+3*$j+3]);
 		}
 		socket_close($socket);
 		return $ans;
