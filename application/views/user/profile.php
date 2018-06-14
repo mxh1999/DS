@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("change_users").style.display = "none";
       document.getElementById("users_data").style.display = "none";
       var x = "<?php echo $privilege; ?>";
-      if (x == 0)
+      if (x == 1)
       {
         document.getElementById("go_to_admin").style.display = "none";
       }
