@@ -545,7 +545,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 <div name = "change_train" id = "change_train">
-<form action="<?php echo This_URL ?>/Ticket/modify" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()">
+<form action="<?php echo This_URL ?>/Train/modify" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()">
 <div class="col-md-offset-2">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
@@ -579,7 +579,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "open_train">
 <div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Ticket/sale" method="post" row = "form"  name = "users">
+<form action="<?php echo This_URL ?>/Train/sale" method="post" row = "form"  name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -591,7 +591,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <div id = "delete_train">
 <div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Ticket/erase" method="post" row = "form" name = "users">
+<form action="<?php echo This_URL ?>/Train/erase" method="post" row = "form" name = "users">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
