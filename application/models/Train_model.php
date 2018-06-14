@@ -30,7 +30,7 @@ class Train_model extends CI_Model {
 		}
 		for ($i = 0;$i < $num_station;$i++)
 		{
-			$in = Station['name'][$i] . ' ' . Station['arr'][$i] . ' ' . Station['sta'][$i] . ' ' . Station['sto'][$i];
+			$in = $Station['name'][$i] . ' ' . $Station['arr'][$i] . ' ' . $Station['sta'][$i] . ' ' . $Station['sto'][$i];
 			for ($j = 0; $j< $num_price;$j++)
 				$in .= ' ' . $Price['num'][$i][$j];
 			$in .= '#';
@@ -69,7 +69,7 @@ class Train_model extends CI_Model {
 		}
 		for ($i = 0;$i < $num_station;$i++)
 		{
-			$in = Station['name'][$i] . ' ' . Station['arr'][$i] . ' ' . Station['sta'][$i] . ' ' . Station['sto'][$i];
+			$in = $Station['name'][$i] . ' ' . $Station['arr'][$i] . ' ' . $Station['sta'][$i] . ' ' . $Station['sto'][$i];
 			for ($j = 0; $j< $num_price;$j++)
 				$in .= ' ' . $Price['num'][$i][$j];
 			$in .= '#';
