@@ -38,17 +38,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
   function book_ticket_0(train_num, ticket_case)
   {
-    var y = "<?php echo $straight['ticket']?>";
     var x;
-    x = y[train_num]['train_id'];
+    x = "<?php echo $straight['ticket'][train_num]['train_id']?>";
     document.getElementById("book_id").value = x;
-    x = y[train_num]['loc1'];
+    x = "<?php echo $straight['ticket'][train_num]['loc1']?>";
     document.getElementById("book_loc1").value = x;
-    x = y[train_num]['loc2'];
+    x = "<?php echo $straight['ticket'][train_num]['loc2']?>";
     document.getElementById("book_loc2").value = x;
-    x = y[train_num]['Price'][ticket_case]['kind'];
+    x = "<?php echo $straight['ticket'][train_num]['Price'][ticket_case]['kind']?>";
     document.getElementById("book_ticket_kind").value = x;
-    x = y[train_num]['data_from'];
+    x = "<?php echo $straight['ticket'][train_num]['data_from']?>";
     document.getElementById("book_date").value = x;
     return true;
   }

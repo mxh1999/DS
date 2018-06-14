@@ -39,59 +39,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function refund_ticket(train_num, ticket_case)
   {
     var x;
-    var y = "<?php echo $ans['ticket'] ?>";
-    x = y[train_num]['id'];
+    x = "<?php echo $ans['ticket'][train_num]['id']?>";
     document.getElementById("refund_id").value = x;
-    x = y[train_num]['loc1'];
+    x = "<?php echo $ans['ticket'][train_num]['loc1']?>";
     document.getElementById("refund_loc1").value = x;
-    x = y[train_num]['loc2'];
+    x = "<?php echo $ans['ticket'][train_num]['loc2']?>";
     document.getElementById("refund_loc2").value = x;
-    x = y[train_num]['Price'][ticket_case]['kind'];
+    x = "<?php echo $ans['ticket'][train_num]['Price'][ticket_case]['kind']?>";
     document.getElementById("refund_ticket_kind").value = x;
-    x = y[train_num]['data_from'];
+    x = "<?php echo $ans['ticket'][train_num]['data_from']?>";
     document.getElementById("refund_date").value = x;
     return true;
   }
   function show_train()
   {
     var x = "<?php echo $ans['num'] ?>";
-    var y = "<?php echo $ans['ticket'] ?>";
-    for (var i = 0; i < x; i++)
+    for (var i = 0; i < Number(x); i++)
     {
       var A = document.createElement("tr");
       var B = document.createElement("td");
-      B.innerHTML = y[i]['train_id'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['train_id']?>";
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y[i]['loc1'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['loc1']?>";
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y[i]['data_from'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['data_from']?>";
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y[i]['time_from'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['time_from']?>";
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y[i]['loc2'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['loc2']?>";
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y[i]['data_to'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['data_to']?>";
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y[i]['time_to'];
+      B.innerHTML = "<?php echo $ans['ticket'][i]['time_to']?>";
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
-      for (var j = 0; j < y[i]['num_price']; j++)
+      for (var j = 0; j < "<?php echo $ans['ticket'][i]['num_price']?>"; j++)
       {
         A = document.createElement("tr");
         B = document.createElement("td");
-        B.innerHTML = y[i]['Price'][j]['kind'];
+        B.innerHTML = "<?php echo $ans['ticket'][i]['Price'][j]['kind']?>";
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y[i]['Price'][j]['num_left'];
+        B.innerHTML = "<?php echo $ans['ticket'][i]['Price'][j]['num_left']?>";
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y[i]['Price'][j]['num_price'];
+        B.innerHTML = "<?php echo $ans['ticket'][i]['Price'][j]['num_price']?>";
         A.appendChild(B);
         B = document.createElement("td");
         var C = document.createElement("input");
