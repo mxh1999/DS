@@ -90,10 +90,6 @@ class Ticket_model extends CI_Model {
 	 */
 	public function buy($id,$train_id,$loc1,$loc2,$date,$ticket_kind,$ticket_num)
 	{
-		$in = "buy_ticket " . $id . " " . $ticket_num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . $ticket_kind . "#";
-		var_dump($ticket_num);
-		var_dump($in);
-		die();
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket < 0)	return -1;
 		$result = socket_connect($socket, DATABASE_IP, DATABASE_PORT);
