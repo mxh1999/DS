@@ -37,7 +37,7 @@ class Ticket extends CI_Controller {
 			$loc2=$this->input->post('loc2');
 			$date=$this->input->post('date');
 			$ticket_kind=$this->input->post('ticket_kind');
-			var_dump($ticket_num);
+			var_dump($_POST);
 			die();
 			$ok=$this->Ticket_model->buy($id,$train_id,$loc1,$loc2,$date,$ticket_kind,$ticket_num);
 			if ($ok === -1)
