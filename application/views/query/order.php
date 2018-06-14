@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = new Array();
-    y0[0]=<?php echo $straight['num']?>
+    y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x = "<?php echo $ans['num'] ?>";
     var y0 = new Array();
-    y0[0]=<?php echo $straight['num']?>
+    y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
