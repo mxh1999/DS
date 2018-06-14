@@ -39,95 +39,187 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function book_ticket_0(train_num, ticket_case)
   {
     var x;
-    var y0 = {$straight};
-    x = y0['ticket'][train_num]['train_id'];
+    var y0 = new Array();
+    y0[0]=<?php echo $straight['num']?>
+    y0[1]=new Array();
+    <?php $j=0;
+  foreach ($straight['ticket'] as $value) {
+    echo "y0[1][$j]=new Array();";
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
+      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][8]=new Array();"
+      for ($i=0;$i<$value['num_price'];$i++)
+      {
+        echo "y0[1][$j][8][$i]=new Array();";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+      }
+    $j++;
+    } ?>
+    x = y0[1][train_num][0];
     document.getElementById("book_id").value = x;
-    x = y0['ticket'][train_num]['loc1'];
+    x = y0[1][train_num][1];
     document.getElementById("book_loc1").value = x;
-    x = y0['ticket'][train_num]['loc2'];
+    x = y0[1][train_num][4];
     document.getElementById("book_loc2").value = x;
-    x = y0['ticket'][train_num]['Price'][ticket_case]['kind'];
+    x = y0[1][train_num][8][ticket_case][0];
     document.getElementById("book_ticket_kind").value = x;
-    x = y0['ticket'][train_num]['data_from'];
+    x = y0[1][train_num][2];
     document.getElementById("book_date").value = x;
     return true;
   }
   function book_ticket_1_1(ticket_case)
   {
     var x;
-    var y0 = {$transfer};
-    x = y0['ticket1']['train_id'];
+    var y0 = new Array();
+    y0[0]=<?php echo $transfer['ticket1']['num']?>
+    y0[1]=new Array();
+    <?php $j=0;
+  foreach ($transfer['ticket1'] as $value) {
+    echo "y0[1][$j]=new Array();";
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
+      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][8]=new Array();"
+      for ($i=0;$i<$value['num_price'];$i++)
+      {
+        echo "y0[1][$j][8][$i]=new Array();";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+      }
+    $j++;
+    } ?>
+    x = y0[1][0][0];
     document.getElementById("book_id").value = x;
-    x = y0['ticket1']['loc1'];
+    x = y0[1][0][1];
     document.getElementById("book_loc1").value = x;
-    x = y0['ticket1']['loc2'];
+    x = y0[1][0][4];
     document.getElementById("book_loc2").value = x;
-    x = y0['ticket1']['Price'][ticket_case]['kind'];
+    x = y0[1][0][8][ticket_case][0];
     document.getElementById("book_ticket_kind").value = x;
-    x = y0['ticket1']['data_from'];
+    x = y0[1][0][2];
     document.getElementById("book_date").value = x;
     return true;
   }
   function book_ticket_1_2(ticket_case)
   {
     var x;
-    var y0 = {$transfer};
-    x = y0['ticket2']['train_id'];
+    var y0 = Array();
+    y0[0]=<?php echo $transfer['ticket2']['num']?>
+    y0[1]=new Array();
+    <?php $j=0;
+  foreach ($transfer['ticket2'] as $value) {
+    echo "y0[1][$j]=new Array();";
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
+      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][8]=new Array();"
+      for ($i=0;$i<$value['num_price'];$i++)
+      {
+        echo "y0[1][$j][8][$i]=new Array();";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+      }
+    $j++;
+    } ?>
+    x = y0[1][0][0];
     document.getElementById("book_id").value = x;
-    x = y0['ticket2']['loc1'];
+    x = y0[1][0][1];
     document.getElementById("book_loc1").value = x;
-    x = y0['ticket2']['loc2'];
+    x = y0[1][0][4];
     document.getElementById("book_loc2").value = x;
-    x = y0['ticket2']['Price'][ticket_case]['kind'];
+    x = y0[1][0][8][ticket_case][0];
     document.getElementById("book_ticket_kind").value = x;
-    x = y0['ticket2']['data_from'];
+    x = y0[1][0][2];
     document.getElementById("book_date").value = x;
     return true;
   }
   function show_train()
   {
     var x = "<?php echo $transnum; ?>";
-    var y0 = {$straight};
     if (x === 0)
     {
+      var y0 = new Array();
+      y0[0]=<?php echo $straight['num']?>
+      y0[1]=new Array();
+      <?php $j=0;
+  foreach ($straight['ticket'] as $value) {
+    echo "y0[1][$j]=new Array();";
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
+      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][8]=new Array();"
+      for ($i=0;$i<$value['num_price'];$i++)
+      {
+        echo "y0[1][$j][8][$i]=new Array();";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+      }
+    $j++;
+    } ?>
       x = "<?php echo $straight['num']; ?>";
       for (var i = 0; i < x; i++)
       {
         var A = document.createElement("tr");
         var B = document.createElement("td");
         document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['train_id'];
+        B.innerHTML = y0[1][i][0];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['loc1'];
+        B.innerHTML = y0[1][i][1];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['data_from'];
+        B.innerHTML = y0[1][i][2];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['time_from'];
+        B.innerHTML = y0[1][i][3];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['loc2'];
+        B.innerHTML = y0[1][i][4];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['data_to'];
+        B.innerHTML = y0[1][i][5];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket'][i]['time_to'];
+        B.innerHTML = y0[1][i][6];
         A.appendChild(B);
         document.getElementById("book_train").appendChild(A);
-        for (var j = 0; j < y0['ticket'][i]['num_price']; j++)
+        for (var j = 0; j < y0[1][i][7]; j++)
         {
           A = document.createElement("tr");
           B = document.createElement("td");
-          B.innerHTML = y0['ticket'][i]['Price'][j]['kind'];
+          B.innerHTML = y0[1][i][8][j][0];
           A.appendChild(B);
           B = document.createElement("td");
-          B.innerHTML = y0['ticket'][i]['Price'][j]['num_left'];
+          B.innerHTML = y0[1][i][8][j][1];
           A.appendChild(B);
           B = document.createElement("td");
-          B.innerHTML = y0['ticket'][i]['Price'][j]['num_price'];
+          B.innerHTML = y0[1][i][8][j][2];
           A.appendChild(B);
           B = document.createElement("td");
           var C = document.createElement("input");
@@ -153,41 +245,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     else
     {
-      y = {$transfer};
+      var y0 = new Array();
+      y0[0]=<?php echo $transfer['ticket1']?>
+      y0[1]=new Array();
+      <?php $j=0;
+  foreach ($transfer['ticket1'] as $value) {
+    echo "y0[1][$j]=new Array();";
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
+      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][8]=new Array();"
+      for ($i=0;$i<$value['num_price'];$i++)
+      {
+        echo "y0[1][$j][8][$i]=new Array();";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+      }
+    $j++;
+    } ?>
       var A = document.createElement("tr");
       var B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['train_id'];
+      B.innerHTML = y0[1][0][0];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['loc1'];
+      B.innerHTML = y0[1][0][1];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['data_from'];
+      B.innerHTML = y0[1][0][2];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['time_from'];
+      B.innerHTML = y0[1][0][3];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['loc2'];
+      B.innerHTML = y0[1][0][4];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['data_to'];
+      B.innerHTML = y0[1][0][5];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket1']['time_to'];
+      B.innerHTML = y0[1][0][6];
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
-      for (var i = 0; i < y0['ticket1']['num_price']; i++)
+      for (var i = 0; i < y0[1][0][7]; i++)
       {
         A = document.createElement("tr");
         B = document.createElement("td");
-        B.innerHTML = y0['ticket1']['Price'][i]['kind'];
+        B.innerHTML = y0[1][0][8][0];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket1']['Price'][i]['num_left'];
+        B.innerHTML = y0[1][0][8][1];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket1']['Price'][i]['num_price'];
+        B.innerHTML = y0[1][0][8][2];
         A.appendChild(B);
         B = document.createElement("td");
         var C = document.createElement("input");
@@ -209,39 +324,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.getElementById("book_train").appendChild(A);
         A = document.createElement("tr");
       }
-      B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['train_id'];
+      y0[0]=<?php echo $transfer['ticket2']?>
+      y0[1]=new Array();
+      <?php $j=0;
+  foreach ($transfer['ticket2'] as $value) {
+    echo "y0[1][$j]=new Array();";
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
+      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][8]=new Array();"
+      for ($i=0;$i<$value['num_price'];$i++)
+      {
+        echo "y0[1][$j][8][$i]=new Array();";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+      }
+    $j++;
+    } ?>
+      var A = document.createElement("tr");
+      var B = document.createElement("td");
+      B.innerHTML = y0[1][0][0];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['loc1'];
+      B.innerHTML = y0[1][0][1];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['data_from'];
+      B.innerHTML = y0[1][0][2];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['time_from'];
+      B.innerHTML = y0[1][0][3];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['loc2'];
+      B.innerHTML = y0[1][0][4];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['data_to'];
+      B.innerHTML = y0[1][0][5];
       A.appendChild(B);
       B = document.createElement("td");
-      B.innerHTML = y0['ticket2']['time_to'];
+      B.innerHTML = y0[1][0][6];
       A.appendChild(B);
       document.getElementById("book_train").appendChild(A);
-      for (var i = 0; i < y0['ticket2']['num_price']; i++)
+      for (var i = 0; i < y0[1][0][7]; i++)
       {
         A = document.createElement("tr");
         B = document.createElement("td");
-        B.innerHTML = y0['ticket2']['Price'][i]['kind'];
+        B.innerHTML = y0[1][0][8][0];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket2']['Price'][i]['num_left'];
+        B.innerHTML = y0[1][0][8][1];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0['ticket2']['Price'][i]['num_price'];
+        B.innerHTML = y0[1][0][8][2];
         A.appendChild(B);
         B = document.createElement("td");
         var C = document.createElement("input");
@@ -256,7 +395,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C = document.createElement("button");
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
-        C.setAttribute("onclick", "book_ticket_1_2(" + i + ")");
+        C.setAttribute("onclick", "book_ticket_1_1(" + i + ")");
         C.innerHTML = "购票";
         B.appendChild(C);
         A.appendChild(B);
