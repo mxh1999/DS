@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           B.innerHTML = y0[1][i][8][j][1];
           A.appendChild(B);
           B = document.createElement("td");
-          B.innerHTML = y0[1][i][8][j][2];
+          B.innerHTML = "￥" + y0[1][i][8][j][2];
           A.appendChild(B);
           B = document.createElement("td");
           var C = document.createElement("input");

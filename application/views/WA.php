@@ -77,34 +77,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   返回首页
   </a>
 </div>
-<div id = totalSecond>
-  <p>
-    5
-  </p>
-</div>
- 
-<script language="javascript" type="text/javascript"> 
-var second = document.getElementById('totalSecond').textContent; 
- 
-if (navigator.appName.indexOf("Explorer") > -1)  { 
-    second = document.getElementById('totalSecond').innerText; 
-} else { 
-    second = document.getElementById('totalSecond').textContent; 
-} 
- 
-setInterval("redirect()", 1000); 
-function redirect() { 
-if (second < 0) { 
-    location.href = 'https://www.hao123.com'; 
-} else { 
-    if (navigator.appName.indexOf("Explorer") > -1) { 
-        document.getElementById('totalSecond').innerText = second--; 
-    } else { 
-        document.getElementById('totalSecond').textContent = second--; 
-    } 
-} 
-} 
-</script>
 <script type="text/javascript">
   check_cookie();
 </script>
