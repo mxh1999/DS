@@ -207,6 +207,9 @@ char getachar()
 	{
 		memset(buffer,0,sizeof(buffer));
 		buffer_size = recv(conn, buffer, sizeof(buffer), 0);
+		for (int i=0;i<buffer_size;i++)
+			cerr<<buffer[i];
+		cerr<<endl;
         nowt=0;
 	}
 	return buffer[nowt++];
@@ -264,6 +267,9 @@ int get_command(char *a)
 	cerr<<"connection accept"<<endl;
 	memset(buffer,0,sizeof(buffer));
 	buffer_size=recv(conn, buffer, sizeof(buffer), 0);
+	for (int i=0;i<buffer_size;i++)
+		cerr<<buffer[i];
+	cerr<<endl;
 	if (buffer_size==0)	return 0;
 	nowt=0;
 	char ch=getachar();
