@@ -48,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
       if (document.getElementById("catalog_" + i).value != '')
         ans = ans + document.getElementById("catalog_" + i).value;
+    alert(document.getElementById("catalog_" + i).value);
     }
     document.getElementById("catalog").value = ans;
     alert(ans);
