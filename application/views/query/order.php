@@ -45,21 +45,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
     echo "y0[1][$j]=new Array();";
-      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
-      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
-      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
-      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
-      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
-      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
-      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
-      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\";";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\";";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\";";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\";";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\";";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\";";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\";";
+      echo "y0[1][$j][7]=",$value['num_price'],";";
       echo "y0[1][$j][8]=new Array();";
       for ($i=0;$i<$value['num_price'];$i++)
       {
         echo "y0[1][$j][8][$i]=new Array();";
-        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
-        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
-        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\";";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'],";";
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\";";
       }
     $j++;
     
@@ -85,21 +85,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
     echo "y0[1][$j]=new Array();";
-      echo "y0[1][$j][0]=\"",$value['train_id'],"\"";
-      echo "y0[1][$j][1]=\"",$value['loc1'],"\"";
-      echo "y0[1][$j][2]=\"",$value['date_from'],"\"";
-      echo "y0[1][$j][3]=\"",$value['time_from'],"\"";
-      echo "y0[1][$j][4]=\"",$value['loc2'],"\"";
-      echo "y0[1][$j][5]=\"",$value['date_to'],"\"";
-      echo "y0[1][$j][6]=\"",$value['time_to'],"\"";
-      echo "y0[1][$j][7]=",$value['num_price'];
+      echo "y0[1][$j][0]=\"",$value['train_id'],"\";";
+      echo "y0[1][$j][1]=\"",$value['loc1'],"\";";
+      echo "y0[1][$j][2]=\"",$value['date_from'],"\";";
+      echo "y0[1][$j][3]=\"",$value['time_from'],"\";";
+      echo "y0[1][$j][4]=\"",$value['loc2'],"\";";
+      echo "y0[1][$j][5]=\"",$value['date_to'],"\";";
+      echo "y0[1][$j][6]=\"",$value['time_to'],"\";";
+      echo "y0[1][$j][7]=",$value['num_price'],";";
       echo "y0[1][$j][8]=new Array();";
       for ($i=0;$i<$value['num_price'];$i++)
       {
         echo "y0[1][$j][8][$i]=new Array();";
-        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\"";
-        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'];
-        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\"";
+        echo "y0[1][$j][8][$i][0]=\"",$value['Price'][$i]['kind'],"\";";
+        echo "y0[1][$j][8][$i][1]=",$value['Price'][$i]['num_left'],";";
+        echo "y0[1][$j][8][$i][2]=\"",$value['Price'][$i]['num_price'],"\";";
       }
     $j++;
     
