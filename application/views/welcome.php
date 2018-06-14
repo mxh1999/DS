@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <style type="text/css">
   body 
   {
-    background-image:url('2.jpg');
+    background-image:url('<?php echo IMG_Path ?>2.jpg');
     background-color:#cccccc;
     background-size:cover;
   }
