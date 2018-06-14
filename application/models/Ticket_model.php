@@ -72,7 +72,7 @@ class Ticket_model extends CI_Model {
 		$ans=array('ticket1'=>array(),'ticket2'=>array());
 		$out = socket_read($socket,8192);
 		while (!isset($out))	$out = socket_read($socket,8192);
-		if ($out == -1)
+		if ($out == '-1')
 		{
 			return array('ticket1' => array(),'ticket2'=>array());
 		}
