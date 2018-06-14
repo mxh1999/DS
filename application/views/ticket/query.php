@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <br>
     <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
     <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
-    <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "transnum" id = "transnum">
+    <input type = "hidden" class = "form-control" required="required" name = "transnum" id = "transnum">
     <div class="radio">
     <label class = "radio-inline">
     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="transnum_1()">有中转站
