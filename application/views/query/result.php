@@ -73,7 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     document.getElementById("book_ticket_kind").value = x;
     x = y0[1][train_num][2];
     document.getElementById("book_date").value = x;
-    return true;
+    alert(document.getElementById("num_" + i + "_" + j).value);
+    return false;
   }
   function show_train()
   {
