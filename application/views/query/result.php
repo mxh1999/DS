@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var y0 = {$straight};
     if (x === 0)
     {
-      x = "<?php echo $query_ticket['num']; ?>";
+      x = "<?php echo $straight['num']; ?>";
       for (var i = 0; i < x; i++)
       {
         var A = document.createElement("tr");
