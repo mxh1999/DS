@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     background-image:url("http://chuantu.biz/t6/328/1528979692x-1566661301.jpg");
     background-color:#cccccc;
-    background-size:cover;
+    background-size:100%;
   }
 </style>
 </head>
