@@ -57,10 +57,13 @@ class Profile extends CI_Controller {
 				$msg="密码错误";
 				$this->load->view('WA',array('msg'=>$msg));
 			}
-			$ok=$this->User_model->modify_profile($id, $name, $psword1, $email, $phone);
-			if ($ok === -1)
+			else
 			{
-				$this->load->view('RE');
+				$ok=$this->User_model->modify_profile($id, $name, $psword1, $email, $phone);
+				if ($ok === -1)
+				{
+					$this->load->view('RE');
+				}
 			}
 		}
 	}
