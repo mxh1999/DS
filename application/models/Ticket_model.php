@@ -67,14 +67,12 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$out = socket_read($socket,8192);
-		while (!isset($out))	$out = socket_read($socket,8192);
 		$ans=array('ticket1'=>array(),'ticket2'=>array());
 		$out = socket_read($socket,8192);
 		while (!isset($out))	$out = socket_read($socket,8192);
 		if ($out == '-1')
 		{
-			return array('ticket1' => array(),'ticket2'=>array());
+			return $ans;
 		}
 		$tmp=explode(" ",$out);
 		$ans['ticket1'][$i]=array('train_id'=>$tmp[0],'loc1'=>$tmp[1],'date_from'=>$tmp[2],'time_from'=>$tmp[3],'loc2'=>$tmp[4],'date_to'=>$tmp[5],'time_to'=>$tmp[6],'num_price'=>0,'Price'=>array());
