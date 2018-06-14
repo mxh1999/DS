@@ -67,6 +67,9 @@ class Train extends CI_Controller {
 					if ($ok === -1)
 					{
 						$this->load->view('RE');
+					}	else
+					{
+						$this->load->view('goto',array('url'=>"This_URL/Admin"));
 					}
 				}
 			}
@@ -129,6 +132,9 @@ class Train extends CI_Controller {
 					if ($ok === -1)
 					{
 						$this->load->view('RE');
+					}	else
+					{
+						$this->load->view('goto',array('url'=>"This_URL/Admin"));
 					}
 				}
 			}
@@ -169,6 +175,9 @@ class Train extends CI_Controller {
 					{
 						$msg = '该车已发售';
 						$this->load->view('WA',array('msg'=>$msg));
+					}	else
+					{
+						$this->load->view('goto',array('url'=>"This_URL/Admin"));
 					}
 				}
 			}
@@ -209,6 +218,9 @@ class Train extends CI_Controller {
 					{
 						$msg = '该车已发售';
 						$this->load->view('WA',array('msg'=>$msg));
+					}	else
+					{
+						$this->load->view('goto',array('url'=>"This_URL/Admin"));
 					}
 				}
 			}

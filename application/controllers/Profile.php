@@ -63,6 +63,9 @@ class Profile extends CI_Controller {
 				if ($ok === -1)
 				{
 					$this->load->view('RE');
+				} else
+				{
+					$this->load->view('goto',array('url'=>"This_URL/Profile"));
 				}
 			}
 		}

@@ -8,6 +8,10 @@ class Login extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->view('login');
+	}
+	public function check()
+	{
 	    session_start();
 		$id=$this->input->post('id');
 		$psword=$this->input->post('psword');
@@ -35,7 +39,7 @@ class Login extends CI_Controller {
 				{
 					$_SESSION['id']=$id;
 					$this->input->set_cookie("user",$userdata['name'],1800);
-					echo $this->input->cookie("user");
+					$this->load->view('goto',array('url'=>"This_URL"));
 				}
 			}
 		}
