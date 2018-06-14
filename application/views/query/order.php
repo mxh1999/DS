@@ -74,11 +74,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     document.getElementById("refund_ticket_kind").value = x;
     x = y0[1][train_num][2];
     document.getElementById("refund_date").value = x;
+    document.getElementById("refund_num").value = document.getElementById("num_" + train_num + "_" + ticket_case);
     return true;
   }
   function show_train()
   {
-    var x = "<?php echo $ans['num'] ?>";
+    var x = "<?php echo $straight['num'] ?>";
     var y0 = new Array();
     y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
@@ -145,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         var C = document.createElement("input");
         C.setAttribute("type","text");
         C.setAttribute("class","form-control");
-        C.setAttribute("name", "num");
+        C.setAttribute("id", "num_" + i + "_" + j);
         C.setAttribute("placeholder", "购买票数");
         B.appendChild(C);
         A.appendChild(B);
@@ -223,6 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "refund_date">
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "refund_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "refund_ticket_kind">
+  <input type = "hidden" class = "form-control" placeholder="数目" required="required" name = "num" id = "refund_num">
   <table id = "refund_ticket" class="table">
   </table>
 </form>
