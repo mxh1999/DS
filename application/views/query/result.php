@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = new Array();
-    y0[0]=<?php echo $transfer['ticket']['num']?>
+    y0[0]=<?php echo $transfer['num']?>
     y0[1]=new Array();
     <?php $j=0;
   foreach ($transfer['ticket'] as $value) {
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = Array();
-    y0[0]=<?php echo $transfer['ticket']['num']?>
+    y0[0]=<?php echo $transfer['num']?>
     y0[1]=new Array();
     <?php $j=0;
   foreach ($transfer['ticket'] as $value) {
