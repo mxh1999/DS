@@ -128,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       B = document.createElement("td");
       B.innerHTML = y0[1][i][6];
       A.appendChild(B);
-      document.getElementById("book_train").appendChild(A);
+      document.getElementById("refund_ticket").appendChild(A);
       for (var j = 0; j < y0[1][i][7]; j++)
       {
         A = document.createElement("tr");
@@ -154,11 +154,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C = document.createElement("button");
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
-        C.setAttribute("onclick", "book_ticket(" + i + ")");
+        C.setAttribute("onclick", "refund_ticket_0(" + i + "," + j + ")");
         C.innerHTML = "购票";
         B.appendChild(C);
         A.appendChild(B);
-        document.getElementById("book_train").appendChild(A);
+        document.getElementById("refund_ticket").appendChild(A);
         A = document.createElement("tr");
       }
     }
