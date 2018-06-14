@@ -164,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <form action="<?php echo This_URL ?>/Profile/query_order" method="get" row = "form" name = "ticket_check" id = "ticket_check">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="类别" required="required" name = "catalog">
-  <input type = "password" class = "form-control" placeholder="日期" required="required" name = "date">
+  <input type = "text" class = "form-control" placeholder="日期" required="required" name = "date">
   <button type="submit" class="btn btn-default">
     提交
   </button>
