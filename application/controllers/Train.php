@@ -241,7 +241,7 @@ class Train extends CI_Controller {
 				{
 					$train_id = $this->input->post('train_id');
 					$ans = $this->Train_model->query_train($train_id);
-					if ($ok === -1)
+					if ($ans === -1)
 					{
 						$this->load->view('RE');
 					}
