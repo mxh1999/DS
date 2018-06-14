@@ -98,7 +98,7 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "buy_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . ticket_kind . "#";
+		$in = "buy_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . $ticket_kind . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -122,7 +122,7 @@ class Ticket_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = "refund_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . ticket_kind . "#";
+		$in = "refund_ticket " . $id . " " . $num . " " . $train_id . " " . $loc1 . " " . $loc2 . " " .$date. " " . $ticket_kind . "#";
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
