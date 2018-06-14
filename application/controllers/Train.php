@@ -63,6 +63,8 @@ class Train extends CI_Controller {
 					}
 					$Price = array('name'=>$name_price , 'num' => $price_num);
 					$Station = array('name'=>$name_s,'arr'=>$time_arr,'sta'=>$time_sta,'sto'=>$time_sto);
+					var_dump($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station);
+					die();
 					$ok = $this->Train_model->add_train($train_id,$name,$catalog,$num_station,$num_price,$Price,$Station);
 					if ($ok === -1)
 					{
