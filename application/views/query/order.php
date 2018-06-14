@@ -39,16 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function refund_ticket(train_num, ticket_case)
   {
     var x;
-    var y = "<?php $query_ticket ?>";
-    x = y['ticket'][train_num]['id'];
+    var y = "<?php $ticket ?>";
+    x = y[train_num]['id'];
     document.getElementById("refund_id").value = x;
-    x = y['ticket'][train_num]['loc1'];
+    x = y[train_num]['loc1'];
     document.getElementById("refund_loc1").value = x;
-    x = y['ticket'][train_num]['loc2'];
+    x = y[train_num]['loc2'];
     document.getElementById("refund_loc2").value = x;
-    x = y['ticket'][train_num]['Price'][ticket_case]['kind'];
+    x = y[train_num]['Price'][ticket_case]['kind'];
     document.getElementById("refund_ticket_kind").value = x;
-    x = y['ticket'][train_num]['data_from'];
+    x = y[train_num]['data_from'];
     document.getElementById("refund_date").value = x;
     return true;
   }
