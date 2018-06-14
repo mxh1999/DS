@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     document.getElementById("book_ticket_kind").value = x;
     x = y0[1][train_num][2];
     document.getElementById("book_date").value = x;
-    alert(document.getElementById("num_" + i + "_" + j).value);
+    document.getElementById("book_num").value = document.getElementById("num_" + i + "_" + j).value;
     return false;
   }
   function show_train()
@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           var C = document.createElement("input");
           C.setAttribute("type","text");
           C.setAttribute("class","form-control");
-          C.setAttribute("name", "num");
+          C.setAttribute("name", "num_" + i + "_" + j);
           C.setAttribute("id", "num_" + i + "_" + j);
           C.setAttribute("placeholder", "购买票数");
           B.appendChild(C);
@@ -232,6 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "book_date">
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "book_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "book_ticket_kind">
+  <input type = "hidden" class = "form-control" placeholder="数目" required="required" name = "num" id = "book_num">
   <table id = "book_train" class="table">
   </table>
 </form>

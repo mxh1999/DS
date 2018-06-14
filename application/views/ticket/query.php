@@ -88,12 +88,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 <div class="col-md-offset-4">
 <div class="form-inline">
-  <form action="<?php echo This_URL ?>/Ticket/query" method="get" row = "form">
+  <form action="<?php echo This_URL ?>/Ticket/query" method="get" row = "form" onsubmit = "get_catalog()">
     <input type = "text" class = "form-control" placeholder="出发地" required="required" name = "loc1">
     <input type = "text" class = "form-control" placeholder="目的地" required="required" name = "loc2">
     <br>
     <input type = "text" class = "form-control" placeholder="时间" required="required" name = "date">
-    <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
+    <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "catalog" id = "catalog">
+    <input type = "checkbox" id = "catalog_0" value="C">C
+    <input type = "checkbox" id = "catalog_1" value="D">D
+    <input type = "checkbox" id = "catalog_2" value="G">G
+    <input type = "checkbox" id = "catalog_3" value="Z">Z
+    <input type = "checkbox" id = "catalog_4" value="T">T
+    <input type = "checkbox" id = "catalog_5" value="K">K
+    <input type = "checkbox" id = "catalog_6" value="L">L
+    <input type = "checkbox" id = "catalog_7" value="O">O
     <input type = "hidden" class = "form-control" required="required" name = "transnum" id = "transnum">
     <div class="radio">
     <label class = "radio-inline">
