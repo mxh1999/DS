@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   function refund_ticket(train_num, ticket_case)
   {
     var x;
-    var y = "<?php $ticket ?>";
+    var y = "<?php echo $ans['ticket'] ?>";
     x = y[train_num]['id'];
     document.getElementById("refund_id").value = x;
     x = y[train_num]['loc1'];
@@ -54,8 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   }
   function show_train()
   {
-    var x = "<?php echo $num ?>";
-    var y = "<?php echo $ticket ?>";
+    var x = "<?php echo $ans['num'] ?>";
+    var y = "<?php echo $ans['ticket'] ?>";
     for (var i = 0; i < x; i++)
     {
       var A = document.createElement("tr");
