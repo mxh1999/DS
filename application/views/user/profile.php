@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("ticket_check").style.display = "none";
       document.getElementById("change_users").style.display = "none";
       document.getElementById("users_data").style.display = "none";
-      var x = "<?php echo $privilege ?>";
+      var x = "<?php echo $userdata['privilege']; ?>";
       if (x == 0)
       {
         document.getElementById("go_to_admin").style.display = "none";
@@ -150,13 +150,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="col-md-offset-2">
   <div id = users_data>
     <p>
-      姓名：<?php echo $name;?>
+      姓名：<?php echo $userdata['name'];?>
     </p>
     <p>
-      邮箱：<?php echo $email;?>
+      邮箱：<?php echo $userdata['email'];?>
     </p>
     <p>
-      电话：<?php echo $phone;?>
+      电话：<?php echo $userdata['phone'];?>
     </p>
   </div>
 </div>

@@ -82,6 +82,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   返回首页
   </a>
 </div>
+<script type="text/javascript">
+  check_cookie();
+</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center">

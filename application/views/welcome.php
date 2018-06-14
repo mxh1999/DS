@@ -34,6 +34,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
   }
 </script>
+<style type="text/css">
+  body 
+  {
+    background-image:url('2.jpg');
+    background-color:#cccccc;
+    background-size:cover;
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -41,11 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="navbar-header">
         <ul class="nav navbar-nav">
         <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
-        </ul>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -74,17 +77,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
         </li>
       </div>
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        </ul>
+    </div>
   </div>
 </nav>
-<div class="contener">
-  <div class="row">
-      <div class="col-md-8 col-md-offset-2" style="background-color: white; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
-        <h1>
-         火车票订票系统了解一下
-        </h1>
-      </div>
-  </div>
-</div>
 <script type="text/javascript">
   check_cookie();
 </script>

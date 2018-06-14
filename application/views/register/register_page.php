@@ -40,6 +40,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       alert("phone number error");
       return false;
     }
+    x = document.forms["register"]["psword"].value;
+    var y = document.forms["register"]["re_psword"].value;
+    if (x != y)
+    {
+      alert("重复密码错误");
+      return false;
+    }
     return true;
   }
 </script>
@@ -61,6 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-lg-4">
           <input type = "text" class = "form-control" placeholder="姓名" name = "name" required="required">
           <input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required">
+          <input type = "password" class = "form-control" placeholder="重复输入密码" name = "re_psword" required="required">
           <input type = "text" class = "form-control" placeholder="邮箱地址" name = "email" required="required">
           <input type = "text" class = "form-control" placeholder="电话号码" name = "phone" required="required">
           <button type="submit" class="btn btn-default">
