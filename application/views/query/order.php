@@ -211,7 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 <div class="col-md-8 col-md-offset-2" style="background-color: rgba(248,248,255,0.3);padding: 15px; padding-top: 30px; height: 500px; overflow-y: auto;">
 <form action="<?php echo This_URL ?>/Ticket/Refund" method="post" row = "form">
-  <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "id" id = "refund_id">
+  <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "train_id" id = "refund_id">
   <input type = "hidden" class = "form-control" placeholder="出发地" required="required" name = "loc1" id = "refund_loc1">
   <input type = "hidden" class = "form-control" placeholder="目的地" required="required" name = "loc2" id = "refund_loc2">
   <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "date" id = "refund_date">
