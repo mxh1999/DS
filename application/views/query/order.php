@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     document.getElementById("refund_ticket_kind").value = x;
     x = y0[1][train_num][2];
     document.getElementById("refund_date").value = x;
-    document.getElementById("refund_num").value = document.getElementById("num_" + train_num + "_" + ticket_case);
+    document.getElementById("refund_num").value = document.getElementById("num_" + train_num + "_" + ticket_case).value;
     return true;
   }
   function show_train()
