@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <p style="color: white; padding: 10px;background-color: rgba(248,248,255,0.4);text-align: center;font-size: 20px;" class="col-md-6">
     注册
   </p>
-  <div style="background-color: rgba(248,248,255,0.4);height: 301px;margin-top: 49px; padding-top: 30px; text-align: center;">
+  <div style="background-color: rgba(248,248,255,0.4);height: 302px;margin-top: 48px; padding-top: 30px; text-align: center;">
     <form action = "<?php echo This_URL ?>/Register/check" method = "post">
     <p class="col-md-3 col-md-offset-1">
       用户名:
