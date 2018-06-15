@@ -44,13 +44,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     y0[5] = new Array();
     <? php
       $j= 0;
-      foreach ($Price['name'] as $value) {
+      foreach ($Price as $value) {
+       echo "y0[4][$j][0]=\"",$value['name'],"\";";
        echo "y0[4][$j][1] = new Array();";
-       echo ""
+       for ($i = 0; $i < $num_preice; $i++)
+       echo "y0[4][$j][1][$i]=\"",$value['name']['num'],"\";";
       }
+      $j++;
+    ?>
+    <? php
+      $j= 0;
+      foreach ($Station as $value) {
+       echo "y0[5][$j][0]=\"",$value['name'],"\";";
+       echo "y0[5][$j][1]=\"",$value['arr'],"\";";
+       echo "y0[5][$j][2]=\"",$value['sta'],"\";";
+       echo "y0[5][$j][3]=\"",$value['sto'],"\";";
+      }
+      $j++;
     ?>
     var A = document.createElement("p");
-    A.innerHTML = "车次" + "<?php echo $train_id; ?>" + " 类型" + "<?php echo $catalog; ?>";
+    A.innerHTML = "车次:" + y0[0] + " 类型:" + y0[1];
     document.getElementById("train").appendChild(A);
     A = document.createElement("table");
     A.setAttribute("class", "table");
@@ -70,32 +83,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     C = document.createElement("th");
     C.innerHTML = "停留时间";
     B.appendChild(C);
-    for (var x = 0; x < "<?php echo $num_price; ?>"; x++)
+    for (var x = 0; x < y0[3]; x++)
     {
       C = document.createElement("th");
-      C.innerHTML = "<?php echo $price[x]; ?>" + "类票票价";
+      C.innerHTML = y0[4][x][0] + "类票票价";
       B.appendChild(C);
     }
     D.appendChild(B);
-    for (var i = 0; i < "<?php echo $num_station; ?>"; i++)
+    for (var i = 0; i < y0[2]; i++)
     {
       B = document.createElement("tr");
       C = document.createElement("td");
-      C.innerHTML = "<?php echo $Station['name'][i]; ?>";
+      C.innerHTML = y0[5][i][0];
       B.appendChild(C);
       C = document.createElement("td");
-      C.innerHTML = "<?php echo $Station['arr'][i]; ?>";
+      C.innerHTML = y0[5][i][1];
       B.appendChild(C);
       C = document.createElement("td");
-      C.innerHTML = "<?php echo $Station['sta'][i]; ?>";
+      C.innerHTML = y0[5][i][2];
       B.appendChild(C);
       C = document.createElement("td");
-      C.innerHTML = "<?php echo $Station['sto'][i]; ?>";
+      C.innerHTML = y0[5][i][3];
       B.appendChild(C);
-      for (var j = 0; j < "<?php echo $num_price ?>"; j++)
+      for (var j = 0; j < y0[3]; j++)
       {
         C = document.createElement("td");
-        C.innerHTML = "<?php echo $Price['num'][i][j]; ?>";
+        C.innerHTML = y0[4][i][1][j];
         B.appendChild(C);
       }
       D.appendChild(B);
@@ -112,6 +125,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
   }
 </script>
+<style type="text/css">
+  body 
+  {
+    background: no-repeat;
+    background-image:url("http://chuantu.biz/t6/328/1528999320x-1404793154.jpg");
+    background-color:#cccccc;
+    background-size:100%;
+    width: 100%;
+    background-attachment: fixed;
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -121,40 +145,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
-        </ul>
-    </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo This_URL ?>/Profile">profile</a></li>
-          <li><a href="<?php echo This_URL ?>/Logout">logout</a></li>
+          <li><a href="<?php echo This_URL ?>/Profile">用户</a></li>
+          <li><a href="<?php echo This_URL ?>/Logout">登出</a></li>
         </ul>
         </li>
       </div>
-      <div class="navbar-right navbar-nav nav">
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
-          登录
+      <div class="navbar-right navbar-nav nav" id = "un_login">
+        <li>
+        <a href="<?php echo This_URL ?>/Login">
+          登录/注册
         </a>
-        <ul class="dropdown-menu">
-          <form action = "<?php echo This_URL ?>/Login" method="post" row = "form">
-          <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
-          <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
-          <li>
-            <button type="submit" class="btn btn-default">登录</button>
-            <a href="<?php echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
-          </form>
-        </ul>
         </li>
       </div>
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        </ul>
+    </div>
   </div>
 </nav>
-<div id = "train">
+<div id = "train"  class="col-md-8 col-md-offset-2"style="background-color: rgba(248,248,255,0.3);padding: 15px; padding-top: 30px; height: 500px; overflow-y: auto;">
   
 </div>
 <script type="text/javascript">

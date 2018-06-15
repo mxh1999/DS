@@ -175,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="col-md-offset-3" style="color: white; font-size: 20px; margin-top: 70px;">
   <div id = "users_data" style="margin-top: 70px;">
     <p>
-      姓名：<?php echo $name;?>
+      用户名：<?php echo $name;?>
     </p>
     <br>
     <p>
