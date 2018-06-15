@@ -30,6 +30,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       document.getElementById("qqq").style.display = "none";
       document.getElementById("un_login").style.display = "visible";
     }
+    if($(window).height()==$(document).height())
+    {
+      $("#time_footer").addClass("navbar-fixed-bottom");
+    }
+    else
+    {
+      $("#time_footer").removeClass(" navbar-fixed-bottom");
+    }
   }
 </script>
 </head>

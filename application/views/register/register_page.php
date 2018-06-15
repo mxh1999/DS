@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </nav>
-<div class="col-md-4 col-md-offset-4" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
+<div class="col-md-6 col-md-offset-3" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
   <a href="<?php echo This_URL ?>/Login"><p style="color: white; padding: 10px;background-color: rgba(248,248,255,0); text-align: center;font-size: 20px;" class="col-md-6">
     登录
   </p></a>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
-      重复输入密码:
+      重复密码:
     </p>
     <input type="password" name="newpsword">
     <br>

@@ -247,7 +247,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <p>新密码:</p>
 </div>
   <div class="col-md-6">
-  <input type = "password" class = "form-control" required="required" name = "new_psword">
+  <input type = "password" class = "form-control" name = "new_psword">
 </div>
   <br>
   <br>
@@ -255,7 +255,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <p>重复新密码:</p>
 </div>
   <div class="col-md-6">
-  <input type = "password" class = "form-control" required="required" name = "re_new_psword">
+  <input type = "password" class = "form-control" name = "re_new_psword">
 </div>
   <br>
   <br>
