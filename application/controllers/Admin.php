@@ -63,6 +63,7 @@ class Admin extends CI_Controller {
 				{
 					$id2 = $this->input->post('id');
 					$ok = $this->User_model->modify_privilege($id,$id2,2);
+					$this->load->view('goto',array('url'=>This_URL.'/Admin'));
 				}
 			}
 		}
