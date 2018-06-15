@@ -23,7 +23,7 @@ class User_model extends CI_Model {
 			return -1;
 		}
 		$psword_md5 = md5($psword);
-		$in = 'register ' . $name . ' ' . $psword_md5 . ' ' . $email . ' ' . $phone . '#';
+		$in = 'register ' . $name . ' ' . $psword_md5 . ' ' . $email . ' ' . $phone . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -51,7 +51,7 @@ class User_model extends CI_Model {
 			return -1;
 		}
 		$psword_md5 = md5($psword);
-		$in = 'login '. $id . ' ' . $psword_md5 . '#';
+		$in = 'login '. $id . ' ' . $psword_md5 . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -77,7 +77,7 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'query_profile ' . $id . '#';
+		$in = 'query_profile ' . $id . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -106,7 +106,7 @@ class User_model extends CI_Model {
 			return -1;
 		}
 		$psword_md5 = md5($psword);
-		$in = 'modify_profile '. $id . ' ' . $name . ' ' . $psword_md5 . ' ' . $email .' ' . $phone . '#';
+		$in = 'modify_profile '. $id . ' ' . $name . ' ' . $psword_md5 . ' ' . $email .' ' . $phone . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -133,7 +133,7 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'modify_privilege ' . $id1 . ' ' . $id2 . ' ' . $privilege . '#';
+		$in = 'modify_privilege ' . $id1 . ' ' . $id2 . ' ' . $privilege . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -154,7 +154,7 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'clean' . '#';
+		$in = 'clean' . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -175,7 +175,7 @@ class User_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'exit' . '#';
+		$in = 'exit' . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);

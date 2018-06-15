@@ -22,7 +22,7 @@ class Train_model extends CI_Model {
 		{
 			$in .= ' ' . $Price['name'][$i];
 		}
-		$in .= '#';
+		$in .= ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -33,7 +33,7 @@ class Train_model extends CI_Model {
 			$in = $Station['name'][$i] . ' ' . $Station['arr'][$i] . ' ' . $Station['sta'][$i] . ' ' . $Station['sto'][$i];
 			for ($j = 0; $j< $num_price;$j++)
 				$in .= ' ' . $Price['num'][$i][$j];
-			$in .= '#';
+			$in .= ' #';
 			if (!socket_write($socket ,$in, strlen($in)))
 			{
 				socket_close($socket);
@@ -59,7 +59,7 @@ class Train_model extends CI_Model {
 		{
 			$in .= ' ' . $Price['name'][$i];
 		}
-		$in .= '#';
+		$in .= ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -70,7 +70,7 @@ class Train_model extends CI_Model {
 			$in = $Station['name'][$i] . ' ' . $Station['arr'][$i] . ' ' . $Station['sta'][$i] . ' ' . $Station['sto'][$i];
 			for ($j = 0; $j< $num_price;$j++)
 				$in .= ' ' . $Price['num'][$i][$j];
-			$in .= '#';
+			$in .= ' #';
 			if (!socket_write($socket ,$in, strlen($in)))
 			{
 				socket_close($socket);
@@ -91,7 +91,7 @@ class Train_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'query_train ' . $train_id . '#';
+		$in = 'query_train ' . $train_id . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -139,7 +139,7 @@ class Train_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'sale_train ' . $train_id . '#';
+		$in = 'sale_train ' . $train_id . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
@@ -159,7 +159,7 @@ class Train_model extends CI_Model {
 			socket_close($socket);
 			return -1;
 		}
-		$in = 'delete_train ' . $train_id . '#';
+		$in = 'delete_train ' . $train_id . ' #';
 		if (!socket_write($socket ,$in, strlen($in)))
 		{
 			socket_close($socket);
