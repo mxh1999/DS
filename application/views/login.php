@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </nav>
-<div class="col-md-4 col-md-offset-4" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
+<div class="col-md-6 col-md-offset-3" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
   <p style="color: white; padding: 10px;background-color: rgba(248,248,255,0.4); text-align: center;font-size: 20px;" class="col-md-6">
     登录
   </p>

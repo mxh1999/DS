@@ -77,43 +77,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </nav>
-<div class="col-md-4 col-md-offset-4" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
+<div class="col-md-6 col-md-offset-3" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 0px; border-width: 0px; top: 50px; height: 350px;">
   <a href="<?php echo This_URL ?>/Login"><p style="color: white; padding: 10px;background-color: rgba(248,248,255,0); text-align: center;font-size: 20px;" class="col-md-6">
     登录
   </p></a>
   <p style="color: white; padding: 10px;background-color: rgba(248,248,255,0.4);text-align: center;font-size: 20px;" class="col-md-6">
     注册
   </p>
-  <div style="background-color: rgba(248,248,255,0.4);height: 301px;margin-top: 49px; padding-top: 30px; text-align: center;">
+  <div style="background-color: rgba(248,248,255,0.4);height: 302px;margin-top: 48px; padding-top: 30px; text-align: center;">
     <form action = "<?php echo This_URL ?>/Register/check" method = "post">
     <p class="col-md-3 col-md-offset-1">
-      用户ID:
+      用户名:
     </p>
-    <input type="text" name="id">
+    <input type="text" name="name" id = "name">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       密码:
     </p>
-    <input type="password" name="psword">
+    <input type="password" name="psword" id = "psword">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
-      重复输入密码:
+      重复密码:
     </p>
-    <input type="password" name="newpsword">
+    <input type="password" name="re_psword" id = "re_psword">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       邮箱:
     </p>
-    <input type="text" name="email">
+    <input type="text" name="email" id = "email">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       手机号:
     </p>
-    <input type="text" name="phone">
+    <input type="text" name="phone" id = "phone">
     <br>
     <br>
     <div style="text-align: center; margin-right: auto; margin-left: auto;">
@@ -124,9 +124,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </form>
   </div>
 </div>
-<script type="text/javascript">
-  check_cookie();
-</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center ; color: white;">

@@ -158,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   check_cookie();
 </script>
 <div class="col-md-8 col-md-offset-2" style="background-color: white; background-color: rgba(248,248,255, 0.2);padding: 20px; border-width: 0px; top: 50px; height: 450px;">
-<div>
+<div style="text-align: center;">
     <button type="button" class="btn btn-default" onclick = "show_users_data()">
       个人信息
     </button>
@@ -172,8 +172,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       管理员页面
     </a>
 </div>
-<div class="col-md-offset-1" style="color: white; padding-top: 30px; font-size: 20px;">
-  <div id = users_data>
+<div class="col-md-offset-3" style="color: white; font-size: 20px; margin-top: 70px;">
+  <div id = "users_data" style="margin-top: 70px;">
     <p>
       姓名：<?php echo $name;?>
     </p>
@@ -187,8 +187,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </p>
   </div>
 </div>
-    <div style="text-align: center; padding-top: 50px;">
-<form action="<?php echo This_URL ?>/Profile/query_order" method="get" row = "form" name = "ticket_check" id = "ticket_check"  onsubmit = "get_catalog()">
+    <div style="text-align: center; padding-top: 50px;" id = "ticket_check" >
+<form action="<?php echo This_URL ?>/Profile/query_order" method="get" row = "form" name = "ticket_check" onsubmit = "get_catalog()" style = "margin-top: 40px;">
 <div class="form-inline">
   <p class="col-md-4" style="color: white;">日期:</p>
     <div class="col-md-6">
@@ -225,8 +225,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </form>
 </div>
-<div style = "text-align: center;">
-<form action="<?php echo This_URL ?>/Profile/change" method="post" row = "form" name = "change_users" id = "change_users" onsubmit = "check()">
+<div style = "text-align: center; padding-top: 70px;" id = "change_users">
+<form action="<?php echo This_URL ?>/Profile/change" method="post" row = "form" name = "change_users" onsubmit = "check()" style = " margin-top: 40px;">
   <div class="col-md-4" style="color: white;">
   <p>姓名:</p>
 </div>
@@ -247,7 +247,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <p>新密码:</p>
 </div>
   <div class="col-md-6">
-  <input type = "password" class = "form-control" required="required" name = "new_psword">
+  <input type = "password" class = "form-control" name = "new_psword">
 </div>
   <br>
   <br>
@@ -255,7 +255,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <p>重复新密码:</p>
 </div>
   <div class="col-md-6">
-  <input type = "password" class = "form-control" required="required" name = "re_new_psword">
+  <input type = "password" class = "form-control" name = "re_new_psword">
 </div>
   <br>
   <br>

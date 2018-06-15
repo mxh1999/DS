@@ -434,6 +434,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       }
      }
    </script>
+<style type="text/css">
+  body
+  {
+    background: no-repeat;
+    background-image:url("http://chuantu.biz/t6/328/1528999320x-1404793154.jpg");
+    background-color:#cccccc;
+    background-size:100%;
+    width: 100%;
+    background-attachment: fixed;
+  }
+</style>
 </head>
 <body>
 
@@ -441,12 +452,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="container-fluid">
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
-        </ul>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        <li class="active"><a class="navbar-brand" href="<?php echo This_URL ?>">火车票订票系统</a></li>
         </ul>
     </div>
       <div id = "qqq" class="navbar-right navbar-nav nav">
@@ -454,67 +460,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "user_name">
         </a>
         <ul class="dropdown-menu">
-          <li><a href="<?php echo This_URL ?>/Profile">profile</a></li>
-          <li><a href="<?php echo This_URL ?>/Logout">logout</a></li>
+          <li><a href="<?php echo This_URL ?>/Profile">用户</a></li>
+          <li><a href="<?php echo This_URL ?>/Logout">登出</a></li>
         </ul>
         </li>
       </div>
-      <div class="navbar-right navbar-nav nav">
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" name = "user_name" id = "un_login">
-          登录
+      <div class="navbar-right navbar-nav nav" id = "un_login">
+        <li>
+        <a href="<?php echo This_URL ?>/Login">
+          登录/注册
         </a>
-        <ul class="dropdown-menu">
-          <form action = "<?php echo This_URL ?>/Login" method="post" row = "form">
-          <li><input type = "text" class = "form-control" placeholder="账号" name = "id" required="required"></li>
-          <li><input type = "password" class = "form-control" placeholder="密码" name = "psword" required="required"></li>
-          <li>
-            <button type="submit" class="btn btn-default">登录</button>
-            <a href="<?php echo This_URL ?>/Register" class="btn btn-default">注册</a></li>
-          </form>
-        </ul>
         </li>
       </div>
+    <div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo This_URL ?>/Ticket">购票</a></li>
+        </ul>
+    </div>
   </div>
 </nav>
-<div class="col-md-offset-2">
-<div class="radio">
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="show_add_train()">添加车次
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="show_open_train()">公开车次
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" onclick="show_change_train()">修改车次
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="show_delete_train()">删除车次
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="show_check_train()">查询车次
-  </label>
-  <label class = "radio-inline">
-    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" onclick="show_add_admin()">增加管理员
-  </label>
-</div>
+<div class="col-md-10 col-md-offset-1" style="background-color: rgba(248,248,255,0.3);padding: 15px; padding-top: 30px; height: 500px; overflow-y: auto;">
+<div style="text-align: center;">
+  <button type="button" onclick="show_add_train()" class="btn btn-default">
+    添加车次
+  </button>
+  <button type="button" onclick="show_open_train()" class="btn btn-default">
+    公开车次
+  </button>
+  <button type="button" onclick="show_change_train()" class="btn btn-default">
+    修改车次
+  </button>
+  <button type="button" onclick="show_delete_train()" class="btn btn-default">
+    删除车次
+  </button>
+  <button type="button" onclick="show_check_train()" class="btn btn-default">
+    查询车次
+  </button>
+  <button type="button" onclick="show_add_admin()" class="btn btn-default">
+    增加管理员
+  </button>
 </div>
 <div id = "add_admin">
-<div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Admin/set_admin" method="post" row = "form" name = "users">
-<div class="form-inline">
+<div style="text-align: center;">
+<form action="<?php echo This_URL ?>/Admin/set_admin" method="post" row = "form" name = "users" style = "padding-top: 100px;">
+        <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="ID" required="required" name = "id">
           <button type="submit" class="btn btn-default">
             提交
           </button>
-</div>
+        </div>
 </form>
 </div>
 </div>
 <div name = "add_train" id = "add_train">
-<form action="<?php echo This_URL ?>/Train/add" method="post" row = "form"  name = "users" onsubmit="add_train_test()">
+<form action="<?php echo This_URL ?>/Train/add" method="post" row = "form"  name = "users" onsubmit="add_train_test()" style = "padding-top: 20px;">
 <div class="form-inline">
-<div class="col-md-offset-2">
+<div class="col-md-offset-1">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
   <input type = "text" class = "form-control" placeholder="车名" required="required" name = "name">
   <input type = "text" class = "form-control" placeholder="类型" required="required" name = "catalog">
@@ -525,6 +526,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </button>
 </div>
 </div>
+<br>
 <div class="table table-hover" name="add_train_ticket" id = "add_train_ticket">
   <div id = "add_train_ticket_form" class="form-inline col-md-offset-2" name = "add_train_ticket_form">
     
@@ -545,8 +547,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 <div name = "change_train" id = "change_train">
-<form action="<?php echo This_URL ?>/Train/modify" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()">
-<div class="col-md-offset-2">
+<form action="<?php echo This_URL ?>/Train/modify" method="post" row = "form"  name = "change" class="row" onsubmit="change_train_test()" style = "padding-top: 20px;">
+<div class="col-md-offset-1">
 <div class="form-inline">
   <input type = "text" class = "form-control" placeholder="车号" required="required" name = "train_id">
   <input type = "text" class = "form-control" placeholder="车名" required="required" name = "name">
@@ -558,6 +560,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </button>
 </div>
 </div>
+<br>
 <div class="table table-hover" name="change_train_ticket" id = "change_train_ticket">
   <div id = "change_train_ticket_form" class="form-inline col-md-offset-2" name = "change_train_ticket_form">
     
@@ -578,8 +581,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 <div id = "open_train">
-<div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Train/sale" method="post" row = "form"  name = "users">
+<div style="text-align: center;">
+<form action="<?php echo This_URL ?>/Train/sale" method="post" row = "form"  name = "users" style = "padding-top: 100px;">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -590,8 +593,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 <div id = "delete_train">
-<div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Train/erase" method="post" row = "form" name = "users">
+<div style="text-align: center;">
+<form action="<?php echo This_URL ?>/Train/erase" method="post" row = "form" name = "users" style = "padding-top: 100px;">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -602,8 +605,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 <div id = "check_train">
-<div class="col-md-offset-2">
-<form action="<?php echo This_URL ?>/Train/query" method="post" row = "form" name = "users">
+<div style="text-align: center;">
+<form action="<?php echo This_URL ?>/Train/query" method="post" row = "form" name = "users" style = "padding-top: 100px;">
 <div class="form-inline">
           <input type = "text" class = "form-control" placeholder="车次编号" required="required" name = "train_id">
           <button type="submit" class="btn btn-default">
@@ -613,6 +616,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </form>
 </div>
 </div>
+</div>
 <script type="text/javascript">
   get_id();
   check_cookie();
@@ -620,7 +624,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <footer name = "time_footer" id = "time_footer" class="navbar-fixed-bottom">
   <br>
     <div class="container">
-    <div style = "text-align: center">
+    <div style = "text-align: center; color: white;">
     <p>当前时间
     <script type="text/javascript">
         document.write(Date());

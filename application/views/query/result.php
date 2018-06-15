@@ -232,7 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "book_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "book_ticket_kind">
   <input type = "hidden" class = "form-control" placeholder="数目" required="required" name = "num" id = "book_num">
-  <table id = "book_train" class="table">
+  <table id = "book_train" class="table" style="font-weight:bold; ">
   </table>
 </form>
 </div>

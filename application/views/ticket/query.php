@@ -112,16 +112,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <br>
       <p class="col-md-4" style="color: white;">目的地:</p>
     <div class="col-md-6">
-    <input type = "text" required="required" name = "loc2">
+    <input type = "text" required="required" placeholder="目的地" name = "loc2">
     </div>
     <br>
     <br>
     <br>
     <p class="col-md-4" style="color: white;">日期:</p>
     <div class="col-md-6">
-    <input type = "text" placeholder="时间" required="required" name = "date">
+    <input type = "text" placeholder="XXXX-YY-ZZ" required="required" name = "date">
     </div>
-    <input type = "hidden" class = "form-control" placeholder="时间" required="required" name = "catalog" id = "catalog">
+    <input type = "hidden" class = "form-control" required="required" name = "catalog" id = "catalog">
     <br>
     <br>
     <br>
@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
-    <div style = "text-align: center">
+    <div style = "text-align: center; color: white;">
     <p>当前时间
     <script type="text/javascript">
         document.write(Date());
