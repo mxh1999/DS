@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C = document.createElement("button");
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
-        C.setAttribute("onclick", "refund_ticket_0(" + i + "," + j + ")");
+        C.setAttribute("onclick", "refund_ticket(" + i + "," + j + ")");
         C.innerHTML = "退票";
         B.appendChild(C);
         A.appendChild(B);
