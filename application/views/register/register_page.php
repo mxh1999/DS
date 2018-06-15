@@ -89,31 +89,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <p class="col-md-3 col-md-offset-1">
       用户名:
     </p>
-    <input type="text" name="name">
+    <input type="text" name="name" id = "name">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       密码:
     </p>
-    <input type="password" name="psword">
+    <input type="password" name="psword" id = "psword">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       重复密码:
     </p>
-    <input type="password" name="newpsword">
+    <input type="password" name="re_psword" id = "re_psword">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       邮箱:
     </p>
-    <input type="text" name="email">
+    <input type="text" name="email" id = "email">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
       手机号:
     </p>
-    <input type="text" name="phone">
+    <input type="text" name="phone" id = "phone">
     <br>
     <br>
     <div style="text-align: center; margin-right: auto; margin-left: auto;">
@@ -124,9 +124,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </form>
   </div>
 </div>
-<script type="text/javascript">
-  check_cookie();
-</script>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
     <div style = "text-align: center ; color: white;">

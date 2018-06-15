@@ -148,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <footer class="footer navbar-fixed-bottom ">
     <div class="container">
-    <div style = "text-align: center">
+    <div style = "text-align: center; color: white;">
     <p>当前时间
     <script type="text/javascript">
         document.write(Date());
