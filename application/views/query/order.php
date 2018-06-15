@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   {
     var x;
     var y0 = new Array();
-    y0[0]=<?php echo $straight['num']?>;
+    y0[0]= "<?php echo $straight['num']?>";
     y0[1]=new Array();
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -83,6 +83,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var y0 = new Array();
     y0[0]=<?php echo $straight['num']?>;
     y0[1]=new Array();
+    alter(y0[0]);
+    if (y0[0] == 0)
+    {
+      var A = document.createElement('h1');
+      A.innerHTML = "未查询到车票";
+      document.getElementById("test_qaq").appendChild(A);
+      return;
+    }
     <?php $j=0;
   foreach ($straight['ticket'] as $value) {
     echo "y0[1][$j]=new Array();";
@@ -218,6 +226,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "refund_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "refund_ticket_kind">
   <input type = "hidden" class = "form-control" placeholder="数目" required="required" name = "num" id = "refund_num">
+  <div id = "test_qaq" style="text-align: center; color: white;">
+  </div>
   <table id = "refund_ticket" class="table" style="font-weight:bold;">
   </table>
 </form>

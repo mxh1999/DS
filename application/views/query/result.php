@@ -82,7 +82,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     if (x === 0)
     {
       var y0 = new Array();
-      y0[0]=<?php echo $straight['num']?>;
+      y0[0]="<?php echo $straight['num']?>";
+      if (y0[0] == 0)
+      {
+        var A = document.createElement('h1');
+        A.innerHTML = "未查询到车票";
+        document.getElementById("test_qaq").appendChild(A);
+        return;
+      }
       y0[1]=new Array();
       <?php $j=0;
   foreach ($straight['ticket'] as $value) {
@@ -232,6 +239,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "book_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "book_ticket_kind">
   <input type = "hidden" class = "form-control" placeholder="数目" required="required" name = "num" id = "book_num">
+  <div id = "test_qaq" style="text-align: center; color: white;">
+  </div>
   <table id = "book_train" class="table" style="font-weight:bold; ">
   </table>
 </form>
