@@ -77,6 +77,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 <div style="text-align: center">
   <img src="http://chuantu.biz/t6/328/1529005998x-1566638243.jpg">
+  <h1 id = "message_to_user" name = "message_to_user">
+    服务器好像出了点问题
+</h1>
   <br>
   <a href="<?php echo This_URL ?>" role ="button" class="btn btn-default">
   返回首页
