@@ -2,6 +2,7 @@
 /**
  * 车票管理模型，用于与车票有关的所有操作
  */
+error_reporting(E_ALL || ~E_NOTICE);
 class Ticket_model extends CI_Model {
 	
 	function __construct() {
