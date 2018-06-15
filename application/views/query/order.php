@@ -128,13 +128,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       {
         A = document.createElement("tr");
         B = document.createElement("td");
-        B.innerHTML = y0[1][i][8][0];
+        B.innerHTML = y0[1][i][8][j][0];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0[1][i][8][1];
+        B.innerHTML = y0[1][i][8][j][1];
         A.appendChild(B);
         B = document.createElement("td");
-        B.innerHTML = y0[1][i][8][2];
+        B.innerHTML = y0[1][i][8][j][2];
         A.appendChild(B);
         B = document.createElement("td");
         var C = document.createElement("input");
@@ -153,7 +153,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         B.appendChild(C);
         A.appendChild(B);
         document.getElementById("refund_ticket").appendChild(A);
-        A = document.createElement("tr");
       }
     }
     if($(window).height()==$(document).height())
