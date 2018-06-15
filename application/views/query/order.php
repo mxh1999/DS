@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C.setAttribute("type","text");
         C.setAttribute("class","form-control");
         C.setAttribute("id", "num_" + i + "_" + j);
-        C.setAttribute("placeholder", "购买票数");
+        C.setAttribute("placeholder", "退回票数");
         B.appendChild(C);
         A.appendChild(B);
         B = document.createElement("td");
@@ -149,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         C.setAttribute("type", "submit");
         C.setAttribute("class", "btn btn-default");
         C.setAttribute("onclick", "refund_ticket_0(" + i + "," + j + ")");
-        C.innerHTML = "购票";
+        C.innerHTML = "退票";
         B.appendChild(C);
         A.appendChild(B);
         document.getElementById("refund_ticket").appendChild(A);
@@ -219,7 +219,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input type = "hidden" class = "form-control" placeholder="类型" required="required" name = "catalog" id = "refund_catalog">
   <input type = "hidden" class = "form-control" placeholder="车次" required="required" name = "ticket_kind" id = "refund_ticket_kind">
   <input type = "hidden" class = "form-control" placeholder="数目" required="required" name = "num" id = "refund_num">
-  <table id = "refund_ticket" class="table">
+  <table id = "refund_ticket" class="table" style="font-weight:bold;">
   </table>
 </form>
 </div>

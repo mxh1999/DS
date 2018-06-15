@@ -87,9 +87,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div style="background-color: rgba(248,248,255,0.4);height: 301px;margin-top: 49px; padding-top: 30px; text-align: center;">
     <form action = "<?php echo This_URL ?>/Register/check" method = "post">
     <p class="col-md-3 col-md-offset-1">
-      用户ID:
+      用户名:
     </p>
-    <input type="text" name="id">
+    <input type="text" name="name">
     <br>
     <br>
     <p class="col-md-3 col-md-offset-1">
